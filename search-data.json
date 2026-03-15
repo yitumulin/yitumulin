@@ -3,7 +3,7 @@
     "id": "1",
     "title": "Posts - yitumulin",
     "url": "posts.html",
-    "content": "LLM 项目、计算机视觉实践、研究笔记和工程展示页面。",
+    "content": "LLM projects, computer vision work, research notes, and engineering showcases.",
     "date": "2026-03-15",
     "tags": ["LLM", "AI", "Projects"],
     "category": "Projects"
@@ -12,7 +12,7 @@
     "id": "2",
     "title": "About - yitumulin",
     "url": "about.html",
-    "content": "个人教育背景、研究兴趣、论文成果与后续技术路线。",
+    "content": "Education background, research interests, publications, and technical roadmap.",
     "date": "2026-03-15",
     "tags": ["About", "Research", "Resume"],
     "category": "Profile"
@@ -21,7 +21,7 @@
     "id": "3",
     "title": "Listening - Wudangdao",
     "url": "wudangdao.html",
-    "content": "中文听书页面，支持搜索、分页与断点续听。",
+    "content": "Chinese listening page with search, pagination, and resume playback.",
     "date": "2026-03-15",
     "tags": ["Audio", "Listening", "Chinese"],
     "category": "Media"
@@ -30,7 +30,7 @@
     "id": "4",
     "title": "Contact - yitumulin",
     "url": "contact.html",
-    "content": "联系方式：yitumulin@yitumulin.com，欢迎技术合作交流。",
+    "content": "Contact email: yitumulin@yitumulin.com. Available for technical collaboration.",
     "date": "2026-03-15",
     "tags": ["Contact", "Email"],
     "category": "Profile"

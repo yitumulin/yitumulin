@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>椤甸潰鏈壘鍒?(404) - yitumulin</title>
-  <meta name="description" content="页面未找到。返回首页或使用站内搜索继续浏览 yitumulin。">
+  <title>Page Not Found (404) - yitumulin</title>
+  <meta name="description" content="Page not found. Return home or continue browsing with site search.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,17 +15,16 @@
   <script>
     (function() {
       try {
-        var theme = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (theme === 'dark' || (!theme && prefersDark)) {
-          document.body.classList.add('dark');
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
         }
       } catch (e) {
-        console.error('Error applying initial theme:', e);
+        console.error("Error applying initial theme:", e);
       }
     })();
   </script>
-  <div id="particles-js" style="position: fixed; top:0; left:0; width:100%; height:100%; z-index: -1;"></div>
 
   <header class="site-header">
     <div class="container">
@@ -41,46 +40,25 @@
     </div>
   </header>
 
-  <main class="container" style="text-align: center; padding: 50px 20px; min-height: calc(100vh - 160px - 70px); position: relative; z-index: 1;">
-    <h1>404</h1>
-    <h2>鍝庡憖锛侀〉闈㈤璧颁簡...</h2>
-    <p>鎮ㄦ兂璁块棶鐨勯〉闈技涔庝笉瀛樺湪鎴栬€呭凡缁忚绉诲姩鍒板叾浠栧湴鏂逛簡銆?/p>
-    <p style="margin-top: 30px;">
-      <a href="index.html" class="btn">杩斿洖棣栭〉</a>
-      <a href="search.html" class="btn">绔欏唴鎼滅储</a>
-    </p>
+  <main class="page-shell">
+    <section class="page-panel" style="text-align: center;">
+      <div class="eyebrow">404</div>
+      <h1 class="section-title" style="max-width: none;">Page Not Found</h1>
+      <p class="lead" style="margin: 1rem auto 0;">The page you are looking for does not exist or may have been moved.</p>
+      <div class="hero-actions" style="justify-content: center;">
+        <a href="index.html" class="btn btn-primary">Back Home</a>
+        <a href="search.html" class="btn">Search the Site</a>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer" style="background: #fff; padding: 1rem 0; font-size: .875rem; color: #666; text-align: center; width: 100%;">
-    <p>&copy; <span id="currentYear"></span> yitumulin. All rights reserved.</p>
-    <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
+  <footer class="site-footer">
+    <div class="container">
+      <p>yitumulin</p>
+      <p class="footer-links"><a href="archives.html">Archives</a> · <a href="search.html">Search</a></p>
+    </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="darkmode.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#ffffff" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.5 },
-        "size": { "value": 3 },
-        "line_linked": { "enable": true, "distance": 120, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-        "move": { "enable": true, "speed": 2 }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "grab" },
-          "onclick": { "enable": true, "mode": "push" },
-          "resize": true
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
 </body>
-</html> 
-
-
+</html>

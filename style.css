@@ -244,6 +244,8 @@ body.dark .btn:hover {
 .card-panel {
   position: relative;
   overflow: hidden;
+  border-radius: 34px;
+  padding: clamp(1.4rem, 3vw, 2.1rem);
   border: 1px solid rgba(71, 48, 30, 0.09);
   background: var(--surface);
   box-shadow: var(--shadow);
@@ -457,12 +459,6 @@ body.dark .spotlight-card p,
 body.dark .signal-card p,
 body.dark .channel-card p {
   color: rgba(242, 234, 223, 0.72);
-}
-
-.about-shell .page-panel,
-.listening-shell .page-panel {
-  border-radius: 34px;
-  padding: clamp(1.4rem, 3vw, 2.1rem);
 }
 
 .page-intro {
