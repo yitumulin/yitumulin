@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact - yitumulin</title>
+  <meta name="description" content="联系 yitumulin：项目合作、技术交流与内容合作。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,16 +15,17 @@
   <script>
     (function() {
       try {
-        var theme = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (theme === 'dark' || (!theme && prefersDark)) {
-          document.body.classList.add('dark');
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
         }
       } catch (e) {
-        console.error('Error applying initial theme:', e);
+        console.error("Error applying initial theme:", e);
       }
     })();
   </script>
+
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">yitumulin</a>
@@ -32,24 +34,44 @@
         <a href="about.html">About</a>
         <a href="posts.html">Posts</a>
         <a href="wudangdao.html">Listening</a>
-        <a href="archives.html">Archives</a>
-        <a href="search.html">Search</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <button id="darkModeToggle" aria-label="切换夜间模式">🌙</button>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
   </header>
 
-  <main class="contact container">
-    <h1>Contact</h1>
-    <p>You can reach me at:</p>
-    <ul>
-      <li>Email: <a href="mailto:hi@yitumulin.com">hi@yitumulin.com</a></li>
-      <li>Telegram: <a href="https://t.me/yourusername">@yourusername</a></li>
-      <li>WeChat: Scan the QR code below</li>
-    </ul>
-    <img src="wechat-qr.png" alt="WeChat QR Code" class="qr">
+  <main class="page-shell">
+    <section class="page-panel">
+      <div class="page-intro">
+        <div class="eyebrow">Contact</div>
+        <h1 class="section-title">联系我</h1>
+        <p class="lead">如果你想讨论 LLM 项目、技术合作或研究方向，可以通过下面方式联系我。</p>
+      </div>
+
+      <div class="focus-grid" style="margin-top: 1.2rem;">
+        <article class="card-panel signal-card">
+          <h3>Email</h3>
+          <p><a href="mailto:yitumulin@yitumulin.com">yitumulin@yitumulin.com</a></p>
+        </article>
+        <article class="card-panel signal-card">
+          <h3>GitHub</h3>
+          <p><a href="https://github.com/yitumulin" target="_blank" rel="noreferrer">github.com/yitumulin</a></p>
+        </article>
+        <article class="card-panel signal-card">
+          <h3>说明</h3>
+          <p>邮件里可以直接写：项目目标、场景、预期交付与时间安排，我会更快回复。</p>
+        </article>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>yitumulin</p>
+      <p class="footer-links"><a href="archives.html">Archives</a> · <a href="search.html">Search</a></p>
+    </div>
+  </footer>
+
   <script src="darkmode.js"></script>
 </body>
 </html>

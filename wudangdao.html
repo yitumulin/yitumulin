@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Listening - yitumulin</title>
-  <meta name="description" content="A direct-to-R2 listening page for long-form audio.">
+  <title>听书 - yitumulin</title>
+  <meta name="description" content="吾当道听书页面：支持搜索、分页和断点续播。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -44,13 +44,11 @@
     <div class="container">
       <a href="index.html" class="logo">yitumulin</a>
       <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="posts.html">Posts</a>
-        <a href="wudangdao.html">Listening</a>
-        <a href="archives.html">Archives</a>
-        <a href="search.html">Search</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html">首页</a>
+        <a href="about.html">关于</a>
+        <a href="posts.html">项目</a>
+        <a href="wudangdao.html">听书</a>
+        <a href="contact.html">联系</a>
       </nav>
       <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
@@ -59,43 +57,36 @@
   <main class="page-shell listening-shell">
     <section class="page-panel listening-hero">
       <div class="eyebrow">Listening</div>
-      <h1 class="section-title">Wudangdao</h1>
-      <p class="lead">
-        A listening room for long serialized audio, built for search, resume, and direct playback from object storage.
-      </p>
-      <div class="listening-meta">
-        <span>Direct from R2</span>
-        <span>Resume playback</span>
-        <span>Searchable archive</span>
-      </div>
+      <h1 class="section-title">吾当道</h1>
+      <p class="lead">这是一个面向长期收听场景的听书页面，支持分集搜索、分页浏览与断点续播。</p>
     </section>
 
     <section class="listening-layout">
       <div class="listening-column">
         <article class="card-panel player-shell">
           <div class="current-track">
-            <h3 id="currentTrackTitle">Choose a track to start listening</h3>
-            <p id="episodeProgress" class="episode-progress">0 episodes loaded</p>
+            <h3 id="currentTrackTitle">请选择一集开始播放</h3>
+            <p id="episodeProgress" class="episode-progress">共 0 集</p>
           </div>
 
           <div class="audio-player">
             <audio id="audioPlayer" controls>
-              Your browser does not support audio playback.
+              当前浏览器不支持音频播放。
             </audio>
           </div>
 
           <div class="play-controls">
-            <button class="control-btn" onclick="playPrevious()">Previous</button>
-            <button class="control-btn" onclick="playNextAudio()">Next</button>
+            <button class="control-btn" onclick="playPrevious()">上一集</button>
+            <button class="control-btn" onclick="playNextAudio()">下一集</button>
           </div>
         </article>
 
         <article class="card-panel mini-panel">
-          <h3>Why this page exists</h3>
+          <h3>使用说明</h3>
           <ul class="note-list">
-            <li><strong>Long sessions</strong> deserve a calmer interface than a chaotic feed.</li>
-            <li><strong>Playback</strong> resumes from where you left off.</li>
-            <li><strong>Delivery</strong> goes straight to audio storage instead of passing through Vercel.</li>
+            <li><strong>搜索</strong>：输入关键词快速定位分集。</li>
+            <li><strong>续播</strong>：自动记录上次播放位置。</li>
+            <li><strong>连播</strong>：当前集播放结束后自动进入下一集。</li>
           </ul>
         </article>
       </div>
@@ -103,17 +94,17 @@
       <div class="listening-column">
         <article class="card-panel library-shell">
           <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search episodes">
+            <input type="text" id="searchInput" placeholder="搜索分集">
           </div>
 
           <div class="audio-list" id="audioList">
-            <div class="loading">Loading audio list...</div>
+            <div class="loading">正在加载音频列表...</div>
           </div>
 
           <div class="pagination" id="pagination" style="display: none;">
-            <button id="prevBtn" onclick="previousPage()">Previous page</button>
-            <span class="page-info" id="pageInfo">Page 1 of 1</span>
-            <button id="nextBtn" onclick="nextPage()">Next page</button>
+            <button id="prevBtn" onclick="previousPage()">上一页</button>
+            <span class="page-info" id="pageInfo">第 1 页 / 共 1 页</span>
+            <button id="nextBtn" onclick="nextPage()">下一页</button>
           </div>
         </article>
       </div>
@@ -123,6 +114,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>yitumulin</p>
+      <p class="footer-links"><a href="archives.html">Archives</a> · <a href="search.html">Search</a></p>
     </div>
   </footer>
 
@@ -151,12 +143,12 @@
 
     function updateProgressLabel(index) {
       if (index < 0 || index >= audioList.length) {
-        progressEl.textContent = audioList.length ? audioList.length + " episodes loaded" : "0 episodes loaded";
+        progressEl.textContent = "共 " + audioList.length + " 集";
         return;
       }
 
       const episodeNumber = getEpisodeNumber(audioList[index], index + 1);
-      progressEl.textContent = "Episode " + episodeNumber + " / " + audioList.length;
+      progressEl.textContent = "第 " + episodeNumber + " 集 / 共 " + audioList.length + " 集";
     }
 
     function savePlayProgress() {
@@ -170,7 +162,7 @@
 
       currentIndex = index;
       const item = audioList[index];
-      const trackTitle = item.title || "Untitled track";
+      const trackTitle = item.title || "未命名分集";
       titleEl.textContent = trackTitle;
       titleEl.style.color = "";
       updateProgressLabel(index);
@@ -214,7 +206,7 @@
       listContainer.innerHTML = "";
 
       if (!list.length) {
-        listContainer.innerHTML = '<div class="loading">No episodes matched your search.</div>';
+        listContainer.innerHTML = '<div class="loading">没有匹配到相关分集。</div>';
         paginationEl.style.display = "none";
         return;
       }
@@ -222,7 +214,7 @@
       const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
       const currentPageFiles = list.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-      currentPageFiles.forEach(function(item, offset) {
+      currentPageFiles.forEach(function(item) {
         const actualIndex = audioList.indexOf(item);
         const card = document.createElement("div");
         card.className = "audio-item";
@@ -231,10 +223,10 @@
         }
 
         card.innerHTML = [
-          "<h4>" + (item.title || "Untitled episode") + "</h4>",
-          "<p>Episode " + getEpisodeNumber(item, actualIndex + 1) + "</p>",
+          "<h4>" + (item.title || "未命名分集") + "</h4>",
+          "<p>第 " + getEpisodeNumber(item, actualIndex + 1) + " 集</p>",
           '<button class="play-btn' + (actualIndex === currentIndex ? " playing" : "") + '" data-index="' + actualIndex + '">',
-          actualIndex === currentIndex ? "Playing" : "Play",
+          actualIndex === currentIndex ? "播放中" : "播放",
           "</button>"
         ].join("");
 
@@ -255,7 +247,7 @@
       const prevBtn = document.getElementById("prevBtn");
       const nextBtn = document.getElementById("nextBtn");
 
-      pageInfo.textContent = "Page " + currentPage + " of " + totalPages;
+      pageInfo.textContent = "第 " + currentPage + " 页 / 共 " + totalPages + " 页";
       prevBtn.disabled = currentPage === 1;
       nextBtn.disabled = currentPage === totalPages;
       paginationEl.style.display = filteredFiles.length ? "flex" : "none";
@@ -280,7 +272,7 @@
       if (currentIndex + 1 < audioList.length) {
         setTrack(currentIndex + 1, true);
       } else {
-        titleEl.textContent = "You reached the end of the list.";
+        titleEl.textContent = "已经是最后一集。";
         titleEl.style.color = "#376c43";
       }
     }
@@ -289,7 +281,7 @@
       if (currentIndex > 0) {
         setTrack(currentIndex - 1, true);
       } else {
-        titleEl.textContent = "This is already the first episode.";
+        titleEl.textContent = "已经是第一集。";
         titleEl.style.color = "#376c43";
       }
     }
@@ -300,7 +292,6 @@
         updateProgressLabel(-1);
         return;
       }
-
       setTrack(lastIndex, false);
     }
 
@@ -318,7 +309,7 @@
         updateProgressLabel(currentIndex);
       } catch (error) {
         console.error("Failed to load audio list:", error);
-        listContainer.innerHTML = '<div class="error-message">Unable to load the audio library right now.</div>';
+        listContainer.innerHTML = '<div class="error-message">音频列表加载失败，请稍后重试。</div>';
       }
     }
 

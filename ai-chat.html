@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI对话 - yitumulin</title>
+  <title>AI瀵硅瘽 - yitumulin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -194,7 +194,7 @@
       display: block;
     }
     
-    /* 夜间模式样式 */
+    /* 澶滈棿妯″紡鏍峰紡 */
     body.dark .chat-interface {
       background: #2a2a2a;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
@@ -249,7 +249,7 @@
       color: #aaa;
     }
     
-    /* 响应式设计 */
+    /* 鍝嶅簲寮忚璁?*/
     @media (max-width: 768px) {
       .ai-chat-container {
         padding: 1rem 0.5rem;
@@ -297,24 +297,22 @@
         <a href="about.html">About</a>
         <a href="posts.html">Posts</a>
         <a href="wudangdao.html">Listening</a>
-        <a href="archives.html">Archives</a>
-        <a href="search.html">Search</a>
         <a href="contact.html">Contact</a>
         <a href="ai-chat.html" style="color: var(--primary); font-weight: 600;">AI Chat</a>
       </nav>
-      <button id="darkModeToggle" aria-label="切换夜间模式">🌙</button>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
   </header>
 
   <main class="ai-chat">
     <div class="ai-chat-container">
       <div class="chat-header">
-        <h1>AI对话助手</h1>
-        <p>与您的AI助手进行智能对话</p>
+        <h1>AI瀵硅瘽鍔╂墜</h1>
+        <p>涓庢偍鐨凙I鍔╂墜杩涜鏅鸿兘瀵硅瘽</p>
       </div>
       
       <div class="connection-status" id="connectionStatus">
-        <span id="statusText">正在连接...</span>
+        <span id="statusText">姝ｅ湪杩炴帴...</span>
       </div>
       
       <div class="chat-interface">
@@ -322,23 +320,23 @@
           <div class="message ai">
             <div class="message-avatar">AI</div>
             <div class="message-content">
-              您好！我是您的AI助手，有什么可以帮助您的吗？
+              鎮ㄥソ锛佹垜鏄偍鐨凙I鍔╂墜锛屾湁浠€涔堝彲浠ュ府鍔╂偍鐨勫悧锛?
             </div>
           </div>
         </div>
         
         <div class="typing-indicator" id="typingIndicator">
-          AI正在思考中...
+          AI姝ｅ湪鎬濊€冧腑...
         </div>
         
         <div class="chat-input-container">
           <textarea 
             id="chatInput" 
             class="chat-input" 
-            placeholder="输入您的消息..."
+            placeholder="杈撳叆鎮ㄧ殑娑堟伅..."
             rows="1"
           ></textarea>
-          <button id="sendButton" class="send-button">发送</button>
+          <button id="sendButton" class="send-button">鍙戦€?/button>
         </div>
       </div>
     </div>
@@ -376,7 +374,7 @@
           }
         });
         
-        // 自动调整输入框高度
+        // 鑷姩璋冩暣杈撳叆妗嗛珮搴?
         this.chatInput.addEventListener('input', () => {
           this.autoResizeTextarea();
         });
@@ -389,9 +387,9 @@
       
       async checkConnection() {
         try {
-          this.updateConnectionStatus('connecting', '正在连接...');
+          this.updateConnectionStatus('connecting', '姝ｅ湪杩炴帴...');
           
-          // 尝试连接到本地AI服务
+          // 灏濊瘯杩炴帴鍒版湰鍦癆I鏈嶅姟
           const response = await fetch('http://localhost:7860/', {
             method: 'HEAD',
             mode: 'no-cors',
@@ -399,11 +397,11 @@
           });
           
           this.isConnected = true;
-          this.updateConnectionStatus('connected', '已连接到AI服务');
+          this.updateConnectionStatus('connected', '宸茶繛鎺ュ埌AI鏈嶅姟');
         } catch (error) {
           this.isConnected = false;
-          this.updateConnectionStatus('disconnected', '无法连接到AI服务，请确保本地服务正在运行');
-          console.error('连接失败:', error);
+          this.updateConnectionStatus('disconnected', '鏃犳硶杩炴帴鍒癆I鏈嶅姟锛岃纭繚鏈湴鏈嶅姟姝ｅ湪杩愯');
+          console.error('杩炴帴澶辫触:', error);
         }
       }
       
@@ -416,35 +414,35 @@
         const message = this.chatInput.value.trim();
         if (!message || !this.isConnected) return;
         
-        // 添加用户消息
+        // 娣诲姞鐢ㄦ埛娑堟伅
         this.addMessage('user', message);
         this.chatInput.value = '';
         this.autoResizeTextarea();
         
-        // 禁用发送按钮
+        // 绂佺敤鍙戦€佹寜閽?
         this.sendButton.disabled = true;
         this.showTyping();
         
         try {
-          // 发送消息到AI服务
+          // 鍙戦€佹秷鎭埌AI鏈嶅姟
           const response = await this.sendToAI(message);
           this.hideTyping();
           this.addMessage('ai', response);
         } catch (error) {
           this.hideTyping();
-          this.addMessage('ai', '抱歉，我遇到了一些问题。请稍后再试。');
-          console.error('发送消息失败:', error);
+          this.addMessage('ai', '鎶辨瓑锛屾垜閬囧埌浜嗕竴浜涢棶棰樸€傝绋嶅悗鍐嶈瘯銆?);
+          console.error('鍙戦€佹秷鎭け璐?', error);
         } finally {
           this.sendButton.disabled = false;
         }
       }
       
       async sendToAI(message) {
-        // 这里需要根据您的AI服务的实际API来调整
-        // 由于CORS限制，我们可能需要使用代理或者特定的API端点
+        // 杩欓噷闇€瑕佹牴鎹偍鐨凙I鏈嶅姟鐨勫疄闄匒PI鏉ヨ皟鏁?
+        // 鐢变簬CORS闄愬埗锛屾垜浠彲鑳介渶瑕佷娇鐢ㄤ唬鐞嗘垨鑰呯壒瀹氱殑API绔偣
         
         try {
-          // 尝试直接调用（如果AI服务支持CORS）
+          // 灏濊瘯鐩存帴璋冪敤锛堝鏋淎I鏈嶅姟鏀寔CORS锛?
           const response = await fetch('http://localhost:7860/api/chat', {
             method: 'POST',
             headers: {
@@ -455,16 +453,16 @@
           
           if (response.ok) {
             const data = await response.json();
-            return data.response || data.message || '收到回复';
+            return data.response || data.message || '鏀跺埌鍥炲';
           } else {
-            throw new Error('API响应错误');
+            throw new Error('API鍝嶅簲閿欒');
           }
         } catch (error) {
-          // 如果直接调用失败，尝试其他方法
-          console.log('直接调用失败，尝试其他方法:', error);
+          // 濡傛灉鐩存帴璋冪敤澶辫触锛屽皾璇曞叾浠栨柟娉?
+          console.log('鐩存帴璋冪敤澶辫触锛屽皾璇曞叾浠栨柟娉?', error);
           
-          // 这里可以添加其他调用方式，比如通过您的服务器代理
-          return 'AI服务暂时不可用，请检查本地服务是否正在运行。';
+          // 杩欓噷鍙互娣诲姞鍏朵粬璋冪敤鏂瑰紡锛屾瘮濡傞€氳繃鎮ㄧ殑鏈嶅姟鍣ㄤ唬鐞?
+          return 'AI鏈嶅姟鏆傛椂涓嶅彲鐢紝璇锋鏌ユ湰鍦版湇鍔℃槸鍚︽鍦ㄨ繍琛屻€?;
         }
       }
       
@@ -474,7 +472,7 @@
         
         const avatar = document.createElement('div');
         avatar.className = 'message-avatar';
-        avatar.textContent = sender === 'user' ? '我' : 'AI';
+        avatar.textContent = sender === 'user' ? '鎴? : 'AI';
         
         const messageContent = document.createElement('div');
         messageContent.className = 'message-content';
@@ -501,10 +499,12 @@
       }
     }
     
-    // 初始化聊天应用
+    // 鍒濆鍖栬亰澶╁簲鐢?
     document.addEventListener('DOMContentLoaded', () => {
       new AIChat();
     });
   </script>
 </body>
 </html>
+
+

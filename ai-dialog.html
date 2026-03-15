@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI对话 - yitumulin</title>
+  <title>AI瀵硅瘽 - yitumulin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -254,7 +254,7 @@
       transform: translateY(-2px);
     }
     
-    /* 动画效果 */
+    /* 鍔ㄧ敾鏁堟灉 */
     @keyframes messageSlideIn {
       from {
         opacity: 0;
@@ -275,7 +275,7 @@
       }
     }
     
-    /* 夜间模式样式 */
+    /* 澶滈棿妯″紡鏍峰紡 */
     body.dark .dialog-interface {
       background: #2a2a2a;
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
@@ -357,7 +357,7 @@
       background: rgba(243, 156, 18, 0.2);
     }
     
-    /* 服务配置样式 */
+    /* 鏈嶅姟閰嶇疆鏍峰紡 */
     body.dark .service-config input {
       background: #2a2a2a;
       color: var(--text-dark);
@@ -377,7 +377,7 @@
       background: color-mix(in srgb, var(--primary-dark) 85%, #000);
     }
     
-    /* 连接帮助样式 */
+    /* 杩炴帴甯姪鏍峰紡 */
     body.dark .connection-help {
       background: rgba(243, 156, 18, 0.1);
       border-left-color: var(--primary-dark);
@@ -396,7 +396,7 @@
       color: var(--primary-dark);
     }
     
-    /* 响应式设计 */
+    /* 鍝嶅簲寮忚璁?*/
     @media (max-width: 768px) {
       .ai-dialog-container {
         padding: 1rem 0.5rem;
@@ -464,68 +464,66 @@
         <a href="about.html">About</a>
         <a href="posts.html">Posts</a>
         <a href="wudangdao.html">Listening</a>
-        <a href="archives.html">Archives</a>
-        <a href="search.html">Search</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <button id="darkModeToggle" aria-label="切换夜间模式">🌙</button>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
   </header>
 
   <main class="ai-dialog">
     <div class="ai-dialog-container">
-      <a href="index.html" class="back-link">← 返回首页</a>
+      <a href="index.html" class="back-link">鈫?杩斿洖棣栭〉</a>
       
       <div class="dialog-header">
-        <h1>AI智能对话</h1>
-        <p>与您的专属AI助手进行深度交流</p>
+        <h1>AI鏅鸿兘瀵硅瘽</h1>
+        <p>涓庢偍鐨勪笓灞濧I鍔╂墜杩涜娣卞害浜ゆ祦</p>
       </div>
       
       <div class="service-info">
-        <h3>🔗 服务连接</h3>
-        <p>AI服务地址: <span id="serviceUrl">正在检测...</span></p>
+        <h3>馃敆 鏈嶅姟杩炴帴</h3>
+        <p>AI鏈嶅姟鍦板潃: <span id="serviceUrl">姝ｅ湪妫€娴?..</span></p>
         <div class="service-config" style="margin-top: 1rem;">
-          <input type="text" id="customServiceUrl" placeholder="输入AI服务地址 (如: https://abc123.ngrok.io)" style="width: 350px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; margin-right: 0.5rem;">
-          <button id="updateServiceUrl" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 4px; cursor: pointer;">更新地址</button>
+          <input type="text" id="customServiceUrl" placeholder="杈撳叆AI鏈嶅姟鍦板潃 (濡? https://abc123.ngrok.io)" style="width: 350px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; margin-right: 0.5rem;">
+          <button id="updateServiceUrl" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 4px; cursor: pointer;">鏇存柊鍦板潃</button>
         </div>
         <div class="connection-help" style="margin-top: 1rem; padding: 1rem; background: rgba(140, 90, 24, 0.05); border-radius: 8px; border-left: 4px solid var(--primary);">
-          <h4 style="margin: 0 0 0.5rem 0; color: var(--primary); font-size: 1rem;">💡 快速设置指南：</h4>
+          <h4 style="margin: 0 0 0.5rem 0; color: var(--primary); font-size: 1rem;">馃挕 蹇€熻缃寚鍗楋細</h4>
           <ol style="margin: 0; padding-left: 1.5rem; font-size: 0.9rem; line-height: 1.6;">
-            <li>下载 <a href="https://ngrok.com/" target="_blank" style="color: var(--primary);">ngrok</a></li>
-            <li>运行：<code style="background: rgba(0,0,0,0.1); padding: 0.2rem 0.4rem; border-radius: 3px;">ngrok http 7860</code></li>
-            <li>复制生成的HTTPS地址到上方输入框</li>
-            <li>点击"更新地址"开始对话</li>
+            <li>涓嬭浇 <a href="https://ngrok.com/" target="_blank" style="color: var(--primary);">ngrok</a></li>
+            <li>杩愯锛?code style="background: rgba(0,0,0,0.1); padding: 0.2rem 0.4rem; border-radius: 3px;">ngrok http 7860</code></li>
+            <li>澶嶅埗鐢熸垚鐨凥TTPS鍦板潃鍒颁笂鏂硅緭鍏ユ</li>
+            <li>鐐瑰嚮"鏇存柊鍦板潃"寮€濮嬪璇?/li>
           </ol>
         </div>
       </div>
       
       <div class="connection-status" id="connectionStatus">
-        <span id="statusText">正在检测连接状态...</span>
-        <button id="retryConnection" class="retry-button" style="display: none; margin-left: 1rem; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">重试连接</button>
+        <span id="statusText">姝ｅ湪妫€娴嬭繛鎺ョ姸鎬?..</span>
+        <button id="retryConnection" class="retry-button" style="display: none; margin-left: 1rem; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">閲嶈瘯杩炴帴</button>
       </div>
       
       <div class="dialog-interface">
         <div class="dialog-messages" id="dialogMessages">
           <div class="message ai">
-            <div class="message-avatar">🤖</div>
+            <div class="message-avatar">馃</div>
             <div class="message-content">
-              您好！我是您的AI助手，很高兴为您服务。请告诉我您需要什么帮助？
+              鎮ㄥソ锛佹垜鏄偍鐨凙I鍔╂墜锛屽緢楂樺叴涓烘偍鏈嶅姟銆傝鍛婅瘔鎴戞偍闇€瑕佷粈涔堝府鍔╋紵
             </div>
           </div>
         </div>
         
         <div class="typing-indicator" id="typingIndicator">
-          <span>AI正在思考中...</span>
+          <span>AI姝ｅ湪鎬濊€冧腑...</span>
         </div>
         
         <div class="dialog-input-container">
           <textarea 
             id="dialogInput" 
             class="dialog-input" 
-            placeholder="输入您的消息，按Enter发送，Shift+Enter换行..."
+            placeholder="杈撳叆鎮ㄧ殑娑堟伅锛屾寜Enter鍙戦€侊紝Shift+Enter鎹㈣..."
             rows="1"
           ></textarea>
-          <button id="sendButton" class="send-button">发送</button>
+          <button id="sendButton" class="send-button">鍙戦€?/button>
         </div>
       </div>
     </div>
@@ -548,7 +546,7 @@
         
         this.isConnected = false;
         this.isTyping = false;
-        // 根据当前域名判断AI服务地址
+        // 鏍规嵁褰撳墠鍩熷悕鍒ゆ柇AI鏈嶅姟鍦板潃
         this.aiServiceUrl = this.getAIServiceUrl();
         
         this.init();
@@ -557,13 +555,13 @@
       getAIServiceUrl() {
         const hostname = window.location.hostname;
         
-        // 如果是本地开发环境
+        // 濡傛灉鏄湰鍦板紑鍙戠幆澧?
         if (hostname === 'localhost' || hostname === '127.0.0.1') {
           return 'http://localhost:7860';
         }
         
-        // 如果是生产环境，使用代理服务器
-        return 'proxy';  // 使用代理服务器
+        // 濡傛灉鏄敓浜х幆澧冿紝浣跨敤浠ｇ悊鏈嶅姟鍣?
+        return 'proxy';  // 浣跨敤浠ｇ悊鏈嶅姟鍣?
       }
       
       init() {
@@ -575,7 +573,7 @@
       }
       
       updateServiceUrlDisplay() {
-        const displayUrl = this.aiServiceUrl === 'proxy' ? '代理服务器 (自动)' : this.aiServiceUrl;
+        const displayUrl = this.aiServiceUrl === 'proxy' ? '浠ｇ悊鏈嶅姟鍣?(鑷姩)' : this.aiServiceUrl;
         this.serviceUrlDisplay.textContent = displayUrl;
         this.customServiceUrlInput.value = this.aiServiceUrl === 'proxy' ? 'http://localhost:7860' : this.aiServiceUrl;
       }
@@ -600,15 +598,15 @@
           }
         });
         
-        // 自动调整输入框高度
+        // 鑷姩璋冩暣杈撳叆妗嗛珮搴?
         this.dialogInput.addEventListener('input', () => {
           this.autoResizeTextarea();
         });
         
-        // 定期检查连接状态
+        // 瀹氭湡妫€鏌ヨ繛鎺ョ姸鎬?
         setInterval(() => {
           this.checkConnection();
-        }, 30000); // 每30秒检查一次
+        }, 30000); // 姣?0绉掓鏌ヤ竴娆?
       }
       
       autoResizeTextarea() {
@@ -622,14 +620,14 @@
       
       async checkConnection() {
         try {
-          this.updateConnectionStatus('connecting', '正在检测连接...');
+          this.updateConnectionStatus('connecting', '姝ｅ湪妫€娴嬭繛鎺?..');
           
-          // 使用简单的ping测试
+          // 浣跨敤绠€鍗曠殑ping娴嬭瘯
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 3000);
           
           try {
-            // 尝试访问根路径
+            // 灏濊瘯璁块棶鏍硅矾寰?
             const response = await fetch(`${this.aiServiceUrl}/`, {
               method: 'GET',
               mode: 'no-cors',
@@ -638,33 +636,33 @@
             
             clearTimeout(timeoutId);
             this.isConnected = true;
-            this.updateConnectionStatus('connected', '✅ 已连接到AI服务');
+            this.updateConnectionStatus('connected', '鉁?宸茶繛鎺ュ埌AI鏈嶅姟');
             return;
           } catch (fetchError) {
             clearTimeout(timeoutId);
-            console.log('直接连接失败，尝试API测试:', fetchError);
+            console.log('鐩存帴杩炴帴澶辫触锛屽皾璇旳PI娴嬭瘯:', fetchError);
           }
           
-          // 如果直接连接失败，尝试发送测试消息
+          // 濡傛灉鐩存帴杩炴帴澶辫触锛屽皾璇曞彂閫佹祴璇曟秷鎭?
           try {
-            const testResponse = await this.sendToAI("测试", true);
-            if (testResponse && !testResponse.includes('无法连接') && !testResponse.includes('连接有问题')) {
+            const testResponse = await this.sendToAI("娴嬭瘯", true);
+            if (testResponse && !testResponse.includes('鏃犳硶杩炴帴') && !testResponse.includes('杩炴帴鏈夐棶棰?)) {
               this.isConnected = true;
-              this.updateConnectionStatus('connected', '✅ 已连接到AI服务');
+              this.updateConnectionStatus('connected', '鉁?宸茶繛鎺ュ埌AI鏈嶅姟');
               return;
             }
           } catch (testError) {
-            console.log('API测试失败:', testError);
+            console.log('API娴嬭瘯澶辫触:', testError);
           }
           
-          // 如果都失败了，但服务可能仍在运行（CORS问题）
-          this.isConnected = true; // 假设服务在运行，让用户尝试发送消息
-          this.updateConnectionStatus('connected', '⚠️ 服务可能正在运行，但存在CORS限制。请尝试发送消息测试。');
+          // 濡傛灉閮藉け璐ヤ簡锛屼絾鏈嶅姟鍙兘浠嶅湪杩愯锛圕ORS闂锛?
+          this.isConnected = true; // 鍋囪鏈嶅姟鍦ㄨ繍琛岋紝璁╃敤鎴峰皾璇曞彂閫佹秷鎭?
+          this.updateConnectionStatus('connected', '鈿狅笍 鏈嶅姟鍙兘姝ｅ湪杩愯锛屼絾瀛樺湪CORS闄愬埗銆傝灏濊瘯鍙戦€佹秷鎭祴璇曘€?);
           
         } catch (error) {
           this.isConnected = false;
-          this.updateConnectionStatus('disconnected', '❌ 无法连接到AI服务，请确保本地服务正在运行');
-          console.error('连接检测失败:', error);
+          this.updateConnectionStatus('disconnected', '鉂?鏃犳硶杩炴帴鍒癆I鏈嶅姟锛岃纭繚鏈湴鏈嶅姟姝ｅ湪杩愯');
+          console.error('杩炴帴妫€娴嬪け璐?', error);
         }
       }
       
@@ -672,7 +670,7 @@
         this.connectionStatus.className = `connection-status ${status}`;
         this.statusText.textContent = text;
         
-        // 显示或隐藏重试按钮
+        // 鏄剧ず鎴栭殣钘忛噸璇曟寜閽?
         if (status === 'disconnected') {
           this.retryButton.style.display = 'inline-block';
         } else {
@@ -684,30 +682,30 @@
         const message = this.dialogInput.value.trim();
         if (!message) return;
         
-        // 添加用户消息
+        // 娣诲姞鐢ㄦ埛娑堟伅
         this.addMessage('user', message);
         this.dialogInput.value = '';
         this.autoResizeTextarea();
         
-        // 禁用发送按钮
+        // 绂佺敤鍙戦€佹寜閽?
         this.sendButton.disabled = true;
         this.showTyping();
         
         try {
-          // 发送消息到AI服务
+          // 鍙戦€佹秷鎭埌AI鏈嶅姟
           const response = await this.sendToAI(message);
           this.hideTyping();
           this.addMessage('ai', response);
           
-          // 如果成功发送，更新连接状态
+          // 濡傛灉鎴愬姛鍙戦€侊紝鏇存柊杩炴帴鐘舵€?
           if (!this.isConnected) {
             this.isConnected = true;
-            this.updateConnectionStatus('connected', '✅ 已连接到AI服务');
+            this.updateConnectionStatus('connected', '鉁?宸茶繛鎺ュ埌AI鏈嶅姟');
           }
         } catch (error) {
           this.hideTyping();
-          this.addMessage('ai', '抱歉，我遇到了一些问题。请检查AI服务是否正常运行，或稍后再试。');
-          console.error('发送消息失败:', error);
+          this.addMessage('ai', '鎶辨瓑锛屾垜閬囧埌浜嗕竴浜涢棶棰樸€傝妫€鏌I鏈嶅姟鏄惁姝ｅ父杩愯锛屾垨绋嶅悗鍐嶈瘯銆?);
+          console.error('鍙戦€佹秷鎭け璐?', error);
         } finally {
           this.sendButton.disabled = false;
           this.focusInput();
@@ -716,37 +714,37 @@
       
       async sendToAI(message, isTestConnection = false) {
         try {
-          // 如果使用代理服务器
+          // 濡傛灉浣跨敤浠ｇ悊鏈嶅姟鍣?
           if (this.aiServiceUrl === 'proxy') {
             return await this.sendViaProxy(message, isTestConnection);
           }
           
-          // 直接连接方式（本地开发环境）
+          // 鐩存帴杩炴帴鏂瑰紡锛堟湰鍦板紑鍙戠幆澧冿級
           return await this.sendDirect(message, isTestConnection);
           
         } catch (error) {
-          console.log('AI服务调用失败:', error);
+          console.log('AI鏈嶅姟璋冪敤澶辫触:', error);
           
           if (isTestConnection) {
             throw error;
           }
           
-          // 返回更友好的错误信息
-          return `❌ 无法连接到AI服务
+          // 杩斿洖鏇村弸濂界殑閿欒淇℃伅
+          return `鉂?鏃犳硶杩炴帴鍒癆I鏈嶅姟
 
-🔧 解决方案：
-1. 使用ngrok内网穿透（推荐）：
-   • 下载：https://ngrok.com/
-   • 运行：ngrok http 7860
-   • 复制HTTPS地址到上方配置
+馃敡 瑙ｅ喅鏂规锛?
+1. 浣跨敤ngrok鍐呯綉绌块€忥紙鎺ㄨ崘锛夛細
+   鈥?涓嬭浇锛歨ttps://ngrok.com/
+   鈥?杩愯锛歯grok http 7860
+   鈥?澶嶅埗HTTPS鍦板潃鍒颁笂鏂归厤缃?
 
-2. 确保AI服务正在运行在7860端口
+2. 纭繚AI鏈嶅姟姝ｅ湪杩愯鍦?860绔彛
 
-3. 检查网络连接
+3. 妫€鏌ョ綉缁滆繛鎺?
 
-💡 提示：页面已显示详细设置指南，请按照步骤操作。
+馃挕 鎻愮ず锛氶〉闈㈠凡鏄剧ず璇︾粏璁剧疆鎸囧崡锛岃鎸夌収姝ラ鎿嶄綔銆?
 
-您发送的消息："${message}"`;
+鎮ㄥ彂閫佺殑娑堟伅锛?${message}"`;
         }
       }
       
@@ -759,25 +757,25 @@
             },
             body: JSON.stringify({ 
               message: message,
-              serviceUrl: 'http://localhost:7860'  // 默认本地服务地址
+              serviceUrl: 'http://localhost:7860'  // 榛樿鏈湴鏈嶅姟鍦板潃
             })
           });
           
           if (response.ok) {
             const data = await response.json();
-            return data.response || data.message || '收到回复';
+            return data.response || data.message || '鏀跺埌鍥炲';
           } else {
             const errorData = await response.json();
-            throw new Error(errorData.error || '代理请求失败');
+            throw new Error(errorData.error || '浠ｇ悊璇锋眰澶辫触');
           }
         } catch (error) {
-          console.log('代理请求失败:', error);
+          console.log('浠ｇ悊璇锋眰澶辫触:', error);
           throw error;
         }
       }
       
       async sendDirect(message, isTestConnection = false) {
-        // 尝试多种API端点和请求方式
+        // 灏濊瘯澶氱API绔偣鍜岃姹傛柟寮?
         const endpoints = [
           '/api/chat',
           '/api/v1/chat', 
@@ -789,7 +787,7 @@
           '/api/v1/completions'
         ];
         
-        // 尝试不同的请求体格式
+        // 灏濊瘯涓嶅悓鐨勮姹備綋鏍煎紡
         const requestBodies = [
           { message: message },
           { prompt: message },
@@ -813,7 +811,7 @@
         for (const endpoint of endpoints) {
           for (const body of requestBodies) {
             try {
-              console.log(`尝试端点: ${endpoint}`, body);
+              console.log(`灏濊瘯绔偣: ${endpoint}`, body);
               
               const response = await fetch(`${this.aiServiceUrl}${endpoint}`, {
                 method: 'POST',
@@ -827,7 +825,7 @@
               
               if (response.ok) {
                 const data = await response.json();
-                const result = data.response || data.message || data.output || data.text || data.content || data.choices?.[0]?.message?.content || '收到回复';
+                const result = data.response || data.message || data.output || data.text || data.content || data.choices?.[0]?.message?.content || '鏀跺埌鍥炲';
                 
                 if (isTestConnection) {
                   return result;
@@ -836,13 +834,13 @@
                 return result;
               }
             } catch (endpointError) {
-              console.log(`端点 ${endpoint} 失败:`, endpointError.message);
+              console.log(`绔偣 ${endpoint} 澶辫触:`, endpointError.message);
               continue;
             }
           }
         }
         
-        // 尝试GET请求（某些服务可能支持GET）
+        // 灏濊瘯GET璇锋眰锛堟煇浜涙湇鍔″彲鑳芥敮鎸丟ET锛?
         try {
           const response = await fetch(`${this.aiServiceUrl}/?q=${encodeURIComponent(message)}`, {
             method: 'GET',
@@ -851,7 +849,7 @@
           
           if (response.ok) {
             const data = await response.json();
-            const result = data.response || data.message || data.output || data.text || data.content || '收到回复';
+            const result = data.response || data.message || data.output || data.text || data.content || '鏀跺埌鍥炲';
             
             if (isTestConnection) {
               return result;
@@ -860,11 +858,11 @@
             return result;
           }
         } catch (getError) {
-          console.log('GET请求失败:', getError.message);
+          console.log('GET璇锋眰澶辫触:', getError.message);
         }
         
-        // 如果所有方法都失败，返回提示信息
-        throw new Error('所有API端点都无法访问');
+        // 濡傛灉鎵€鏈夋柟娉曢兘澶辫触锛岃繑鍥炴彁绀轰俊鎭?
+        throw new Error('鎵€鏈堿PI绔偣閮芥棤娉曡闂?);
       }
       
       addMessage(sender, content) {
@@ -873,7 +871,7 @@
         
         const avatar = document.createElement('div');
         avatar.className = 'message-avatar';
-        avatar.textContent = sender === 'user' ? '👤' : '🤖';
+        avatar.textContent = sender === 'user' ? '馃懁' : '馃';
         
         const messageContent = document.createElement('div');
         messageContent.className = 'message-content';
@@ -902,10 +900,12 @@
       }
     }
     
-    // 初始化对话应用
+    // 鍒濆鍖栧璇濆簲鐢?
     document.addEventListener('DOMContentLoaded', () => {
       new AIDialog();
     });
   </script>
 </body>
 </html>
+
+

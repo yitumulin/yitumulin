@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>标签视图 - yitumulin</title>
-  <meta name="description" content="按标签或分类浏览 yitumulin 的文章，发现更多感兴趣的内容。">
+  <title>鏍囩瑙嗗浘 - yitumulin</title>
+  <meta name="description" content="按标签和分类浏览 yitumulin 的内容。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -35,16 +35,14 @@
         <a href="about.html">About</a>
         <a href="posts.html">Posts</a>
         <a href="wudangdao.html">Listening</a>
-        <a href="archives.html">Archives</a>
-        <a href="search.html">Search</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <button id="darkModeToggle" aria-label="切换夜间模式">🌙</button>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
   </header>
 
   <main class="container" style="position: relative; z-index: 1;">
-    <h1 id="tag-view-title">标签视图</h1>
+    <h1 id="tag-view-title">鏍囩瑙嗗浘</h1>
     <div id="tag-results-container"></div>
   </main>
 
@@ -86,20 +84,20 @@
       if (tagName) {
         filterType = 'tag';
         filterValue = tagName;
-        pageTitleElement.textContent = `标签：${tagName}`;
+        pageTitleElement.textContent = `鏍囩锛?{tagName}`;
       } else if (categoryName) {
         filterType = 'category';
         filterValue = categoryName;
-        pageTitleElement.textContent = `分类：${categoryName}`;
+        pageTitleElement.textContent = `鍒嗙被锛?{categoryName}`;
       } else {
-        pageTitleElement.textContent = '未指定内容';
-        resultsContainer.innerHTML = '<p>请指定一个标签或分类进行查看。</p>';
+        pageTitleElement.textContent = '鏈寚瀹氬唴瀹?;
+        resultsContainer.innerHTML = '<p>璇锋寚瀹氫竴涓爣绛炬垨鍒嗙被杩涜鏌ョ湅銆?/p>';
         return;
       }
 
       try {
         const response = await fetch('search-data.json');
-        if (!response.ok) throw new Error('无法加载博文数据');
+        if (!response.ok) throw new Error('鏃犳硶鍔犺浇鍗氭枃鏁版嵁');
         const allPosts = await response.json();
         let filteredPosts = [];
 
@@ -110,7 +108,7 @@
         }
 
         if (filteredPosts.length === 0) {
-          resultsContainer.innerHTML = `<p>没有找到带有 "${filterValue}" ${filterType === 'tag' ? '标签' : '分类'}的文章。</p>`;
+          resultsContainer.innerHTML = `<p>娌℃湁鎵惧埌甯︽湁 "${filterValue}" ${filterType === 'tag' ? '鏍囩' : '鍒嗙被'}鐨勬枃绔犮€?/p>`;
           return;
         }
 
@@ -132,10 +130,12 @@
         resultsContainer.appendChild(ul);
 
       } catch (error) {
-        console.error('显示标签/分类文章列表时出错:', error);
-        resultsContainer.innerHTML = '<p>加载文章列表时出错。</p>';
+        console.error('鏄剧ず鏍囩/鍒嗙被鏂囩珷鍒楄〃鏃跺嚭閿?', error);
+        resultsContainer.innerHTML = '<p>鍔犺浇鏂囩珷鍒楄〃鏃跺嚭閿欍€?/p>';
       }
     });
   </script>
 </body>
 </html> 
+
+

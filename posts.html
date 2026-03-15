@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Posts - yitumulin</title>
+  <meta name="description" content="yitumulin 的技术项目与研究笔记。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,16 +15,17 @@
   <script>
     (function() {
       try {
-        var theme = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (theme === 'dark' || (!theme && prefersDark)) {
-          document.body.classList.add('dark');
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
         }
       } catch (e) {
-        console.error('Error applying initial theme:', e);
+        console.error("Error applying initial theme:", e);
       }
     })();
   </script>
+
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">yitumulin</a>
@@ -32,21 +34,65 @@
         <a href="about.html">About</a>
         <a href="posts.html">Posts</a>
         <a href="wudangdao.html">Listening</a>
-        <a href="archives.html">Archives</a>
-        <a href="search.html">Search</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <button id="darkModeToggle" aria-label="切换夜间模式">🌙</button>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
   </header>
 
-  <main class="posts container">
-    <h1>Posts</h1>
-    <ul class="post-list">
-      <li><a href="posts/project1.html">Project: AI & Aging Research</a> <span>2025-05-10</span></li>
-      <li><a href="posts/project2.html">Deep Dive: Custom Domains</a> <span>2025-05-09</span></li>
-    </ul>
+  <main class="page-shell">
+    <section class="page-panel">
+      <div class="page-intro">
+        <div class="eyebrow">Projects</div>
+        <h1 class="section-title">技术项目与研究笔记</h1>
+        <p class="lead">
+          这个栏目会持续更新我的 LLM、CV 和工程实践项目。每个条目都会尽量包含目标、方法、实现与结果。
+        </p>
+      </div>
+
+      <ul class="post-list" style="margin-top: 1.2rem;">
+        <li>
+          <a href="posts/project1.html">Project: AI & Aging Research</a>
+          <span>2025-05-10 · 研究型项目</span>
+        </li>
+        <li>
+          <a href="wuxia-analysis.html">Wuxia Narrative Analysis</a>
+          <span>2025-07-xx · 文本计算分析</span>
+        </li>
+        <li>
+          <a href="nio-battery-swap.html">NIO Battery Swap Notes</a>
+          <span>2025-xx-xx · 技术拆解</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="page-panel" style="margin-top: 1rem;">
+      <div class="eyebrow">Roadmap</div>
+      <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 1rem;">即将上线的 LLM 内容</h2>
+      <div class="focus-grid">
+        <article class="card-panel signal-card">
+          <h3>RAG 项目集</h3>
+          <p>从数据构建、检索策略到回答质量评估，提供可复用模板。</p>
+        </article>
+        <article class="card-panel signal-card">
+          <h3>Agent 工作流</h3>
+          <p>任务拆分、工具调用、状态管理与失败回滚策略。</p>
+        </article>
+        <article class="card-panel signal-card">
+          <h3>部署与优化</h3>
+          <p>包括成本、延迟、可观测性与线上稳定性改造方案。</p>
+        </article>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>yitumulin</p>
+      <p class="footer-links"><a href="archives.html">Archives</a> · <a href="search.html">Search</a></p>
+    </div>
+  </footer>
+
   <script src="darkmode.js"></script>
 </body>
 </html>

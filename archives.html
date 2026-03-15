@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Archives - yitumulin</title>
+  <meta name="description" content="内容归档：按时间查看项目与文章。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,16 +15,17 @@
   <script>
     (function() {
       try {
-        var theme = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (theme === 'dark' || (!theme && prefersDark)) {
-          document.body.classList.add('dark');
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
         }
       } catch (e) {
-        console.error('Error applying initial theme:', e);
+        console.error("Error applying initial theme:", e);
       }
     })();
   </script>
+
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">yitumulin</a>
@@ -32,22 +34,35 @@
         <a href="about.html">About</a>
         <a href="posts.html">Posts</a>
         <a href="wudangdao.html">Listening</a>
-        <a href="archives.html">Archives</a>
-        <a href="search.html">Search</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <button id="darkModeToggle" aria-label="切换夜间模式">🌙</button>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
   </header>
 
-  <main class="archives container">
-    <h1>Archives</h1>
-    <ul class="archive-list">
-      <li>May 2025</li>
-      <li>April 2025</li>
-      <li>March 2025</li>
-    </ul>
+  <main class="page-shell">
+    <section class="page-panel">
+      <div class="page-intro">
+        <div class="eyebrow">Archive</div>
+        <h1 class="section-title">归档</h1>
+        <p class="lead">按时间查看已发布内容，方便快速回溯项目和文章更新。</p>
+      </div>
+
+      <ul class="archive-list" style="margin-top: 1.2rem;">
+        <li><strong>2026</strong><span>站点重构、LLM 展示页规划、听书页中文化与体验优化</span></li>
+        <li><strong>2025</strong><span>研究论文、计算叙事分析与技术页面建设</span></li>
+        <li><strong>2024</strong><span>工程基础项目、数据库与系统实践</span></li>
+      </ul>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>yitumulin</p>
+      <p class="footer-links"><a href="archives.html">Archives</a> · <a href="search.html">Search</a></p>
+    </div>
+  </footer>
+
   <script src="darkmode.js"></script>
 </body>
 </html>

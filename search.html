@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Search - yitumulin</title>
+  <meta name="description" content="站内搜索：快速查找项目、文章和页面。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,17 +15,16 @@
   <script>
     (function() {
       try {
-        var theme = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (theme === 'dark' || (!theme && prefersDark)) {
-          document.body.classList.add('dark');
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
         }
       } catch (e) {
-        console.error('Error applying initial theme:', e);
+        console.error("Error applying initial theme:", e);
       }
     })();
   </script>
-  <div id="particles-js" style="position: fixed; top:0; left:0; width:100%; height:100%; z-index: -1;"></div>
 
   <header class="site-header">
     <div class="container">
@@ -34,47 +34,36 @@
         <a href="about.html">About</a>
         <a href="posts.html">Posts</a>
         <a href="wudangdao.html">Listening</a>
-        <a href="archives.html">Archives</a>
-        <a href="search.html">Search</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <button id="darkModeToggle" aria-label="切换夜间模式">🌙</button>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
   </header>
 
-  <main class="search container" style="margin-top: -2rem; position: relative; z-index: 1;">
-    <h1>Search</h1>
-    <div style="margin: 0.5rem 0 2rem 0;">
-      <input type="text" id="searchInput" placeholder="输入关键词搜索..." style="width: 100%; padding: 0.75rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-top: -1rem;">
-    </div>
-    <div id="searchResults"></div>
+  <main class="page-shell">
+    <section class="page-panel">
+      <div class="page-intro">
+        <div class="eyebrow">Search</div>
+        <h1 class="section-title">站内搜索</h1>
+        <p class="lead">输入关键词，快速找到项目页、文章页与联系页面。</p>
+      </div>
+
+      <div class="search-box" style="max-width: 760px; margin: 1.4rem 0 0;">
+        <input type="text" id="searchInput" placeholder="输入关键词，例如 LLM / project / contact">
+      </div>
+      <div id="searchResults" style="margin-top: 1.2rem;"></div>
+    </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <footer class="site-footer">
+    <div class="container">
+      <p>yitumulin</p>
+      <p class="footer-links"><a href="archives.html">Archives</a> · <a href="search.html">Search</a></p>
+    </div>
+  </footer>
+
   <script src="https://unpkg.com/lunr/lunr.js"></script>
   <script src="search.js"></script>
   <script src="darkmode.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#ffffff" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.5 },
-        "size": { "value": 3 },
-        "line_linked": { "enable": true, "distance": 120, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-        "move": { "enable": true, "speed": 2 }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "grab" },
-          "onclick": { "enable": true, "mode": "push" },
-          "resize": true
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
 </body>
 </html>
