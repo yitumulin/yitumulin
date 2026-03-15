@@ -92,7 +92,7 @@ body.dark .site-nav a::after {
 body.dark .site-nav a:hover {
   color: var(--primary-dark);
 }
-.home, .about, .posts, .loves, .archives, .search, .contact {
+.home, .about, .posts, .archives, .search, .contact {
   padding: 3rem 1rem;
   display: flex;
   flex-direction: column;

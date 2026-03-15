@@ -1,6 +1,6 @@
 # yitumulin
 
-个人网站（静态站点）。首页为极简个人主页，包含导航、粒子动效背景、暗黑模式切换；其余页面涵盖 About、Posts、Loves、Archives、Search、Contact 等内容。
+个人网站（静态站点）。首页为极简个人主页，包含导航、粒子动效背景、暗黑模式切换；其余页面涵盖 About、Posts、Archives、Search、Contact 等内容。
 
 - 在线地址：`https://yitumulin.com`（见仓库根目录 `CNAME`）
 - 技术栈：原生 HTML + CSS + JavaScript（无框架依赖）
@@ -22,7 +22,6 @@
 - `index.html` 首页，展示头像、站点标题、社交链接与快捷按钮。
 - `about.html` 个人简介与偏好内容卡片。
 - `posts.html` 文章列表（链接到 `posts/` 下的文章页面）。
-- `loves.html` 喜好/收藏清单。
 - `archives.html` 归档列表。
 - `search.html` 站内搜索页（依赖 `search.js` 与 `search-data.json`）。
 - `contact.html` 联系方式（Email、Telegram、WeChat）。
