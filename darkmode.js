@@ -1,54 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleButton = document.getElementById('darkModeToggle');
-    const body = document.body;
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton = document.getElementById("darkModeToggle");
+  const body = document.body;
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-    function applyTheme(theme) {
-        if (theme === 'dark') {
-            body.classList.add('dark');
-            if (toggleButton) toggleButton.textContent = '☀️';
-            localStorage.setItem('theme', 'dark');
-            // particles.js 颜色适配
-            if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
-                window.pJSDom[0].pJS.particles.color.value = '#222222';
-                window.pJSDom[0].pJS.particles.line_linked.color = '#333333';
-                window.pJSDom[0].pJS.fn.particlesRefresh();
-            }
-        } else {
-            body.classList.remove('dark');
-            if (toggleButton) toggleButton.textContent = '🌙';
-            localStorage.setItem('theme', 'light');
-            // particles.js 颜色适配
-            if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
-                window.pJSDom[0].pJS.particles.color.value = '#ffffff';
-                window.pJSDom[0].pJS.particles.line_linked.color = '#ffffff';
-                window.pJSDom[0].pJS.fn.particlesRefresh();
-            }
-        }
-    }
+  function applyTheme(theme) {
+    const isDark = theme === "dark";
 
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-        applyTheme(currentTheme);
-    } else if (prefersDarkScheme.matches) {
-        applyTheme('dark');
-    } else {
-        applyTheme('light');
-    }
+    body.classList.toggle("dark", isDark);
+    localStorage.setItem("theme", theme);
 
     if (toggleButton) {
-        toggleButton.addEventListener('click', () => {
-            if (body.classList.contains('dark')) {
-                applyTheme('light');
-            } else {
-                applyTheme('dark');
-            }
-        });
+      toggleButton.textContent = isDark ? "Light" : "Dark";
     }
+  }
 
-    prefersDarkScheme.addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-            applyTheme(e.matches ? 'dark' : 'light');
-        }
+  const currentTheme = localStorage.getItem("theme");
+  if (currentTheme) {
+    applyTheme(currentTheme);
+  } else if (prefersDarkScheme.matches) {
+    applyTheme("dark");
+  } else {
+    applyTheme("light");
+  }
+
+  if (toggleButton) {
+    toggleButton.addEventListener("click", () => {
+      applyTheme(body.classList.contains("dark") ? "light" : "dark");
     });
-}); 
+  }
+
+  prefersDarkScheme.addEventListener("change", (event) => {
+    if (!localStorage.getItem("theme")) {
+      applyTheme(event.matches ? "dark" : "light");
+    }
+  });
+});

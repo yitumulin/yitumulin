@@ -1,38 +1,37 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>yitumulin</title>
+  <meta name="description" content="yitumulin: AI notes, listening logs, and quiet internet experiments.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="favicon.png">
-
   <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "rhkatcquvv");
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rhkatcquvv");
   </script>
-  </head>
+</head>
 <body>
   <script>
     (function() {
       try {
-        var theme = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (theme === 'dark' || (!theme && prefersDark)) {
-          document.body.classList.add('dark');
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
         }
       } catch (e) {
-        console.error('Error applying initial theme:', e);
+        console.error("Error applying initial theme:", e);
       }
     })();
   </script>
-  <div id="particles-js" style="position: fixed; top:0; left:0; width:100%; height:100%; z-index: -1;"></div>
 
   <header class="site-header">
     <div class="container">
@@ -46,47 +45,96 @@
         <a href="search.html">Search</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <button id="darkModeToggle" aria-label="切换夜间模式">🌙</button>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
   </header>
 
-  <main class="home" style="position: relative; z-index: 1;">
-    <img src="avatar.png" alt="Avatar" class="avatar">
-    <h1 class="fadein-title">yitumulin</h1>
-    <div class="social">
-      <a href="https://github.com/yitumulin" target="_blank">GitHub</a>
-      <a href="mailto:hi@yitumulin.com">Email</a>
-    </div>
-    <div class="links">
-      <a href="about.html" class="btn">About</a>
-      <a href="posts.html" class="btn">Posts</a>
-    </div>
+  <main class="home-shell">
+    <section class="hero-panel home-hero">
+      <div class="eyebrow">Personal site / ongoing work</div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1 class="section-title">Quiet work, long attention, and a small corner of the internet.</h1>
+          <p class="lead">
+            I use this site to collect ideas around AI, biology, web craft, and the things worth listening to slowly.
+          </p>
+          <p class="hero-note">
+            Less feed, more signal. Less noise, more pages that feel deliberate.
+          </p>
+          <div class="hero-actions">
+            <a href="about.html" class="btn btn-primary">Read the profile</a>
+            <a href="wudangdao.html" class="btn">Open listening</a>
+            <a href="posts.html" class="btn">Browse notes</a>
+          </div>
+          <div class="social">
+            <a href="https://github.com/yitumulin" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="mailto:hi@yitumulin.com">Email</a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <article class="card-panel mini-panel">
+            <img src="avatar.png" alt="Portrait of yitumulin" class="hero-portrait">
+            <h3>Right now</h3>
+            <div class="meta-list">
+              <div class="meta-row">
+                <span>Base</span>
+                <strong>Beijing</strong>
+              </div>
+              <div class="meta-row">
+                <span>Focus</span>
+                <strong>AI, bio, web</strong>
+              </div>
+              <div class="meta-row">
+                <span>Mode</span>
+                <strong>Build slowly</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="card-panel mini-panel">
+            <h3>What this site is for</h3>
+            <ul class="note-list">
+              <li><strong>Notes</strong> for ideas worth revisiting.</li>
+              <li><strong>Listening</strong> for long-form audio sessions.</li>
+              <li><strong>Experiments</strong> for web pages with some personality.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="spotlight-grid">
+      <article class="card-panel spotlight-card">
+        <div class="eyebrow">Profile</div>
+        <h3>About</h3>
+        <p>A more complete read on what I study, what I care about, and how I like to work.</p>
+        <a href="about.html" class="btn">Open About</a>
+      </article>
+
+      <article class="card-panel spotlight-card">
+        <div class="eyebrow">Audio</div>
+        <h3>Listening</h3>
+        <p>A dedicated page for serialized listening, direct from object storage, built for long sessions.</p>
+        <a href="wudangdao.html" class="btn">Open Listening</a>
+      </article>
+
+      <article class="card-panel spotlight-card">
+        <div class="eyebrow">Writing</div>
+        <h3>Posts</h3>
+        <p>Essays, notes, and project fragments that deserve more than a disappearing timeline.</p>
+        <a href="posts.html" class="btn">Open Posts</a>
+      </article>
+    </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <footer class="site-footer">
+    <div class="container">
+      <p>yitumulin</p>
+    </div>
+  </footer>
+
   <script src="darkmode.js"></script>
   <script src="js/transitions.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#ffffff" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.5 },
-        "size": { "value": 3 },
-        "line_linked": { "enable": true, "distance": 120, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-        "move": { "enable": true, "speed": 2 }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "grab" },
-          "onclick": { "enable": true, "mode": "push" },
-          "resize": true
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
 </body>
 </html>

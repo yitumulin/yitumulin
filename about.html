@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About - yitumulin</title>
+  <meta name="description" content="About yitumulin: interests, working style, and current focus.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,16 +15,17 @@
   <script>
     (function() {
       try {
-        var theme = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (theme === 'dark' || (!theme && prefersDark)) {
-          document.body.classList.add('dark');
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
         }
       } catch (e) {
-        console.error('Error applying initial theme:', e);
+        console.error("Error applying initial theme:", e);
       }
     })();
   </script>
+
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">yitumulin</a>
@@ -36,61 +38,103 @@
         <a href="search.html">Search</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <button id="darkModeToggle" aria-label="切换夜间模式">🌙</button>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
   </header>
 
-  <main class="about container">
-    <div class="about-header">
-      <h1>About</h1>
-      <p class="subtitle">Of course, you want to check the About first!</p>
-    </div>
-    <div class="about-content">
-      <p>I'm yitumulin, an AI & Bio enthusiast studying at BUPT. Currently based in Beijing.</p>
-      <p>我是森，现居北京的北邮学生。</p>
-    </div>
-    <div class="favorite-channels-section">
-      <h2>Favorite Channels</h2>
-      <ul class="favorites-grid">
-        <li>
-          <a href="#" class="favorite-item">
-            <img src="thomas.png" alt="Thomas Flight icon">
-            <div class="favorite-item-info">
-              <h3>Thomas Flight</h3>
-              <p>All about cinema</p>
+  <main class="page-shell about-shell">
+    <section class="page-panel">
+      <div class="page-intro">
+        <div class="eyebrow">About</div>
+        <h1 class="section-title">I like careful systems, durable ideas, and pages that still feel human.</h1>
+        <p class="lead">
+          I am yitumulin, a student working around AI and biology, with a side obsession for quiet web design and long-form media.
+        </p>
+      </div>
+
+      <div class="about-layout">
+        <article class="card-panel about-story">
+          <h3>How I work</h3>
+          <p>
+            I prefer projects that reward patience: research notes, thoughtful interfaces, and tools that become more useful over time.
+          </p>
+          <p>
+            I care about clarity, small details, and building things that feel intentional instead of rushed. This site is part notebook, part archive, part design lab.
+          </p>
+          <p>
+            The goal is simple: keep a record of what I am learning, what I am making, and what is worth returning to later.
+          </p>
+        </article>
+
+        <aside class="card-panel about-facts">
+          <h3>Snapshot</h3>
+          <div class="facts-grid">
+            <div class="fact-chip">
+              <strong>Base</strong>
+              <span>Beijing</span>
             </div>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="favorite-item">
-            <img src="geowizard.png" alt="GeoWizard icon">
-            <div class="favorite-item-info">
-              <h3>GeoWizard</h3>
-              <p>Geoguessr and more</p>
+            <div class="fact-chip">
+              <strong>Study</strong>
+              <span>AI and biology</span>
             </div>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="favorite-item">
-            <img src="zhinen.png" alt="稚嫩的魔法师 icon">
-            <div class="favorite-item-info">
-              <h3>稚嫩的魔法师</h3>
-              <p>有趣的策略游戏解说</p>
+            <div class="fact-chip">
+              <strong>Bias</strong>
+              <span>Long-form thinking over short-term noise</span>
             </div>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="favorite-item">
-            <img src="eddie.png" alt="Eddie Woo icon">
-            <div class="favorite-item-info">
-              <h3>Eddie Woo</h3>
-              <p>Picked up many math from him</p>
+            <div class="fact-chip">
+              <strong>Current build</strong>
+              <span>A personal site that feels more like a publication than a profile card</span>
             </div>
-          </a>
-        </li>
-      </ul>
-    </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page-panel" style="margin-top: 1rem;">
+      <div class="eyebrow">Focus</div>
+      <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 1rem;">What keeps my attention</h2>
+      <div class="focus-grid">
+        <article class="card-panel signal-card">
+          <h3>AI</h3>
+          <p>Models, product thinking, and practical ways intelligence shows up in tools people actually use.</p>
+        </article>
+        <article class="card-panel signal-card">
+          <h3>Bio</h3>
+          <p>Questions about life systems, research, and how computation intersects with living complexity.</p>
+        </article>
+        <article class="card-panel signal-card">
+          <h3>Web craft</h3>
+          <p>Interfaces with atmosphere, clean structure, and enough personality to avoid feeling generic.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-panel" style="margin-top: 1rem;">
+      <div class="eyebrow">Signals</div>
+      <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 1rem;">The kind of media I return to</h2>
+      <div class="channel-grid">
+        <article class="card-panel channel-card">
+          <h3>Cinema analysis</h3>
+          <p>Thoughtful breakdowns that treat pacing, framing, and narrative as something worth studying slowly.</p>
+        </article>
+        <article class="card-panel channel-card">
+          <h3>Deep lectures</h3>
+          <p>Teachers who can turn a difficult topic into something precise, elegant, and memorable.</p>
+        </article>
+        <article class="card-panel channel-card">
+          <h3>Long audio</h3>
+          <p>Serialized listening sessions that can stay with you for hours instead of vanishing after thirty seconds.</p>
+        </article>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>yitumulin</p>
+    </div>
+  </footer>
+
   <script src="darkmode.js"></script>
 </body>
 </html>

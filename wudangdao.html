@@ -1,247 +1,41 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>吾当道 - yitumulin</title>
+  <title>Listening - yitumulin</title>
+  <meta name="description" content="A direct-to-R2 listening page for long-form audio.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="favicon.png">
-  
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "rhkatcquvv");
   </script>
-  
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GR93DR478"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-6GR93DR478');
+    gtag("js", new Date());
+    gtag("config", "G-6GR93DR478");
   </script>
-  
-  <style>
-    .audio-page {
-      padding: 2rem 1rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .audio-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .audio-header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: var(--primary, #fff);
-      margin-bottom: 1rem;
-    }
-    .audio-header p {
-      font-size: 1.1rem;
-      color: var(--text, #fff);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .audio-player-section {
-      background: rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 2rem 1rem 1.5rem 1rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    }
-    .current-track {
-      text-align: center;
-      margin-bottom: 1.2rem;
-    }
-    .current-track h3 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-    .episode-progress {
-      font-size: 0.95rem;
-      color: #aaa;
-      margin-top: 0.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .audio-player {
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto 1.2rem auto;
-    }
-    .audio-player audio {
-      width: 100%;
-      border-radius: 8px;
-      background: #222;
-    }
-    .play-controls {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 1.2rem;
-    }
-    .control-btn {
-      background: #ffa726;
-      color: #fff;
-      border: none;
-      border-radius: 24px;
-      padding: 0.7rem 2.2rem;
-      font-size: 1.1rem;
-      font-family: inherit;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .control-btn:hover {
-      background: #fb8c00;
-    }
-    .search-box {
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto 2rem auto;
-      position: relative;
-      text-align: center;
-    }
-    .search-box input {
-      width: 100%;
-      padding: 0.9rem 1.2rem;
-      border: 2px solid #ffa726;
-      border-radius: 24px;
-      font-size: 1.05rem;
-      background: #181818;
-      color: #fff;
-      outline: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      transition: border 0.2s;
-    }
-    .search-box input:focus {
-      border: 2px solid #fb8c00;
-    }
-    .audio-list {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      gap: 1.5rem;
-      margin-top: 2rem;
-      padding: 0;
-    }
-    .audio-item {
-      background: #232323;
-      border-radius: 10px;
-      padding: 1.1rem 0.5rem 1.2rem 0.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      text-align: center;
-      transition: box-shadow 0.2s, border 0.2s;
-      border: 2px solid transparent;
-    }
-    .audio-item.playing {
-      border: 2px solid #28a745;
-      background: #232323 linear-gradient(120deg,rgba(40,167,69,0.08),rgba(255,255,255,0.01));
-      box-shadow: 0 4px 16px rgba(40,167,69,0.13);
-    }
-    .audio-item h4 {
-      font-size: 1.08rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      margin-top: 0.2rem;
-    }
-    .audio-item p {
-      color: #bbb;
-      font-size: 0.97rem;
-      margin-bottom: 1.1rem;
-      min-height: 1.2em;
-    }
-    .play-btn {
-      background: #ffa726;
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      padding: 0.5rem 1.5rem;
-      font-size: 1rem;
-      font-family: inherit;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 0.2rem;
-    }
-    .play-btn.playing {
-      background: #28a745;
-      color: #fff;
-    }
-    .play-btn:hover {
-      background: #fb8c00;
-    }
-    @media (max-width: 1400px) {
-      .audio-list {
-        grid-template-columns: repeat(8, 1fr);
-      }
-    }
-    @media (max-width: 1200px) {
-      .audio-list {
-        grid-template-columns: repeat(6, 1fr);
-      }
-    }
-    @media (max-width: 768px) {
-      .audio-list {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-      }
-      .audio-header h1 {
-        font-size: 2rem;
-      }
-      .audio-player-section {
-        padding: 1.2rem;
-      }
-      .audio-item {
-        padding: 0.7rem 0.2rem 0.8rem 0.2rem;
-      }
-      .audio-item h4 {
-        font-size: 0.98rem;
-      }
-      .play-btn {
-        padding: 0.4rem 1rem;
-        font-size: 0.92rem;
-      }
-    }
-    @media (max-width: 480px) {
-      .audio-list {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.7rem;
-      }
-      .audio-item {
-        padding: 0.5rem 0.1rem 0.6rem 0.1rem;
-      }
-      .pagination {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .pagination button {
-        min-width: 90px;
-        padding: 0.5rem 1rem;
-      }
-    }
-  </style>
 </head>
 <body>
   <script>
     (function() {
       try {
-        var theme = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (theme === 'dark' || (!theme && prefersDark)) {
-          document.body.classList.add('dark');
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
         }
       } catch (e) {
-        console.error('Error applying initial theme:', e);
+        console.error("Error applying initial theme:", e);
       }
     })();
   </script>
@@ -258,308 +52,291 @@
         <a href="search.html">Search</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <button id="darkModeToggle" aria-label="切换夜间模式">🌙</button>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
   </header>
 
-  <main class="audio-page">
-    <div class="audio-header">
-      <h1>吾当道</h1>
-      <p>在这里聆听精彩的有声书内容，每一集都是精心挑选的故事，陪伴你的每一个时刻。</p>
-    </div>
-
-    <div class="audio-player-section">
-      <div class="current-track">
-        <h3 id="currentTrackTitle">选择音频开始播放</h3>
-        <p id="episodeProgress" class="episode-progress">共 0 集</p>
+  <main class="page-shell listening-shell">
+    <section class="page-panel listening-hero">
+      <div class="eyebrow">Listening</div>
+      <h1 class="section-title">Wudangdao</h1>
+      <p class="lead">
+        A listening room for long serialized audio, built for search, resume, and direct playback from object storage.
+      </p>
+      <div class="listening-meta">
+        <span>Direct from R2</span>
+        <span>Resume playback</span>
+        <span>Searchable archive</span>
       </div>
-      <div class="audio-player">
-        <audio id="audioPlayer" controls>
-          您的浏览器不支持音频播放。
-        </audio>
+    </section>
+
+    <section class="listening-layout">
+      <div class="listening-column">
+        <article class="card-panel player-shell">
+          <div class="current-track">
+            <h3 id="currentTrackTitle">Choose a track to start listening</h3>
+            <p id="episodeProgress" class="episode-progress">0 episodes loaded</p>
+          </div>
+
+          <div class="audio-player">
+            <audio id="audioPlayer" controls>
+              Your browser does not support audio playback.
+            </audio>
+          </div>
+
+          <div class="play-controls">
+            <button class="control-btn" onclick="playPrevious()">Previous</button>
+            <button class="control-btn" onclick="playNextAudio()">Next</button>
+          </div>
+        </article>
+
+        <article class="card-panel mini-panel">
+          <h3>Why this page exists</h3>
+          <ul class="note-list">
+            <li><strong>Long sessions</strong> deserve a calmer interface than a chaotic feed.</li>
+            <li><strong>Playback</strong> resumes from where you left off.</li>
+            <li><strong>Delivery</strong> goes straight to audio storage instead of passing through Vercel.</li>
+          </ul>
+        </article>
       </div>
-      <div class="play-controls">
-        <button class="control-btn" onclick="playPrevious()">上一集</button>
-        <button class="control-btn" onclick="playNextAudio()">下一集</button>
+
+      <div class="listening-column">
+        <article class="card-panel library-shell">
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search episodes">
+          </div>
+
+          <div class="audio-list" id="audioList">
+            <div class="loading">Loading audio list...</div>
+          </div>
+
+          <div class="pagination" id="pagination" style="display: none;">
+            <button id="prevBtn" onclick="previousPage()">Previous page</button>
+            <span class="page-info" id="pageInfo">Page 1 of 1</span>
+            <button id="nextBtn" onclick="nextPage()">Next page</button>
+          </div>
+        </article>
       </div>
-    </div>
-
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="搜索音频..." />
-    </div>
-
-    <div class="audio-list" id="audioList">
-      <div class="loading">正在加载音频列表...</div>
-    </div>
-
-    <div class="pagination" id="pagination" style="display: none;">
-      <button id="prevBtn" onclick="previousPage()">上一页</button>
-      <span class="page-info" id="pageInfo">第 1 页，共 1 页</span>
-      <button id="nextBtn" onclick="nextPage()">下一页</button>
-    </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>yitumulin</p>
+    </div>
+  </footer>
 
   <script src="darkmode.js"></script>
   <script>
-    const R2_BASE = 'https://audio.yitumulin.com';
+    const R2_BASE = "https://audio.yitumulin.com";
+    const ITEMS_PER_PAGE = 30;
 
-    let audioList = [];      // 来自 audio_list.json
-    let currentIndex = -1;   // 当前播放索引
+    let audioList = [];
     let filteredFiles = [];
+    let currentIndex = -1;
     let currentPage = 1;
-    let itemsPerPage = 30;
 
-    const audioEl = document.getElementById('audioPlayer');
-    const titleEl = document.getElementById('currentTrackTitle');
-    const listContainer = document.getElementById('audioList');
-    const searchInput = document.getElementById('searchInput');
+    const audioEl = document.getElementById("audioPlayer");
+    const titleEl = document.getElementById("currentTrackTitle");
+    const progressEl = document.getElementById("episodeProgress");
+    const listContainer = document.getElementById("audioList");
+    const searchInput = document.getElementById("searchInput");
+    const paginationEl = document.getElementById("pagination");
 
-    async function loadList() {
-      const audioListElement = document.getElementById('audioList');
-      try {
-        const res = await fetch('audio_list.json', { cache: 'no-cache' });
-        const data = await res.json();
-        audioList = Array.isArray(data) ? data : [];
-        filteredFiles = audioList;
-        
-        // 更新总集数显示
-        const episodeProgress = document.getElementById('episodeProgress');
-        episodeProgress.textContent = `共 ${audioList.length} 集`;
-        
-        renderList(audioList);
-        updatePagination();
-        document.getElementById('pagination').style.display = 'flex';
-        
-        // 添加音频结束事件监听器
-        audioEl.addEventListener('ended', () => {
-          if (currentIndex + 1 < audioList.length) {
-            playAt(currentIndex + 1);
-          } else {
-            // 最后一集
-            titleEl.textContent = '已是最后一集';
-            titleEl.style.color = '#28a745';
-          }
-        });
-        
-        // 添加定期保存播放进度
-        setInterval(savePlayProgress, 5000);
-        
-        // 恢复上次播放进度
-        restorePlayProgress();
-        
-      } catch (error) {
-        console.error('加载音频列表失败:', error);
-        audioListElement.innerHTML = `
-          <div class="error-message" style="
-            color: #dc3545;
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          ">
-            <h3 style="margin-bottom: 1rem;">无法加载音频列表</h3>
-            <p>${error.message}</p>
-            <button onclick="loadList()" style="
-              margin-top: 1rem;
-              padding: 0.5rem 1rem;
-              border: none;
-              border-radius: 5px;
-              background: #0d6efd;
-              color: white;
-              cursor: pointer;
-            ">重试</button>
-          </div>
-        `;
+    function getEpisodeNumber(item, fallback) {
+      const source = [item && item.title, item && item.file].filter(Boolean).join(" ");
+      const match = source.match(/\d+/);
+      return match ? parseInt(match[0], 10) : fallback;
+    }
+
+    function updateProgressLabel(index) {
+      if (index < 0 || index >= audioList.length) {
+        progressEl.textContent = audioList.length ? audioList.length + " episodes loaded" : "0 episodes loaded";
+        return;
+      }
+
+      const episodeNumber = getEpisodeNumber(audioList[index], index + 1);
+      progressEl.textContent = "Episode " + episodeNumber + " / " + audioList.length;
+    }
+
+    function savePlayProgress() {
+      if (currentIndex < 0) return;
+      localStorage.setItem("lastPlayedIndex", String(currentIndex));
+      localStorage.setItem("lastPlayedTime", String(audioEl.currentTime || 0));
+    }
+
+    async function setTrack(index, autoplay) {
+      if (index < 0 || index >= audioList.length) return;
+
+      currentIndex = index;
+      const item = audioList[index];
+      const trackTitle = item.title || "Untitled track";
+      titleEl.textContent = trackTitle;
+      titleEl.style.color = "";
+      updateProgressLabel(index);
+      setPlayingUI(index);
+      renderList(filteredFiles);
+
+      audioEl.src = R2_BASE + "/" + encodeURI(item.file);
+
+      const savedTime = localStorage.getItem("lastPlayedTime");
+      if (!autoplay && savedTime && Number.isFinite(Number(savedTime))) {
+        const applyTime = function() {
+          audioEl.currentTime = Number(savedTime);
+          audioEl.removeEventListener("loadedmetadata", applyTime);
+        };
+        audioEl.addEventListener("loadedmetadata", applyTime);
+      }
+
+      savePlayProgress();
+
+      if (autoplay) {
+        try {
+          await audioEl.play();
+        } catch (e) {
+          console.error("Autoplay blocked:", e);
+        }
+      }
+    }
+
+    function setPlayingUI(index) {
+      document.querySelectorAll(".play-btn").forEach(function(button) {
+        button.classList.remove("playing");
+      });
+
+      const activeButton = listContainer.querySelector('.play-btn[data-index="' + index + '"]');
+      if (activeButton) {
+        activeButton.classList.add("playing");
       }
     }
 
     function renderList(list) {
-      listContainer.innerHTML = '';
+      listContainer.innerHTML = "";
 
-      const startIndex = (currentPage - 1) * itemsPerPage;
-      const endIndex = startIndex + itemsPerPage;
-      const currentPageFiles = list.slice(startIndex, endIndex);
+      if (!list.length) {
+        listContainer.innerHTML = '<div class="loading">No episodes matched your search.</div>';
+        paginationEl.style.display = "none";
+        return;
+      }
 
-      currentPageFiles.forEach((item, index) => {
-        const globalIndex = startIndex + index;
-        const episodeMatch = item.title.match(/第(\d+)集/);
-        const episodeNumber = episodeMatch ? parseInt(episodeMatch[1]) : globalIndex + 1;
+      const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+      const currentPageFiles = list.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-        const card = document.createElement('div');
-        card.className = 'audio-item';
-        if (globalIndex === currentIndex) {
-          card.classList.add('playing');
+      currentPageFiles.forEach(function(item, offset) {
+        const actualIndex = audioList.indexOf(item);
+        const card = document.createElement("div");
+        card.className = "audio-item";
+        if (actualIndex === currentIndex) {
+          card.classList.add("playing");
         }
 
-        card.innerHTML = `
-          <h4>${item.title}</h4>
-          <p>精彩内容</p>
-          <button class="play-btn${globalIndex === currentIndex ? ' playing' : ''}" 
-                  data-index="${globalIndex}">
-            ${globalIndex === currentIndex ? '播放中' : '播放'}
-          </button>
-        `;
+        card.innerHTML = [
+          "<h4>" + (item.title || "Untitled episode") + "</h4>",
+          "<p>Episode " + getEpisodeNumber(item, actualIndex + 1) + "</p>",
+          '<button class="play-btn' + (actualIndex === currentIndex ? " playing" : "") + '" data-index="' + actualIndex + '">',
+          actualIndex === currentIndex ? "Playing" : "Play",
+          "</button>"
+        ].join("");
+
         listContainer.appendChild(card);
       });
 
-      // 添加点击事件监听器
-      listContainer.querySelectorAll('.play-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const idx = Number(e.currentTarget.dataset.index);
-          playAt(idx);
+      listContainer.querySelectorAll(".play-btn").forEach(function(button) {
+        button.addEventListener("click", function(event) {
+          const index = Number(event.currentTarget.dataset.index);
+          setTrack(index, true);
         });
       });
     }
 
-    function setPlayingUI(idx) {
-      document.querySelectorAll('.play-btn').forEach(b => b.classList.remove('playing'));
-      const btn = listContainer.querySelector(`.play-btn[data-index="${idx}"]`);
-      if (btn) btn.classList.add('playing');
-    }
-
-    async function tryPlay(filename) {
-      const r2Url = `${R2_BASE}/${encodeURI(filename)}`;
-      audioEl.src = r2Url;
-      try { await audioEl.play(); } catch {}
-    }
-
-    function playAt(idx) {
-      if (idx < 0 || idx >= audioList.length) return;
-      currentIndex = idx;
-      const item = audioList[idx];
-      const episodeMatch = item.title.match(/第(\d+)集/);
-      const episodeNumber = episodeMatch ? parseInt(episodeMatch[1]) : idx + 1;
-      
-      titleEl.textContent = item.title || '正在播放';
-      titleEl.style.color = '';
-      
-      const episodeProgress = document.getElementById('episodeProgress');
-      episodeProgress.textContent = `第 ${episodeNumber} 集 / 共 ${audioList.length} 集`;
-      
-      setPlayingUI(idx);
-      tryPlay(item.file);
-      savePlayProgress();
-      renderList(filteredFiles);
-    }
-
-    // 播放下一集
-    function playNextAudio() {
-      if (currentIndex + 1 < audioList.length) {
-        playAt(currentIndex + 1);
-      } else {
-        titleEl.textContent = '已是最后一集';
-        titleEl.style.color = '#28a745';
-      }
-    }
-
-    // 播放上一集
-    function playPrevious() {
-      if (currentIndex > 0) {
-        playAt(currentIndex - 1);
-      } else {
-        titleEl.textContent = '已经是第一集了';
-        setTimeout(() => {
-          if (currentIndex === 0) {
-            titleEl.textContent = '正在播放：第1集';
-          }
-        }, 2000);
-      }
-    }
-
-    // 自动保存播放进度
-    function savePlayProgress() {
-      if (currentIndex >= 0) {
-        localStorage.setItem('lastPlayedIndex', currentIndex.toString());
-        localStorage.setItem('lastPlayedTime', audioEl.currentTime.toString());
-      }
-    }
-
-    // 恢复播放进度
-    function restorePlayProgress() {
-      const lastIndex = localStorage.getItem('lastPlayedIndex');
-      const lastTime = localStorage.getItem('lastPlayedTime');
-      
-      if (lastIndex !== null && audioList.length > 0) {
-        const index = parseInt(lastIndex);
-        if (index >= 0 && index < audioList.length) {
-          playAt(index);
-          
-          if (lastTime !== null) {
-            audioEl.currentTime = parseFloat(lastTime);
-          }
-        }
-      }
-    }
-
-    // 更新分页信息
     function updatePagination() {
-      const totalPages = Math.ceil(filteredFiles.length / itemsPerPage);
-      const pageInfo = document.getElementById('pageInfo');
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-      
-      pageInfo.textContent = `第 ${currentPage} 页，共 ${totalPages} 页`;
+      const totalPages = Math.max(1, Math.ceil(filteredFiles.length / ITEMS_PER_PAGE));
+      const pageInfo = document.getElementById("pageInfo");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+
+      pageInfo.textContent = "Page " + currentPage + " of " + totalPages;
       prevBtn.disabled = currentPage === 1;
       nextBtn.disabled = currentPage === totalPages;
+      paginationEl.style.display = filteredFiles.length ? "flex" : "none";
     }
 
-    // 上一页
     function previousPage() {
-      if (currentPage > 1) {
-        currentPage--;
-        renderList(filteredFiles);
-        updatePagination();
-      }
+      if (currentPage === 1) return;
+      currentPage -= 1;
+      renderList(filteredFiles);
+      updatePagination();
     }
 
-    // 下一页
     function nextPage() {
-      const totalPages = Math.ceil(filteredFiles.length / itemsPerPage);
-      if (currentPage < totalPages) {
-        currentPage++;
-        renderList(filteredFiles);
-        updatePagination();
+      const totalPages = Math.max(1, Math.ceil(filteredFiles.length / ITEMS_PER_PAGE));
+      if (currentPage >= totalPages) return;
+      currentPage += 1;
+      renderList(filteredFiles);
+      updatePagination();
+    }
+
+    function playNextAudio() {
+      if (currentIndex + 1 < audioList.length) {
+        setTrack(currentIndex + 1, true);
+      } else {
+        titleEl.textContent = "You reached the end of the list.";
+        titleEl.style.color = "#376c43";
       }
     }
 
-    // 简单搜索
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const kw = e.target.value.trim().toLowerCase();
-        const filtered = audioList.filter(x =>
-          (x.title || '').toLowerCase().includes(kw) ||
-          (x.file || '').toLowerCase().includes(kw)
-        );
-        filteredFiles = filtered;
+    function playPrevious() {
+      if (currentIndex > 0) {
+        setTrack(currentIndex - 1, true);
+      } else {
+        titleEl.textContent = "This is already the first episode.";
+        titleEl.style.color = "#376c43";
+      }
+    }
+
+    function restorePlayProgress() {
+      const lastIndex = Number(localStorage.getItem("lastPlayedIndex"));
+      if (!Number.isInteger(lastIndex) || lastIndex < 0 || lastIndex >= audioList.length) {
+        updateProgressLabel(-1);
+        return;
+      }
+
+      setTrack(lastIndex, false);
+    }
+
+    async function loadList() {
+      try {
+        const response = await fetch("audio_list.json", { cache: "no-cache" });
+        const data = await response.json();
+        audioList = Array.isArray(data) ? data : [];
+        filteredFiles = audioList.slice();
         currentPage = 1;
-        renderList(filtered);
+
+        renderList(filteredFiles);
         updatePagination();
-        
-        // 如果有搜索结果，定位到第一个结果
-        if (filtered.length > 0 && kw !== '') {
-          setTimeout(() => {
-            const firstResult = document.querySelector('.audio-item');
-            if (firstResult) {
-              firstResult.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-              });
-              
-              firstResult.style.border = '3px solid #28a745';
-              firstResult.style.boxShadow = '0 0 20px rgba(40, 167, 69, 0.6)';
-              
-              setTimeout(() => {
-                firstResult.style.border = '';
-                firstResult.style.boxShadow = '';
-              }, 3000);
-            }
-          }, 100);
-        }
+        restorePlayProgress();
+        updateProgressLabel(currentIndex);
+      } catch (error) {
+        console.error("Failed to load audio list:", error);
+        listContainer.innerHTML = '<div class="error-message">Unable to load the audio library right now.</div>';
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("input", function(event) {
+        const keyword = event.target.value.trim().toLowerCase();
+        filteredFiles = audioList.filter(function(item) {
+          return (item.title || "").toLowerCase().includes(keyword) || (item.file || "").toLowerCase().includes(keyword);
+        });
+        currentPage = 1;
+        renderList(filteredFiles);
+        updatePagination();
       });
     }
 
-    document.addEventListener('DOMContentLoaded', loadList);
+    audioEl.addEventListener("ended", playNextAudio);
+    audioEl.addEventListener("timeupdate", savePlayProgress);
+    document.addEventListener("DOMContentLoaded", loadList);
   </script>
 </body>
-</html> 
+</html>
