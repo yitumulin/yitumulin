@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gesture Controlled Christmas Tree | Sen's World</title>
+    <title>Gesture Controlled Christmas Tree | yitumulin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -303,7 +303,7 @@
     let videoElement, debugCanvas, debugCtx;
 
     /**
-     * 获取文字坐标（生成"冯禾子涵"文字粒子）
+     * 获取文字坐标（生成当前站点名称文字粒子）
      */
     function getTextCoordinates(text) {
         const canvas = document.createElement('canvas');
@@ -490,8 +490,8 @@
         textOrnamentsGroup = new THREE.Group();
         const count = CONFIG.counts.textOrnaments;
         
-        // 生成"冯禾子涵"文字坐标
-        const textCoords = getTextCoordinates("冯禾子涵");
+        // 生成当前站点名称文字坐标
+        const textCoords = getTextCoordinates("yitumulin");
         
         // 为每个装饰创建文字粒子组
         for (let i = 0; i < count; i++) {

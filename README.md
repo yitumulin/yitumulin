@@ -1,4 +1,4 @@
-# Sen's World
+# yitumulin
 
 个人网站（静态站点）。首页为极简个人主页，包含导航、粒子动效背景、暗黑模式切换；其余页面涵盖 About、Posts、Loves、Archives、Search、Contact 等内容。
 
