@@ -34,5 +34,14 @@
     "date": "2026-03-15",
     "tags": ["Contact", "Email"],
     "category": "Profile"
+  },
+  {
+    "id": "5",
+    "title": "Project: AI & Aging Research - yitumulin",
+    "url": "posts/project1.html",
+    "content": "Research notes on AI and aging, including problem framing, modeling ideas, and practical system directions.",
+    "date": "2025-05-10",
+    "tags": ["AI", "Research", "HealthTech"],
+    "category": "Projects"
   }
 ]
