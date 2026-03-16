@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume | Claude Workspace | yitumulin</title>
+  <meta name="description" content="Claude-style resume workspace for yitumulin.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="claude-theme.css">
+</head>
+<body class="claude-ui">
+  <script>
+    (function(){
+      try {
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) document.body.classList.add("dark");
+      } catch (e) {}
+    })();
+  </script>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index-claude.html" class="brand">yitumulin workspace</a>
+      <div class="header-actions">
+        <button class="sidebar-toggle" data-sidebar-toggle>Menu</button>
+        <button class="cmd-open" data-cmd-open>Jump</button>
+        <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="claude-app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <a href="index-claude.html">yitumulin</a>
+        <button class="sidebar-toggle" data-sidebar-toggle>Close</button>
+      </div>
+      <div class="sidebar-label">Pages</div>
+      <nav class="sidebar-nav">
+        <a href="index-claude.html">Home</a>
+        <a href="posts-claude.html">Projects</a>
+        <a href="about-claude.html">Resume</a>
+        <a href="contact-claude.html">Contact</a>
+      </nav>
+      <div class="sidebar-label">Tools</div>
+      <nav class="sidebar-subnav">
+        <a href="search-claude.html">Search</a>
+        <a href="archives-claude.html">Archives</a>
+        <a href="wudangdao-claude.html">Listening</a>
+        <a href="tag-view-claude.html">Tag View</a>
+      </nav>
+      <div class="sidebar-footer"></div>
+    </aside>
+
+    <main class="main">
+      <section class="main-top">
+        <div>
+          <div class="page-kicker">Resume</div>
+          <h1 class="page-title">Practical AI and Software Value</h1>
+          <p class="page-intro">Target roles: LLM Application Engineer Intern, AI Developer Intern, and AI Product Engineering Intern.</p>
+        </div>
+        <div class="metric-row">
+          <span class="metric">5 End-to-End Projects</span>
+          <span class="metric">2 Published + 1 Under Review</span>
+          <span class="metric">2 Software Copyrights</span>
+        </div>
+      </section>
+
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Profile</span>
+          <span class="turn-role">Professional Summary</span>
+        </div>
+        <div class="turn-body">
+          <div class="dual-col">
+            <div class="fact-grid">
+              <div class="fact">
+                <strong>Education</strong>
+                <span>Beijing University of Posts and Telecommunications · Telecommunication Engineering and Management</span>
+              </div>
+              <div class="fact">
+                <strong>Specialized Areas</strong>
+                <span>LLM Application, AI Product Engineering, Computer Vision, BCI, Database</span>
+              </div>
+              <div class="fact">
+                <strong>Core Stack</strong>
+                <span>Python, PyTorch, Transformers, LangChain, SQL, Docker, OpenAI API, Java</span>
+              </div>
+            </div>
+            <div class="fact-grid">
+              <div class="fact">
+                <strong>Engineering Direction</strong>
+                <span>AI product development with strong software discipline.</span>
+              </div>
+              <div class="fact">
+                <strong>Execution Style</strong>
+                <span>clear scope, measurable progress, and practical delivery.</span>
+              </div>
+              <div class="fact">
+                <strong>Project Execution Evidence</strong>
+                <span>independently completed engineering runs across Shapeville, MiniMind, and WeClone.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Research</span>
+          <span class="turn-role">Papers and Research Output</span>
+        </div>
+        <div class="turn-body">
+          <div class="case-list">
+            <details class="case" open>
+              <summary>BECA Dataset <span class="meta">Scientific Data (2025)</span></summary>
+              <div class="case-content">
+                <p>Published in Scientific Data (2025): long-term cattle recognition dataset and baseline verification framework.</p>
+                <p><strong>My contribution:</strong> full data pipeline design, detection/pose/ReID protocol construction, and baseline modeling.</p>
+                <p><strong>Measurable output:</strong> dataset subsets include 16,889 images covering 5,661 cattle and 12,172 labeled images for 103-cattle long-term tracking.</p>
+                <p><strong>Engineering value:</strong> reusable evaluation workflow for long-cycle recognition.</p>
+                <p><a href="https://doi.org/10.1038/s41597-025-06326-5" target="_blank" rel="noreferrer">DOI: 10.1038/s41597-025-06326-5</a></p>
+              </div>
+            </details>
+
+            <details class="case">
+              <summary>CRODNet <span class="meta">Computers and Electronics in Agriculture (2025)</span></summary>
+              <div class="case-content">
+                <p>Published contactless top-view rotated cattle detection framework.</p>
+                <p><strong>My contribution:</strong> top-view data processing, rotated detection workflow, lightweight vision modeling modules.</p>
+                <p><strong>Measurable output:</strong> around 70% parameter reduction, around 50% FLOPs reduction, and at least 3% AP gain.</p>
+                <p><a href="https://doi.org/10.1016/j.compag.2025.111160" target="_blank" rel="noreferrer">DOI: 10.1016/j.compag.2025.111160</a></p>
+              </div>
+            </details>
+
+            <details class="case">
+              <summary>Narrative Complexity Analysis <span class="meta">Under Review (2026)</span></summary>
+              <div class="case-content">
+                <p>Semantic-entropy-based computational analysis of narrative complexity in Xianxiao texts.</p>
+                <p><strong>My contribution:</strong> semantic entropy strategy, narrative indicators, statistical evaluation process, and full manuscript writing.</p>
+                <p>Target journal: Journal of Computational Literary Studies.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Software</span>
+          <span class="turn-role">Software Copyright Portfolio</span>
+        </div>
+        <div class="turn-body">
+          <div class="case-list">
+            <details class="case" open>
+              <summary>Non-contact Beef Cattle Body Growth Tracking System Based on Machine Vision <span class="meta">2025.06</span></summary>
+              <div class="case-content">
+                <p><strong>My contribution:</strong> top-view cattle detection and growth tracking algorithm modules with complete inference workflow.</p>
+                <p><strong>Optimization focus:</strong> detection-to-tracking handoff stability and structured long-cycle growth monitoring.</p>
+                <p><strong>Deliverables:</strong> production-oriented module package and verifiable technical documentation.</p>
+              </div>
+            </details>
+
+            <details class="case">
+              <summary>EEG Hidden-frequency System Based on Microtexture and Closed-loop Control <span class="meta">2025.10</span></summary>
+              <div class="case-content">
+                <p><strong>My contribution:</strong> EEG microtexture feature extraction and closed-loop control modules.</p>
+                <p><strong>Optimization focus:</strong> preprocessing and feature-flow stability for repeated closed-loop triggering experiments.</p>
+                <p><strong>Deliverables:</strong> reusable implementation and validation scripts for iterative BCI experimentation.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <footer class="foot">
+        yitumulin · 一土木林 · <a href="search-claude.html">Search</a> · <a href="wudangdao-claude.html">Listening</a> · <a href="contact-claude.html">Contact</a>
+      </footer>
+    </main>
+  </div>
+
+  <script src="darkmode.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="claude-theme.js"></script>
+</body>
+</html>

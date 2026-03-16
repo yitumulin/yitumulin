@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Listening | Claude Workspace | yitumulin</title>
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="claude-theme.css">
+</head>
+<body class="claude-ui">
+  <script>
+    (function(){
+      try {
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) document.body.classList.add("dark");
+      } catch (e) {}
+    })();
+  </script>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index-claude.html" class="brand">yitumulin workspace</a>
+      <div class="header-actions">
+        <button class="sidebar-toggle" data-sidebar-toggle>Menu</button>
+        <button class="cmd-open" data-cmd-open>Jump</button>
+        <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="claude-app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <a href="index-claude.html">yitumulin</a>
+        <button class="sidebar-toggle" data-sidebar-toggle>Close</button>
+      </div>
+      <div class="sidebar-label">Pages</div>
+      <nav class="sidebar-nav">
+        <a href="index-claude.html">Home</a>
+        <a href="posts-claude.html">Projects</a>
+        <a href="about-claude.html">Resume</a>
+        <a href="contact-claude.html">Contact</a>
+      </nav>
+      <div class="sidebar-label">Tools</div>
+      <nav class="sidebar-subnav">
+        <a href="search-claude.html">Search</a>
+        <a href="archives-claude.html">Archives</a>
+        <a href="wudangdao-claude.html">Listening</a>
+        <a href="tag-view-claude.html">Tag View</a>
+      </nav>
+      <div class="sidebar-footer"></div>
+    </aside>
+
+    <main class="main">
+      <section class="main-top">
+        <div>
+          <div class="page-kicker">Listening</div>
+          <h1 class="page-title">Wudangdao Audio Workspace</h1>
+          <p class="page-intro">Structured audio library with search, pagination, and playback progress memory.</p>
+        </div>
+      </section>
+
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Player</span>
+          <span class="turn-role">Playback controls and episode queue</span>
+        </div>
+        <div class="turn-body player-grid">
+          <article class="fact-grid">
+            <div class="fact">
+              <strong id="currentTrackTitle">Choose an episode to start</strong>
+              <span id="episodeProgress" class="episode-progress">Total 0 episodes</span>
+            </div>
+            <audio id="audioPlayer" controls style="width:100%; margin-top: 0.4rem;">Your browser does not support audio playback.</audio>
+            <div class="action-row">
+              <button class="control-btn" onclick="playPrevious()">Previous Episode</button>
+              <button class="control-btn" onclick="playNextAudio()">Next Episode</button>
+            </div>
+          </article>
+
+          <article class="fact-grid">
+            <input type="text" id="searchInput" placeholder="Search episodes">
+            <div class="audio-list" id="audioList"><div class="fact"><span>Loading audio list...</span></div></div>
+            <div class="pagination" id="pagination" style="display:none;">
+              <button id="prevBtn" onclick="previousPage()">Previous</button>
+              <span class="page-info" id="pageInfo">Page 1 / 1</span>
+              <button id="nextBtn" onclick="nextPage()">Next</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="foot">
+        yitumulin · 一土木林 · <a href="search-claude.html">Search</a> · <a href="wudangdao-claude.html">Listening</a> · <a href="contact-claude.html">Contact</a>
+      </footer>
+    </main>
+  </div>
+
+  <script src="darkmode.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    const R2_BASE = "https://audio.yitumulin.com";
+    const ITEMS_PER_PAGE = 30;
+
+    let audioList = [];
+    let filteredFiles = [];
+    let currentIndex = -1;
+    let currentPage = 1;
+
+    const audioEl = document.getElementById("audioPlayer");
+    const titleEl = document.getElementById("currentTrackTitle");
+    const progressEl = document.getElementById("episodeProgress");
+    const listContainer = document.getElementById("audioList");
+    const searchInput = document.getElementById("searchInput");
+    const paginationEl = document.getElementById("pagination");
+
+    function getLang() {
+      if (window.siteI18n && typeof window.siteI18n.getLanguage === "function") {
+        return window.siteI18n.getLanguage();
+      }
+      return "en";
+    }
+
+    function t(path, fallback, vars) {
+      if (window.siteI18n && typeof window.siteI18n.t === "function") {
+        return window.siteI18n.t(path, fallback, vars);
+      }
+      return fallback;
+    }
+
+    function episodeLabel(number) {
+      return getLang() === "zh" ? ("第 " + number + " 集") : ("Episode " + number);
+    }
+
+    function getEpisodeNumber(item, fallback) {
+      const source = [item && item.title, item && item.file].filter(Boolean).join(" ");
+      const match = source.match(/\d+/);
+      return match ? parseInt(match[0], 10) : fallback;
+    }
+
+    function updateProgressLabel(index) {
+      if (index < 0 || index >= audioList.length) {
+        progressEl.textContent = t("listening.totalEpisodes", "Total {total} episodes", { total: audioList.length });
+        return;
+      }
+
+      const episodeNumber = getEpisodeNumber(audioList[index], index + 1);
+      progressEl.textContent = t("listening.currentProgress", "Episode {episode} / {total}", {
+        episode: episodeNumber,
+        total: audioList.length
+      });
+    }
+
+    function savePlayProgress() {
+      if (currentIndex < 0) return;
+      localStorage.setItem("lastPlayedIndex", String(currentIndex));
+      localStorage.setItem("lastPlayedTime", String(audioEl.currentTime || 0));
+    }
+
+    async function setTrack(index, autoplay) {
+      if (index < 0 || index >= audioList.length) return;
+
+      currentIndex = index;
+      const item = audioList[index];
+      const trackTitle = item.title || t("listening.unnamedEpisode", "Untitled Episode");
+      titleEl.textContent = trackTitle;
+      titleEl.style.color = "";
+      updateProgressLabel(index);
+      setPlayingUI(index);
+      renderList(filteredFiles);
+
+      audioEl.src = R2_BASE + "/" + encodeURI(item.file);
+
+      const savedTime = localStorage.getItem("lastPlayedTime");
+      if (!autoplay && savedTime && Number.isFinite(Number(savedTime))) {
+        const applyTime = function() {
+          audioEl.currentTime = Number(savedTime);
+          audioEl.removeEventListener("loadedmetadata", applyTime);
+        };
+        audioEl.addEventListener("loadedmetadata", applyTime);
+      }
+
+      savePlayProgress();
+
+      if (autoplay) {
+        try {
+          await audioEl.play();
+        } catch (_) {}
+      }
+    }
+
+    function setPlayingUI(index) {
+      document.querySelectorAll(".play-btn").forEach(function(button) {
+        button.classList.remove("playing");
+      });
+      const activeButton = listContainer.querySelector('.play-btn[data-index="' + index + '"]');
+      if (activeButton) activeButton.classList.add("playing");
+    }
+
+    function renderList(list) {
+      listContainer.innerHTML = "";
+
+      if (!list.length) {
+        listContainer.innerHTML = '<div class="fact"><span>' + t("listening.noMatchedEpisode", "No matching episodes found.") + "</span></div>";
+        paginationEl.style.display = "none";
+        return;
+      }
+
+      const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+      const currentPageFiles = list.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+      currentPageFiles.forEach(function(item) {
+        const actualIndex = audioList.indexOf(item);
+        const card = document.createElement("div");
+        card.className = "audio-item";
+        if (actualIndex === currentIndex) card.classList.add("playing");
+
+        card.innerHTML = [
+          "<h4>" + (item.title || t("listening.unnamedEpisode", "Untitled Episode")) + "</h4>",
+          "<p>" + episodeLabel(getEpisodeNumber(item, actualIndex + 1)) + "</p>",
+          '<button class="play-btn' + (actualIndex === currentIndex ? " playing" : "") + '" data-index="' + actualIndex + '">',
+          actualIndex === currentIndex ? t("listening.playing", "Playing") : t("listening.play", "Play"),
+          "</button>"
+        ].join("");
+
+        listContainer.appendChild(card);
+      });
+
+      listContainer.querySelectorAll(".play-btn").forEach(function(button) {
+        button.addEventListener("click", function(event) {
+          const index = Number(event.currentTarget.dataset.index);
+          setTrack(index, true);
+        });
+      });
+    }
+
+    function updatePagination() {
+      const totalPages = Math.max(1, Math.ceil(filteredFiles.length / ITEMS_PER_PAGE));
+      const pageInfo = document.getElementById("pageInfo");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+
+      pageInfo.textContent = t("listening.pageInfo", "Page {current} / {total}", {
+        current: currentPage,
+        total: totalPages
+      });
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
+      paginationEl.style.display = filteredFiles.length ? "flex" : "none";
+    }
+
+    function previousPage() {
+      if (currentPage === 1) return;
+      currentPage -= 1;
+      renderList(filteredFiles);
+      updatePagination();
+    }
+
+    function nextPage() {
+      const totalPages = Math.max(1, Math.ceil(filteredFiles.length / ITEMS_PER_PAGE));
+      if (currentPage >= totalPages) return;
+      currentPage += 1;
+      renderList(filteredFiles);
+      updatePagination();
+    }
+
+    function playNextAudio() {
+      if (currentIndex + 1 < audioList.length) {
+        setTrack(currentIndex + 1, true);
+      } else {
+        titleEl.textContent = t("listening.lastEpisode", "Already the last episode.");
+      }
+    }
+
+    function playPrevious() {
+      if (currentIndex > 0) {
+        setTrack(currentIndex - 1, true);
+      } else {
+        titleEl.textContent = t("listening.firstEpisode", "Already the first episode.");
+      }
+    }
+
+    function restorePlayProgress() {
+      const lastIndex = Number(localStorage.getItem("lastPlayedIndex"));
+      if (!Number.isInteger(lastIndex) || lastIndex < 0 || lastIndex >= audioList.length) {
+        updateProgressLabel(-1);
+        return;
+      }
+      setTrack(lastIndex, false);
+    }
+
+    async function loadList() {
+      try {
+        listContainer.innerHTML = '<div class="fact"><span>' + t("listening.loadingList", "Loading audio list...") + "</span></div>";
+        const response = await fetch("audio_list.json", { cache: "no-cache" });
+        const data = await response.json();
+        audioList = Array.isArray(data) ? data : [];
+        filteredFiles = audioList.slice();
+        currentPage = 1;
+
+        renderList(filteredFiles);
+        updatePagination();
+        restorePlayProgress();
+        updateProgressLabel(currentIndex);
+      } catch (_) {
+        listContainer.innerHTML = '<div class="fact"><span>' + t("listening.loadFailed", "Failed to load audio list. Please try again later.") + "</span></div>";
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("input", function(event) {
+        const keyword = event.target.value.trim().toLowerCase();
+        filteredFiles = audioList.filter(function(item) {
+          return (item.title || "").toLowerCase().includes(keyword) || (item.file || "").toLowerCase().includes(keyword);
+        });
+        currentPage = 1;
+        renderList(filteredFiles);
+        updatePagination();
+      });
+    }
+
+    audioEl.addEventListener("ended", playNextAudio);
+    audioEl.addEventListener("timeupdate", savePlayProgress);
+    document.addEventListener("DOMContentLoaded", loadList);
+    document.addEventListener("site-language-changed", function() {
+      if (currentIndex < 0) {
+        titleEl.textContent = t("listening.chooseStart", "Choose an episode to start");
+      }
+      updateProgressLabel(currentIndex);
+      renderList(filteredFiles);
+      updatePagination();
+    });
+  </script>
+  <script src="claude-theme.js"></script>
+</body>
+</html>

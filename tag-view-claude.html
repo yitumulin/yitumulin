@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tag View | Claude Workspace | yitumulin</title>
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="claude-theme.css">
+</head>
+<body class="claude-ui">
+  <script>
+    (function(){
+      try {
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) document.body.classList.add("dark");
+      } catch (e) {}
+    })();
+  </script>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index-claude.html" class="brand">yitumulin workspace</a>
+      <div class="header-actions">
+        <button class="sidebar-toggle" data-sidebar-toggle>Menu</button>
+        <button class="cmd-open" data-cmd-open>Jump</button>
+        <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="claude-app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <a href="index-claude.html">yitumulin</a>
+        <button class="sidebar-toggle" data-sidebar-toggle>Close</button>
+      </div>
+      <div class="sidebar-label">Pages</div>
+      <nav class="sidebar-nav">
+        <a href="index-claude.html">Home</a>
+        <a href="posts-claude.html">Projects</a>
+        <a href="about-claude.html">Resume</a>
+        <a href="contact-claude.html">Contact</a>
+      </nav>
+      <div class="sidebar-label">Tools</div>
+      <nav class="sidebar-subnav">
+        <a href="search-claude.html">Search</a>
+        <a href="archives-claude.html">Archives</a>
+        <a href="wudangdao-claude.html">Listening</a>
+        <a href="tag-view-claude.html">Tag View</a>
+      </nav>
+      <div class="sidebar-footer"></div>
+    </aside>
+
+    <main class="main">
+      <section class="main-top">
+        <div>
+          <div class="page-kicker">Browse</div>
+          <h1 id="tag-view-title" class="page-title">Tag View</h1>
+          <p class="page-intro">Filtered items by tag or category.</p>
+        </div>
+      </section>
+
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Results</span>
+          <span class="turn-role">Filtered list</span>
+        </div>
+        <div class="turn-body">
+          <div id="tag-results-container" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <footer class="foot">
+        yitumulin · 一土木林 · <a href="search-claude.html">Search</a> · <a href="wudangdao-claude.html">Listening</a> · <a href="contact-claude.html">Contact</a>
+      </footer>
+    </main>
+  </div>
+
+  <script src="darkmode.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    const legacyTagAlias = {};
+    const legacyCategoryAlias = {};
+    let allPostsCache = null;
+
+    function getLang() {
+      if (window.siteI18n && typeof window.siteI18n.getLanguage === "function") {
+        return window.siteI18n.getLanguage();
+      }
+      return "en";
+    }
+
+    function t(path, fallback, vars) {
+      if (window.siteI18n && typeof window.siteI18n.t === "function") {
+        return window.siteI18n.t(path, fallback, vars);
+      }
+      return fallback;
+    }
+
+    async function loadPosts() {
+      if (allPostsCache) return allPostsCache;
+      const response = await fetch("search-data.json");
+      if (!response.ok) throw new Error("Failed to load search-data.json");
+      allPostsCache = await response.json();
+      return allPostsCache;
+    }
+
+    function getLocalizedType(type) {
+      if (getLang() === "zh") {
+        return type === "tag" ? "标签" : "分类";
+      }
+      return type;
+    }
+
+    async function renderTagView() {
+      const resultsContainer = document.getElementById("tag-results-container");
+      const pageTitleElement = document.getElementById("tag-view-title");
+      if (!resultsContainer || !pageTitleElement) return;
+
+      resultsContainer.innerHTML = "";
+      const params = new URLSearchParams(window.location.search);
+      const tagName = params.get("tag");
+      const categoryName = params.get("category");
+      let filterType = "";
+      let filterValue = "";
+
+      if (tagName) {
+        filterType = "tag";
+        filterValue = tagName;
+      } else if (categoryName) {
+        filterType = "category";
+        filterValue = categoryName;
+      } else {
+        pageTitleElement.textContent = t("tagView.title", "Tag View");
+        resultsContainer.innerHTML = "<p>" + t("tagView.noParam", "Please provide <code>?tag=...</code> or <code>?category=...</code> in the URL.") + "</p>";
+        return;
+      }
+
+      try {
+        const allPosts = await loadPosts();
+        const normalizedFilterValue = filterType === "tag"
+          ? (legacyTagAlias[filterValue] || filterValue)
+          : (legacyCategoryAlias[filterValue] || filterValue);
+        const target = normalizedFilterValue.toLowerCase();
+
+        if (filterType === "tag") {
+          pageTitleElement.textContent = t("tagView.tagPrefix", "Tag: {value}", { value: normalizedFilterValue });
+        } else {
+          pageTitleElement.textContent = t("tagView.categoryPrefix", "Category: {value}", { value: normalizedFilterValue });
+        }
+
+        const filteredPosts = allPosts.filter(function(post) {
+          if (filterType === "tag") {
+            return Array.isArray(post.tags) && post.tags.some(function(tag) {
+              return String(tag).toLowerCase() === target;
+            });
+          }
+          return String(post.category || "").toLowerCase() === target;
+        });
+
+        if (filteredPosts.length === 0) {
+          const typeText = getLocalizedType(filterType);
+          resultsContainer.innerHTML = "<p>" + t("tagView.noItems", "No items found for {type} \"{value}\".", {
+            type: typeText,
+            value: normalizedFilterValue
+          }) + "</p>";
+          return;
+        }
+
+        const ul = document.createElement("ul");
+        ul.className = "result-list";
+        filteredPosts.forEach(function(post) {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = post.url;
+          a.textContent = getLang() === "zh" ? (post.title_zh || post.title) : post.title;
+          li.appendChild(a);
+          if (post.date) {
+            const span = document.createElement("span");
+            span.style.marginLeft = "0.5rem";
+            span.style.color = "var(--muted)";
+            span.textContent = post.date;
+            li.appendChild(span);
+          }
+          ul.appendChild(li);
+        });
+        resultsContainer.appendChild(ul);
+      } catch (error) {
+        resultsContainer.innerHTML = "<p>" + t("tagView.error", "Something went wrong while loading the list.") + "</p>";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", renderTagView);
+    document.addEventListener("site-language-changed", renderTagView);
+  </script>
+  <script src="claude-theme.js"></script>
+</body>
+</html>

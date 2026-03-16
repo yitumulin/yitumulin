@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search | Claude Workspace | yitumulin</title>
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="claude-theme.css">
+</head>
+<body class="claude-ui">
+  <script>
+    (function(){
+      try {
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) document.body.classList.add("dark");
+      } catch (e) {}
+    })();
+  </script>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index-claude.html" class="brand">yitumulin workspace</a>
+      <div class="header-actions">
+        <button class="sidebar-toggle" data-sidebar-toggle>Menu</button>
+        <button class="cmd-open" data-cmd-open>Jump</button>
+        <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="claude-app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <a href="index-claude.html">yitumulin</a>
+        <button class="sidebar-toggle" data-sidebar-toggle>Close</button>
+      </div>
+      <div class="sidebar-label">Pages</div>
+      <nav class="sidebar-nav">
+        <a href="index-claude.html">Home</a>
+        <a href="posts-claude.html">Projects</a>
+        <a href="about-claude.html">Resume</a>
+        <a href="contact-claude.html">Contact</a>
+      </nav>
+      <div class="sidebar-label">Tools</div>
+      <nav class="sidebar-subnav">
+        <a href="search-claude.html">Search</a>
+        <a href="archives-claude.html">Archives</a>
+        <a href="wudangdao-claude.html">Listening</a>
+        <a href="tag-view-claude.html">Tag View</a>
+      </nav>
+      <div class="sidebar-footer"></div>
+    </aside>
+
+    <main class="main">
+      <section class="main-top">
+        <div>
+          <div class="page-kicker">Search</div>
+          <h1 class="page-title">Find Pages and Project Evidence</h1>
+          <p class="page-intro">Type keywords to search projects, resume sections, listening pages, and notes.</p>
+        </div>
+      </section>
+
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Query</span>
+          <span class="turn-role">Real-time search</span>
+        </div>
+        <div class="turn-body search-wrap">
+          <input type="text" id="searchInput" placeholder="Try: WeClone / MiniMind / BCI / Resume">
+          <div id="searchResults" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <footer class="foot">
+        yitumulin · 一土木林 · <a href="search-claude.html">Search</a> · <a href="wudangdao-claude.html">Listening</a> · <a href="contact-claude.html">Contact</a>
+      </footer>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script src="darkmode.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="search.js"></script>
+  <script src="claude-theme.js"></script>
+</body>
+</html>
