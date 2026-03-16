@@ -7,7 +7,13 @@
     "content": "AI engineer portfolio homepage with core expertise, project evidence, and recruiter-focused highlights.",
     "content_zh": "AI 工程师作品集首页，包含核心能力、项目证据与面向招聘方的重点信息。",
     "date": "2026-03-16",
-    "tags": ["Home", "Portfolio", "AI", "一土木林", "yitumulin"],
+    "tags": [
+      "Home",
+      "Portfolio",
+      "AI",
+      "一土木林",
+      "yitumulin"
+    ],
     "category": "Profile"
   },
   {
@@ -15,10 +21,16 @@
     "title": "Projects - 一土木林 yitumulin",
     "title_zh": "项目 - 一土木林 yitumulin",
     "url": "posts.html",
-    "content": "Project highlights for AI engineering roles: BCI-SSVEP and WhisperMail.",
-    "content_zh": "面向 AI 工程岗位的项目展示：BCI-SSVEP 与 WhisperMail。",
+    "content": "Project highlights for AI engineering roles: BCI-SSVEP, WhisperMail, and Weclone local deployment.",
+    "content_zh": "?? AI ??????????BCI-SSVEP?WhisperMail ? Weclone ?????",
     "date": "2026-03-16",
-    "tags": ["Projects", "AI", "Engineering", "一土木林", "yitumulin"],
+    "tags": [
+      "Projects",
+      "AI",
+      "Engineering",
+      "一土木林",
+      "yitumulin"
+    ],
     "category": "Projects"
   },
   {
@@ -29,7 +41,13 @@
     "content": "Resume page with education, technical strengths, papers, and software copyright portfolio.",
     "content_zh": "简历页面，包含教育背景、技术能力、论文成果与软件著作权成果。",
     "date": "2026-03-16",
-    "tags": ["Resume", "Research", "Software Copyright", "一土木林", "yitumulin"],
+    "tags": [
+      "Resume",
+      "Research",
+      "Software Copyright",
+      "一土木林",
+      "yitumulin"
+    ],
     "category": "Profile"
   },
   {
@@ -40,7 +58,13 @@
     "content": "Contact email and GitHub for AI collaboration and engineering opportunities.",
     "content_zh": "用于 AI 合作与工程机会沟通的邮箱与 GitHub 联系方式。",
     "date": "2026-03-16",
-    "tags": ["Contact", "Email", "GitHub", "一土木林", "yitumulin"],
+    "tags": [
+      "Contact",
+      "Email",
+      "GitHub",
+      "一土木林",
+      "yitumulin"
+    ],
     "category": "Profile"
   },
   {
@@ -51,7 +75,11 @@
     "content": "Listening page with search, pagination, and resume playback.",
     "content_zh": "听书页面，支持搜索、分页与续播。",
     "date": "2026-03-16",
-    "tags": ["Listening", "Audio", "Chinese"],
+    "tags": [
+      "Listening",
+      "Audio",
+      "Chinese"
+    ],
     "category": "Media"
   },
   {
@@ -62,7 +90,11 @@
     "content": "EEG-oriented brain-computer interaction prototype with signal processing workflow.",
     "content_zh": "面向脑电信号处理流程的脑机交互原型项目。",
     "date": "2025-01-01",
-    "tags": ["BCI", "EEG", "GitHub"],
+    "tags": [
+      "BCI",
+      "EEG",
+      "GitHub"
+    ],
     "category": "Projects"
   },
   {
@@ -73,7 +105,11 @@
     "content": "Speech-to-email workflow demo for practical AI productivity scenarios.",
     "content_zh": "用于实际 AI 生产力场景的语音到邮件工作流演示项目。",
     "date": "2025-01-01",
-    "tags": ["LLM", "Speech", "GitHub"],
+    "tags": [
+      "LLM",
+      "Speech",
+      "GitHub"
+    ],
     "category": "Projects"
   },
   {
@@ -84,7 +120,28 @@
     "content": "Search aliases: 一土木林, yitumulin, 伊土木林.",
     "content_zh": "检索别名：一土木林、yitumulin、伊土木林。",
     "date": "2026-03-16",
-    "tags": ["Alias", "一土木林", "yitumulin", "伊土木林"],
+    "tags": [
+      "Alias",
+      "一土木林",
+      "yitumulin",
+      "伊土木林"
+    ],
     "category": "Profile"
+  },
+  {
+    "id": "9",
+    "title": "Weclone Local Deployment (Douyin Demo)",
+    "title_zh": "Weclone ??????????",
+    "url": "https://v.douyin.com/cvn7YBScsek/",
+    "content": "Independently completed environment setup, dependency alignment, service startup, WeChat clone workflow run-through, issue diagnosis, and final delivery demo.",
+    "content_zh": "????????????????????????????????????????",
+    "date": "2025-05-04",
+    "tags": [
+      "Weclone",
+      "Deployment",
+      "AI Engineering",
+      "Douyin"
+    ],
+    "category": "Projects"
   }
 ]
