@@ -398,7 +398,7 @@ body.dark .section-subtitle {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(290px, 0.9fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 1fr);
   gap: 1.5rem;
   align-items: stretch;
 }
