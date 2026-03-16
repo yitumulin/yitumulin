@@ -1,46 +1,46 @@
 [
   {
     "id": "1",
-    "title": "Home - yitumulin",
-    "title_zh": "首页 - yitumulin",
+    "title": "Home - 一土木林 yitumulin",
+    "title_zh": "首页 - 一土木林 yitumulin",
     "url": "index.html",
     "content": "AI engineer portfolio homepage with core expertise, project evidence, and recruiter-focused highlights.",
     "content_zh": "AI 工程师作品集首页，包含核心能力、项目证据与面向招聘方的重点信息。",
     "date": "2026-03-16",
-    "tags": ["Home", "Portfolio", "AI"],
+    "tags": ["Home", "Portfolio", "AI", "一土木林", "yitumulin"],
     "category": "Profile"
   },
   {
     "id": "2",
-    "title": "Projects - yitumulin",
-    "title_zh": "项目 - yitumulin",
+    "title": "Projects - 一土木林 yitumulin",
+    "title_zh": "项目 - 一土木林 yitumulin",
     "url": "posts.html",
     "content": "Project highlights for AI engineering roles: BCI-SSVEP and WhisperMail.",
     "content_zh": "面向 AI 工程岗位的项目展示：BCI-SSVEP 与 WhisperMail。",
     "date": "2026-03-16",
-    "tags": ["Projects", "AI", "Engineering"],
+    "tags": ["Projects", "AI", "Engineering", "一土木林", "yitumulin"],
     "category": "Projects"
   },
   {
     "id": "3",
-    "title": "Resume - yitumulin",
-    "title_zh": "简历 - yitumulin",
+    "title": "Resume - 一土木林 yitumulin",
+    "title_zh": "简历 - 一土木林 yitumulin",
     "url": "about.html",
     "content": "Resume page with education, technical strengths, papers, and software copyright portfolio.",
     "content_zh": "简历页面，包含教育背景、技术能力、论文成果与软件著作权成果。",
     "date": "2026-03-16",
-    "tags": ["Resume", "Research", "Software Copyright"],
+    "tags": ["Resume", "Research", "Software Copyright", "一土木林", "yitumulin"],
     "category": "Profile"
   },
   {
     "id": "4",
-    "title": "Contact - yitumulin",
-    "title_zh": "联系 - yitumulin",
+    "title": "Contact - 一土木林 yitumulin",
+    "title_zh": "联系 - 一土木林 yitumulin",
     "url": "contact.html",
     "content": "Contact email and GitHub for AI collaboration and engineering opportunities.",
     "content_zh": "用于 AI 合作与工程机会沟通的邮箱与 GitHub 联系方式。",
     "date": "2026-03-16",
-    "tags": ["Contact", "Email", "GitHub"],
+    "tags": ["Contact", "Email", "GitHub", "一土木林", "yitumulin"],
     "category": "Profile"
   },
   {
@@ -75,5 +75,16 @@
     "date": "2025-01-01",
     "tags": ["LLM", "Speech", "GitHub"],
     "category": "Projects"
+  },
+  {
+    "id": "8",
+    "title": "Name Aliases - 一土木林 yitumulin",
+    "title_zh": "名称别名 - 一土木林 yitumulin",
+    "url": "index.html",
+    "content": "Search aliases: 一土木林, yitumulin, 伊土木林.",
+    "content_zh": "检索别名：一土木林、yitumulin、伊土木林。",
+    "date": "2026-03-16",
+    "tags": ["Alias", "一土木林", "yitumulin", "伊土木林"],
+    "category": "Profile"
   }
 ]

@@ -10,15 +10,15 @@
   let currentLanguage = "en";
 
   const TITLE_BY_PAGE = {
-    "index.html": { en: "yitumulin", zh: "yitumulin" },
-    "about.html": { en: "Resume - yitumulin", zh: "简历 - yitumulin" },
-    "posts.html": { en: "Projects - yitumulin", zh: "项目 - yitumulin" },
-    "contact.html": { en: "Contact - yitumulin", zh: "联系 - yitumulin" },
+    "index.html": { en: "一土木林 yitumulin | AI Portfolio", zh: "一土木林 yitumulin | AI作品集" },
+    "about.html": { en: "Resume | 一土木林 yitumulin", zh: "简历 | 一土木林 yitumulin" },
+    "posts.html": { en: "Projects | 一土木林 yitumulin", zh: "项目 | 一土木林 yitumulin" },
+    "contact.html": { en: "Contact | 一土木林 yitumulin", zh: "联系 | 一土木林 yitumulin" },
     "archives.html": { en: "Archives - yitumulin", zh: "归档 - yitumulin" },
     "search.html": { en: "Search - yitumulin", zh: "搜索 - yitumulin" },
     "404.html": { en: "Page Not Found (404) - yitumulin", zh: "页面未找到 (404) - yitumulin" },
     "tag-view.html": { en: "Tag View - yitumulin", zh: "标签视图 - yitumulin" },
-    "wudangdao.html": { en: "Wudangdao Listening - yitumulin", zh: "吾当道 - yitumulin" },
+    "wudangdao.html": { en: "Listening | 一土木林 yitumulin", zh: "听书 | 一土木林 yitumulin" },
     "posts/project1.html": { en: "Project: AI & Aging Research - yitumulin", zh: "项目：AI 与老龄化研究 - yitumulin" }
   };
 
@@ -555,3 +555,4 @@
 
   document.addEventListener("DOMContentLoaded", init);
 })();
+
