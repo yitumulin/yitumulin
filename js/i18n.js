@@ -186,7 +186,7 @@
     "Promote lightweight deployment to reduce integration and maintenance costs.": "推动轻量化部署，降低系统接入和维护成本。",
     "Work preference: open to AI product engineering and software development roles.": "工作偏好：AI 产品工程与软件开发岗位。",
     "Project Evidence": "项目证据",
-    "Weeklong": "Weeklong",
+    "Weclone": "Weclone",
     ": structured end-to-end tutorial output.": "：结构化端到端教程产出。",
     ": EEG signal processing and BCI interaction pipeline implementation.": "：脑电信号处理与 BCI 交互流程实现。",
     ": speech-to-email workflow integration for practical AI productivity use.": "：语音到邮件工作流集成，面向实用 AI 生产力场景。",
