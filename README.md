@@ -26,7 +26,7 @@
 - `search.html` 站内搜索页（依赖 `search.js` 与 `search-data.json`）。
 - `contact.html` 联系方式（Email、Telegram、WeChat）。
 - `posts/` 文章目录（示例：`posts/project1.html`）。
-- 静态资源：`style.css`、`js/transitions.js`、`avatar.png`、`favicon.png` 等。
+- 静态资源：`style.css`、`js/transitions.js`、`favicon.png` 等。
 - 自定义域名：`CNAME` 指向 `yitumulin.com`。
 
 ---
