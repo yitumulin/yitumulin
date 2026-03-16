@@ -1,7 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.getElementById("darkModeToggle");
   const body = document.body;
+  const siteHeader = document.querySelector(".site-header");
   const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const mobileHeaderMedia = window.matchMedia("(max-width: 768px)");
+  const HEADER_HIDE_FROM = 120;
+  const HEADER_SHOW_AT = 56;
+  let headerCollapsed = false;
+  let headerTicking = false;
 
   function getCurrentLanguage() {
     if (window.siteI18n && typeof window.siteI18n.getLanguage === "function") {
@@ -38,6 +44,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function setHeaderCollapsed(nextCollapsed) {
+    if (!siteHeader || nextCollapsed === headerCollapsed) {
+      return;
+    }
+    headerCollapsed = nextCollapsed;
+    siteHeader.classList.toggle("mobile-collapsed", nextCollapsed);
+  }
+
+  function syncMobileHeaderState() {
+    if (!siteHeader) {
+      return;
+    }
+
+    if (!mobileHeaderMedia.matches) {
+      setHeaderCollapsed(false);
+      return;
+    }
+
+    const scrollTop = window.scrollY || window.pageYOffset || 0;
+
+    if (scrollTop >= HEADER_HIDE_FROM) {
+      setHeaderCollapsed(true);
+      return;
+    }
+
+    if (scrollTop <= HEADER_SHOW_AT) {
+      setHeaderCollapsed(false);
+    }
+  }
+
+  function requestMobileHeaderSync() {
+    if (headerTicking) {
+      return;
+    }
+    headerTicking = true;
+    window.requestAnimationFrame(() => {
+      headerTicking = false;
+      syncMobileHeaderState();
+    });
+  }
+
   const currentTheme = localStorage.getItem("theme");
   if (currentTheme) {
     applyTheme(currentTheme);
@@ -62,4 +109,17 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("site-language-changed", () => {
     applyTheme(body.classList.contains("dark") ? "dark" : "light");
   });
+
+  if (siteHeader) {
+    window.addEventListener("scroll", requestMobileHeaderSync, { passive: true });
+    window.addEventListener("resize", requestMobileHeaderSync);
+
+    if (typeof mobileHeaderMedia.addEventListener === "function") {
+      mobileHeaderMedia.addEventListener("change", requestMobileHeaderSync);
+    } else if (typeof mobileHeaderMedia.addListener === "function") {
+      mobileHeaderMedia.addListener(requestMobileHeaderSync);
+    }
+
+    requestMobileHeaderSync();
+  }
 });

@@ -82,6 +82,7 @@ h6 {
   backdrop-filter: blur(18px);
   background: rgba(249, 242, 233, 0.76);
   border-bottom: 1px solid var(--line);
+  transition: max-height 0.24s ease, border-color 0.22s ease;
 }
 
 body.dark .site-header {
@@ -95,6 +96,7 @@ body.dark .site-header {
   justify-content: space-between;
   gap: 1.5rem;
   min-height: 76px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .logo {
@@ -913,7 +915,6 @@ body.dark .site-footer {
 }
 
 @media (max-width: 960px) {
-  .site-header .container,
   .hero-grid,
   .about-layout,
   .listening-layout,
@@ -925,13 +926,39 @@ body.dark .site-footer {
 
   .site-header .container {
     min-height: auto;
-    padding: 1rem 0;
-    flex-direction: column;
+    padding: 0.75rem 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "logo controls"
+      "nav nav";
+    align-items: center;
+    column-gap: 0.7rem;
+    row-gap: 0.6rem;
   }
 
-  .header-controls {
-    width: 100%;
+  .site-header .logo {
+    grid-area: logo;
+  }
+
+  .site-header .site-nav {
+    grid-area: nav;
     justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .site-header .header-controls {
+    grid-area: controls;
+    width: auto;
+    justify-content: flex-end;
+    gap: 0.45rem;
+  }
+
+  .site-header #darkModeToggle,
+  .site-header .lang-switch {
+    min-height: 34px;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.74rem;
   }
 
   .hero-copy .section-title {
@@ -940,6 +967,24 @@ body.dark .site-footer {
 
   .audio-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    max-height: 180px;
+    overflow: hidden;
+  }
+
+  .site-header.mobile-collapsed {
+    max-height: 0;
+    border-bottom-color: transparent;
+  }
+
+  .site-header.mobile-collapsed .container {
+    opacity: 0;
+    transform: translateY(-12px);
+    pointer-events: none;
   }
 }
 
@@ -979,12 +1024,30 @@ body.dark .site-footer {
     width: 100%;
   }
 
-  .header-controls {
-    flex-direction: column;
-    align-items: stretch;
+  .site-header .container {
+    padding: 0.62rem 0;
+    row-gap: 0.5rem;
   }
 
-  .lang-switch {
-    width: 100%;
+  .site-header .site-nav {
+    gap: 0.55rem;
+  }
+
+  .site-header .header-controls {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+  }
+
+  .site-header #darkModeToggle,
+  .site-header .lang-switch {
+    width: auto;
+    min-height: 32px;
+    padding: 0.4rem 0.62rem;
+    font-size: 0.72rem;
+  }
+
+  .site-header .lang-switch {
+    min-width: 72px;
   }
 }
