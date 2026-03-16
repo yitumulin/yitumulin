@@ -11,8 +11,8 @@
 
   const TITLE_BY_PAGE = {
     "index.html": { en: "yitumulin", zh: "yitumulin" },
-    "about.html": { en: "About - yitumulin", zh: "关于 - yitumulin" },
-    "posts.html": { en: "Posts - yitumulin", zh: "文章 - yitumulin" },
+    "about.html": { en: "Resume - yitumulin", zh: "简历 - yitumulin" },
+    "posts.html": { en: "Projects - yitumulin", zh: "项目 - yitumulin" },
     "contact.html": { en: "Contact - yitumulin", zh: "联系 - yitumulin" },
     "archives.html": { en: "Archives - yitumulin", zh: "归档 - yitumulin" },
     "search.html": { en: "Search - yitumulin", zh: "搜索 - yitumulin" },
@@ -24,18 +24,23 @@
 
   const EN_TO_ZH = {
     "Home": "首页",
-    "About": "关于",
-    "Posts": "文章",
+    "About": "简历",
+    "Posts": "项目",
+    "Projects": "项目",
+    "Portfolio": "作品集",
+    "Resume": "简历",
     "Contact": "联系",
-    "Listening": "听力",
+    "Listening": "听书",
     "Archives": "归档",
     "Search": "搜索",
     "AI Portfolio / Internship Profile": "AI 作品集 / 实习档案",
     "I build AI products end-to-end, from research ideas to production-ready systems.": "我做端到端 AI 产品，从研究想法到可上线系统。",
     "I am a Telecommunication Engineering and Management student at Beijing University of Posts and Telecommunications. This portfolio is designed for recruiters to quickly evaluate my projects, responsibilities, and technical impact.": "我在北京邮电大学学习电信工程与管理。这个作品集面向招聘方，帮助你快速了解我的项目、职责和技术产出。",
     "I am passionate about software development and AI. Through hands-on practice, I have built strong programming and problem-solving skills, with deep focus on code quality, full-stack implementation, and system design.": "我长期专注软件开发与 AI。通过大量实战，我建立了扎实的编程与问题解决能力，并持续关注代码质量、全栈实现与系统设计。",
-    "About Me": "关于我",
-    "View Portfolio": "查看作品",
+    "About Me": "我的简历",
+    "View Portfolio": "查看项目",
+    "View Resume": "查看简历",
+    "View Projects": "查看项目",
     "Email": "邮箱",
     "Resume Snapshot": "简历概览",
     "School": "学校",
@@ -52,11 +57,13 @@
     "Highlights": "亮点",
     "Profile": "简介",
     "Recruiter-focused summary of my background, technical strengths, and collaboration value.": "面向招聘方的背景、技术优势与协作价值概览。",
-    "Open About": "查看关于",
+    "Open About": "查看简历",
+    "Open Resume": "查看简历",
     "Portfolio": "作品集",
     "Project pages that show scope, my role, implementation details, and outcomes.": "项目页面会展示范围、我的职责、实现细节与结果。",
-    "Open Posts": "查看文章",
-    "Productized listening page with searchable episodes and resume playback support.": "产品化听力页面，支持分集搜索与续播。",
+    "Open Posts": "查看项目",
+    "Open Projects": "查看项目",
+    "Productized listening page with searchable episodes and resume playback support.": "产品化听书页面，支持分集搜索与续播。",
     "Software Development": "软件开发",
     "Full-Stack Understanding": "全栈理解",
     "System Thinking": "系统思维",
@@ -115,13 +122,14 @@
     "Task decomposition, tool calling, state handling, and fallback patterns.": "任务拆解、工具调用、状态管理与兜底模式。",
     "Latency, cost control, observability, and production stability improvements.": "延迟、成本、可观测性与生产稳定性的优化实践。",
     "Let’s Work Together": "期待合作",
+    "Let's Work Together": "期待合作",
     "If you want to discuss LLM projects, engineering collaboration, or research ideas, reach me here.": "如果你想交流 LLM 项目、工程协作或研究想法，可以通过这里联系我。",
     "Notes": "说明",
     "For faster replies, include your goal, use case, expected deliverables, and timeline.": "为了更快回复，建议附上目标、使用场景、预期交付和时间安排。",
     "Archive": "归档",
     "Release Timeline": "发布时间线",
     "A chronological view of published projects and major site updates.": "按时间查看已发布项目与站点重要更新。",
-    "Site refresh, LLM showcase roadmap, and listening page updates.": "站点改版、LLM 展示路线与听力页面更新。",
+    "Site refresh, LLM showcase roadmap, and listening page updates.": "站点改版、LLM 展示路线与听书页面更新。",
     "Research outputs, narrative analysis pages, and technical notes.": "研究成果、叙事分析页面与技术笔记。",
     "Foundation engineering projects and system practice.": "基础工程项目与系统实践。",
     "Find Any Page Quickly": "快速查找页面",
@@ -137,7 +145,7 @@
     "Previous Episode": "上一集",
     "Next Episode": "下一集",
     "Quick Guide": "使用说明",
-    "Resume": "续播",
+    "Resume Playback": "续播",
     "Auto-Play": "连播",
     "Search: Enter keywords to quickly locate episodes.": "搜索：输入关键词快速定位分集。",
     "Resume: Automatically remembers your last playback position.": "续播：自动记录上次播放位置。",
@@ -175,7 +183,46 @@
     "Next Steps": "下一步计划",
     "Improve evaluation from model metrics to business metrics.": "完善评估体系：从模型指标扩展到业务指标。",
     "Add real-scene tests to verify cross-scenario generalization.": "补充真实场景测试，验证跨场景泛化能力。",
-    "Promote lightweight deployment to reduce integration and maintenance costs.": "推动轻量化部署，降低系统接入和维护成本。"
+    "Promote lightweight deployment to reduce integration and maintenance costs.": "推动轻量化部署，降低系统接入和维护成本。",
+    "Work preference: open to AI product engineering and software development roles.": "工作偏好：AI 产品工程与软件开发岗位。",
+    "Project Evidence": "项目证据",
+    "Weeklong": "Weeklong",
+    ": structured end-to-end tutorial output.": "：结构化端到端教程产出。",
+    ": EEG signal processing and BCI interaction pipeline implementation.": "：脑电信号处理与 BCI 交互流程实现。",
+    ": speech-to-email workflow integration for practical AI productivity use.": "：语音到邮件工作流集成，面向实用 AI 生产力场景。",
+    ": 2,000+ likes on Douyin with structured end-to-end teaching output.": "：抖音 2000+ 点赞，形成结构化端到端教学产出。",
+    "Database Engineering": "数据库工程",
+    ": can design and organize structured content for searchable product experiences.": "：可设计并组织结构化内容，支持可搜索的产品体验。",
+    ": two software copyright projects with clear algorithm modules.": "：两项软著项目，算法模块明确可说明。",
+    ": this website is built as a recruiter-facing AI engineer portfolio, not a blog.": "：这个网站面向招聘场景，是 AI 工程师展示站而非博客。",
+    "Resume - yitumulin": "简历 - yitumulin",
+    "Projects - yitumulin": "项目 - yitumulin",
+    "Project Evidence for AI Engineering Roles": "面向 AI 工程岗位的项目证据",
+    "This page focuses on practical engineering output instead of blog-style drafts. It highlights what I built, what I implemented, and where the work can be verified.": "这个页面聚焦工程产出，不再使用博客式草稿结构，重点展示我做了什么、实现了什么、以及可验证的证据链接。",
+    "2025 · BCI signal processing and interaction prototype": "2025 · BCI 信号处理与交互原型",
+    "Built EEG-oriented signal and interaction pipeline for practical BCI experiments.": "构建面向脑电的信号与交互流程，用于实际 BCI 实验。",
+    "2025 · LLM + speech workflow product demo": "2025 · LLM + 语音工作流产品演示",
+    "Integrated speech recognition and email task flow into a usable productivity prototype.": "将语音识别与邮件任务流程整合为可用的效率工具原型。",
+    "2025-05-10 · Research-to-product problem framing": "2025-05-10 · 从研究到产品的问题建模",
+    "A structured engineering note from scenario analysis to deployable AI solution directions.": "从场景分析到可部署 AI 方案方向的结构化工程记录。",
+    "2026 · Productized personal showcase": "2026 · 产品化个人展示站",
+    "Designed as a recruiter-facing AI engineer portfolio with bilingual UX and searchable content.": "按招聘导向设计的 AI 工程师作品集，支持中英文与可搜索内容。",
+    "2025 · 2,000+ likes on Douyin": "2025 · 抖音 2000+ 点赞",
+    "Created a full tutorial sequence with clear structure, practical examples, and delivery consistency.": "完成成体系教程内容，结构清晰、案例实用、交付稳定。",
+    "Research And Resume": "研究与简历",
+    "How I Place Papers and Achievements": "论文与成果的展示方式",
+    "Resume (Detailed)": "简历页（详细）",
+    "Full publication details and software copyright records are kept in the Resume page for recruiter review.": "论文细节与软著明细放在简历页，方便招聘方集中审核。",
+    "Projects (Evidence)": "项目页（证据）",
+    "This page keeps concise proof links, implementation outcomes, and product-level engineering evidence.": "项目页保留精简证据链接、实现结果与产品级工程证明。",
+    "Decision": "展示策略",
+    "Papers are shown in both places: detailed in Resume, concise proof in Projects for fast screening.": "论文两处都放：简历页给详细信息，项目页给精简证据，便于快速筛选。",
+    "Beijing University of Posts and Telecommunications · Telecommunication Engineering and Management": "北京邮电大学 · 电信工程与管理",
+    "Non-contact Beef Cattle Body Growth Tracking System Based on Machine Vision": "基于机器视觉的无接触肉牛体型生长跟踪系统",
+    "2025.06 · Implemented top-view cattle body detection and growth tracking algorithm modules.": "2025.06 · 实现顶视角牛体检测与生长跟踪算法模块。",
+    "EEG Hidden-frequency System Based on Microtexture and Closed-loop Control": "基于微纹理与闭环控制的脑电隐频系统",
+    "2025.10 · Implemented EEG microtexture feature extraction and closed-loop control algorithm modules.": "2025.10 · 实现脑电信号微纹理特征提取与闭环控制算法模块。",
+    "Software copyright titles are aligned with my resume and available for verification during recruitment communication.": "软著名称已与简历一致，可在招聘沟通中提供核验。"
   };
 
   const ZH_TO_EN = Object.fromEntries(Object.entries(EN_TO_ZH).map(function(entry) {
@@ -424,46 +471,29 @@
 
     if (controls.querySelector("#langSwitch")) return;
 
-    const switcher = document.createElement("div");
+    const switcher = document.createElement("button");
     switcher.id = "langSwitch";
     switcher.className = "lang-switch";
-    switcher.setAttribute("role", "group");
-    switcher.setAttribute("aria-label", "Language switch");
-
-    const zhBtn = document.createElement("button");
-    zhBtn.type = "button";
-    zhBtn.dataset.lang = "zh";
-    zhBtn.textContent = "中";
-
-    const enBtn = document.createElement("button");
-    enBtn.type = "button";
-    enBtn.dataset.lang = "en";
-    enBtn.textContent = "EN";
-
-    switcher.appendChild(zhBtn);
-    switcher.appendChild(enBtn);
+    switcher.type = "button";
+    switcher.innerHTML = '<span class="lang-primary">EN</span><span class="lang-sep">/</span><span class="lang-secondary">中</span>';
     controls.insertBefore(switcher, darkToggle);
 
-    switcher.addEventListener("click", function(event) {
-      const target = event.target;
-      if (!(target instanceof HTMLElement)) return;
-      const lang = normalizeLanguage(target.dataset.lang);
-      if (lang !== "zh" && lang !== "en") return;
-      setLanguage(lang, true);
+    switcher.addEventListener("click", function() {
+      const nextLang = currentLanguage === "zh" ? "en" : "zh";
+      setLanguage(nextLang, true);
     });
   }
 
   function updateLanguageSwitcher() {
     const switcher = document.getElementById("langSwitch");
     if (!switcher) return;
-
-    switcher.querySelectorAll("button").forEach(function(button) {
-      if (!(button instanceof HTMLElement)) return;
-      const lang = normalizeLanguage(button.dataset.lang);
-      const active = lang === currentLanguage;
-      button.classList.toggle("active", active);
-      button.setAttribute("aria-pressed", active ? "true" : "false");
-    });
+    const isZh = currentLanguage === "zh";
+    switcher.classList.toggle("is-zh", isZh);
+    switcher.setAttribute("aria-label", isZh ? "切换到英文" : "Switch to Chinese");
+    switcher.setAttribute("title", isZh ? "切换到英文" : "Switch to Chinese");
+    switcher.innerHTML = isZh
+      ? '<span class="lang-primary">中</span><span class="lang-sep">/</span><span class="lang-secondary">EN</span>'
+      : '<span class="lang-primary">EN</span><span class="lang-sep">/</span><span class="lang-secondary">中</span>';
   }
 
   function applyLanguage(lang, source) {

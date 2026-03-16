@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>吾当道 - yitumulin</title>
+  <title>Wudangdao Listening - yitumulin</title>
 
   <meta name="description" content="Wudangdao listening page with search, pagination, and resume playback for long-form audio content.">
   <meta name="keywords" content="wudangdao, audio listening, resume playback, podcast archive">
@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://yitumulin.com/wudangdao.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="yitumulin">
-  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Wudangdao Listening - yitumulin">
   <meta property="og:description" content="Wudangdao listening page with search, pagination, and resume playback for long-form audio content.">
   <meta property="og:url" content="https://yitumulin.com/wudangdao.html">
@@ -23,7 +23,7 @@
   <meta name="twitter:description" content="Wudangdao listening page with search, pagination, and resume playback for long-form audio content.">
   <meta name="twitter:image" content="https://yitumulin.com/favicon.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Wudangdao Listening - yitumulin","url":"https://yitumulin.com/wudangdao.html","description":"Listening page with searchable long-form audio content."}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -38,7 +38,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GR93DR478"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){dataLayer.push(arguments);} 
     gtag("js", new Date());
     gtag("config", "G-6GR93DR478");
   </script>
@@ -63,10 +63,9 @@
       <a href="index.html" class="logo">yitumulin</a>
       <nav class="site-nav">
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="posts.html">Posts</a>
+        <a href="posts.html">Projects</a>
+        <a href="about.html">Resume</a>
         <a href="contact.html">Contact</a>
-        <a href="wudangdao.html">Listening</a>
       </nav>
       <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
@@ -75,35 +74,35 @@
   <main class="page-shell listening-shell">
     <section class="page-panel listening-hero">
       <div class="eyebrow">Listening</div>
-      <h1 class="section-title">吾当道</h1>
+      <h1 class="section-title">Wudangdao</h1>
     </section>
 
     <section class="listening-layout">
       <div class="listening-column">
         <article class="card-panel player-shell">
           <div class="current-track">
-            <h3 id="currentTrackTitle">请选择一集开始播放</h3>
-            <p id="episodeProgress" class="episode-progress">共 0 集</p>
+            <h3 id="currentTrackTitle">Choose an episode to start</h3>
+            <p id="episodeProgress" class="episode-progress">Total 0 episodes</p>
           </div>
 
           <div class="audio-player">
             <audio id="audioPlayer" controls>
-              当前浏览器不支持音频播放。
+              Your browser does not support audio playback.
             </audio>
           </div>
 
           <div class="play-controls">
-            <button class="control-btn" onclick="playPrevious()">上一集</button>
-            <button class="control-btn" onclick="playNextAudio()">下一集</button>
+            <button class="control-btn" onclick="playPrevious()">Previous Episode</button>
+            <button class="control-btn" onclick="playNextAudio()">Next Episode</button>
           </div>
         </article>
 
         <article class="card-panel mini-panel">
-          <h3>使用说明</h3>
+          <h3>Quick Guide</h3>
           <ul class="note-list">
-            <li><strong>搜索</strong>：输入关键词快速定位分集。</li>
-            <li><strong>续播</strong>：自动记录上次播放位置。</li>
-            <li><strong>连播</strong>：当前集播放结束后自动进入下一集。</li>
+            <li><strong>Search</strong>: Enter keywords to quickly locate episodes.</li>
+            <li><strong>Resume Playback</strong>: Automatically remembers your last playback position.</li>
+            <li><strong>Auto-Play</strong>: Moves to the next episode when the current one finishes.</li>
           </ul>
         </article>
       </div>
@@ -111,17 +110,17 @@
       <div class="listening-column">
         <article class="card-panel library-shell">
           <div class="search-box">
-            <input type="text" id="searchInput" placeholder="搜索分集">
+            <input type="text" id="searchInput" placeholder="Search episodes">
           </div>
 
           <div class="audio-list" id="audioList">
-            <div class="loading">正在加载音频列表...</div>
+            <div class="loading">Loading audio list...</div>
           </div>
 
           <div class="pagination" id="pagination" style="display: none;">
-            <button id="prevBtn" onclick="previousPage()">上一页</button>
-            <span class="page-info" id="pageInfo">第 1 页 / 共 1 页</span>
-            <button id="nextBtn" onclick="nextPage()">下一页</button>
+            <button id="prevBtn" onclick="previousPage()">Previous</button>
+            <span class="page-info" id="pageInfo">Page 1 / 1</span>
+            <button id="nextBtn" onclick="nextPage()">Next</button>
           </div>
         </article>
       </div>
@@ -131,7 +130,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>yitumulin</p>
-      <p class="footer-links"><a href="archives.html">Archives</a> · <a href="search.html">Search</a></p>
+      <p class="footer-links"><a href="archives.html">Archives</a> · <a href="search.html">Search</a> · <a href="wudangdao.html">Listening</a></p>
     </div>
   </footer>
 
@@ -157,7 +156,7 @@
       if (window.siteI18n && typeof window.siteI18n.getLanguage === "function") {
         return window.siteI18n.getLanguage();
       }
-      return "zh";
+      return "en";
     }
 
     function t(path, fallback, vars) {
@@ -384,5 +383,3 @@
   </script>
 </body>
 </html>
-
-

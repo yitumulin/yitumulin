@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -51,10 +51,9 @@
       <a href="index.html" class="logo">yitumulin</a>
       <nav class="site-nav">
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="posts.html">Posts</a>
+        <a href="posts.html">Projects</a>
+        <a href="about.html">Resume</a>
         <a href="contact.html">Contact</a>
-        <a href="wudangdao.html">Listening</a>
       </nav>
       <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
@@ -91,14 +90,14 @@
     });
 
     const legacyTagAlias = {
-      "浜哄伐鏅鸿兘": "AI",
-      "绉戠爺": "Research",
-      "鍋ュ悍绉戞妧": "HealthTech"
+      "娴滃搫浼愰弲楦垮厴": "AI",
+      "缁夋垹鐖?: "Research",
+      "閸嬨儱鎮嶇粔鎴炲Η": "HealthTech"
     };
     const legacyCategoryAlias = {
-      "项目": "Projects",
-      "档案": "Profile",
-      "媒体": "Media"
+      "椤圭洰": "Projects",
+      "妗ｆ": "Profile",
+      "濯掍綋": "Media"
     };
     let allPostsCache = null;
 
@@ -126,7 +125,7 @@
 
     function getLocalizedType(type) {
       if (getLang() === "zh") {
-        return type === "tag" ? "标签" : "分类";
+        return type === "tag" ? "鏍囩" : "鍒嗙被";
       }
       return type;
     }
@@ -214,3 +213,4 @@
   </script>
 </body>
 </html>
+
