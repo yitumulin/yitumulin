@@ -2,8 +2,10 @@
   {
     "id": "1",
     "title": "Posts - yitumulin",
+    "title_zh": "文章 - yitumulin",
     "url": "posts.html",
     "content": "LLM projects, computer vision work, research notes, and engineering showcases.",
+    "content_zh": "LLM 项目、计算机视觉实践、研究笔记与工程展示。",
     "date": "2026-03-15",
     "tags": ["LLM", "AI", "Projects"],
     "category": "Projects"
@@ -11,8 +13,10 @@
   {
     "id": "2",
     "title": "About - yitumulin",
+    "title_zh": "关于 - yitumulin",
     "url": "about.html",
     "content": "Education background, research interests, publications, and technical roadmap.",
+    "content_zh": "教育背景、研究兴趣、论文成果与技术路线。",
     "date": "2026-03-15",
     "tags": ["About", "Research", "Resume"],
     "category": "Profile"
@@ -20,8 +24,10 @@
   {
     "id": "3",
     "title": "Listening - Wudangdao",
+    "title_zh": "听力 - 吾当道",
     "url": "wudangdao.html",
     "content": "Chinese listening page with search, pagination, and resume playback.",
+    "content_zh": "中文听力页面，支持搜索、分页与续播。",
     "date": "2026-03-15",
     "tags": ["Audio", "Listening", "Chinese"],
     "category": "Media"
@@ -29,8 +35,10 @@
   {
     "id": "4",
     "title": "Contact - yitumulin",
+    "title_zh": "联系 - yitumulin",
     "url": "contact.html",
     "content": "Contact email: yitumulin@yitumulin.com. Available for technical collaboration.",
+    "content_zh": "联系邮箱：yitumulin@yitumulin.com，可用于技术合作沟通。",
     "date": "2026-03-15",
     "tags": ["Contact", "Email"],
     "category": "Profile"
@@ -38,8 +46,10 @@
   {
     "id": "5",
     "title": "Project: AI & Aging Research - yitumulin",
+    "title_zh": "项目：AI 与老龄化研究 - yitumulin",
     "url": "posts/project1.html",
     "content": "Research notes on AI and aging, including problem framing, modeling ideas, and practical system directions.",
+    "content_zh": "关于 AI 与老龄化的研究笔记，涵盖问题定义、建模思路与系统落地方向。",
     "date": "2025-05-10",
     "tags": ["AI", "Research", "HealthTech"],
     "category": "Projects"

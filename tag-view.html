@@ -67,6 +67,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="darkmode.js"></script>
+  <script src="js/i18n.js"></script>
   <script>
     particlesJS("particles-js", {
       "particles": {
@@ -89,10 +90,53 @@
       "retina_detect": true
     });
 
-    document.addEventListener("DOMContentLoaded", async function() {
+    const legacyTagAlias = {
+      "浜哄伐鏅鸿兘": "AI",
+      "绉戠爺": "Research",
+      "鍋ュ悍绉戞妧": "HealthTech"
+    };
+    const legacyCategoryAlias = {
+      "项目": "Projects",
+      "档案": "Profile",
+      "媒体": "Media"
+    };
+    let allPostsCache = null;
+
+    function getLang() {
+      if (window.siteI18n && typeof window.siteI18n.getLanguage === "function") {
+        return window.siteI18n.getLanguage();
+      }
+      return "en";
+    }
+
+    function t(path, fallback, vars) {
+      if (window.siteI18n && typeof window.siteI18n.t === "function") {
+        return window.siteI18n.t(path, fallback, vars);
+      }
+      return fallback;
+    }
+
+    async function loadPosts() {
+      if (allPostsCache) return allPostsCache;
+      const response = await fetch("search-data.json");
+      if (!response.ok) throw new Error("Failed to load search-data.json");
+      allPostsCache = await response.json();
+      return allPostsCache;
+    }
+
+    function getLocalizedType(type) {
+      if (getLang() === "zh") {
+        return type === "tag" ? "标签" : "分类";
+      }
+      return type;
+    }
+
+    async function renderTagView() {
       const resultsContainer = document.getElementById("tag-results-container");
       const pageTitleElement = document.getElementById("tag-view-title");
       if (!resultsContainer || !pageTitleElement) return;
+
+      resultsContainer.innerHTML = "";
 
       const params = new URLSearchParams(window.location.search);
       const tagName = params.get("tag");
@@ -103,32 +147,26 @@
       if (tagName) {
         filterType = "tag";
         filterValue = tagName;
-        pageTitleElement.textContent = "Tag: " + tagName;
       } else if (categoryName) {
         filterType = "category";
         filterValue = categoryName;
-        pageTitleElement.textContent = "Category: " + categoryName;
       } else {
-        pageTitleElement.textContent = "Tag View";
-        resultsContainer.innerHTML = "<p>Please provide <code>?tag=...</code> or <code>?category=...</code> in the URL.</p>";
+        pageTitleElement.textContent = t("tagView.title", "Tag View");
+        resultsContainer.innerHTML = "<p>" + t("tagView.noParam", "Please provide <code>?tag=...</code> or <code>?category=...</code> in the URL.") + "</p>";
         return;
       }
 
       try {
-        const response = await fetch("search-data.json");
-        if (!response.ok) throw new Error("Failed to load search-data.json");
-        const allPosts = await response.json();
-        const legacyTagAlias = {
-          "浜哄伐鏅鸿兘": "AI",
-          "绉戠爺": "Research",
-          "鍋ュ悍绉戞妧": "HealthTech"
-        };
-        const normalizedFilterValue = filterType === "tag" && legacyTagAlias[filterValue]
-          ? legacyTagAlias[filterValue]
-          : filterValue;
+        const allPosts = await loadPosts();
+        const normalizedFilterValue = filterType === "tag"
+          ? (legacyTagAlias[filterValue] || filterValue)
+          : (legacyCategoryAlias[filterValue] || filterValue);
         const target = normalizedFilterValue.toLowerCase();
-        if (normalizedFilterValue !== filterValue) {
-          pageTitleElement.textContent = "Tag: " + normalizedFilterValue;
+
+        if (filterType === "tag") {
+          pageTitleElement.textContent = t("tagView.tagPrefix", "Tag: {value}", { value: normalizedFilterValue });
+        } else {
+          pageTitleElement.textContent = t("tagView.categoryPrefix", "Category: {value}", { value: normalizedFilterValue });
         }
 
         const filteredPosts = allPosts.filter(function(post) {
@@ -141,7 +179,11 @@
         });
 
         if (filteredPosts.length === 0) {
-          resultsContainer.innerHTML = "<p>No items found for " + filterType + ': "' + normalizedFilterValue + "\".</p>";
+          const typeText = getLocalizedType(filterType);
+          resultsContainer.innerHTML = "<p>" + t("tagView.noItems", "No items found for {type} \"{value}\".", {
+            type: typeText,
+            value: normalizedFilterValue
+          }) + "</p>";
           return;
         }
 
@@ -151,7 +193,7 @@
           const li = document.createElement("li");
           const a = document.createElement("a");
           a.href = post.url;
-          a.textContent = post.title;
+          a.textContent = getLang() === "zh" ? (post.title_zh || post.title) : post.title;
           li.appendChild(a);
           if (post.date) {
             const span = document.createElement("span");
@@ -163,9 +205,12 @@
         resultsContainer.appendChild(ul);
       } catch (error) {
         console.error("Error rendering tag/category view:", error);
-        resultsContainer.innerHTML = "<p>Something went wrong while loading the list.</p>";
+        resultsContainer.innerHTML = "<p>" + t("tagView.error", "Something went wrong while loading the list.") + "</p>";
       }
-    });
+    }
+
+    document.addEventListener("DOMContentLoaded", renderTagView);
+    document.addEventListener("site-language-changed", renderTagView);
   </script>
 </body>
 </html>

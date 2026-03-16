@@ -179,6 +179,54 @@ body.dark #darkModeToggle {
   background: rgba(23, 28, 34, 0.72);
 }
 
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 250, 244, 0.7);
+}
+
+.lang-switch button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  min-width: 42px;
+  min-height: 38px;
+  padding: 0.3rem 0.55rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.lang-switch button.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: #fffaf4;
+}
+
+body.dark .lang-switch {
+  border-color: rgba(219, 193, 165, 0.18);
+  background: rgba(23, 28, 34, 0.72);
+}
+
+body.dark .lang-switch button {
+  color: rgba(242, 234, 223, 0.74);
+}
+
+body.dark .lang-switch button.active {
+  color: #fff5e9;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -406,6 +454,7 @@ body.dark .hero-portrait {
 
 .meta-row {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
   padding-bottom: 0.7rem;
@@ -416,6 +465,16 @@ body.dark .hero-portrait {
 .meta-row span:first-child,
 .note-list strong {
   color: var(--ink-soft);
+}
+
+.meta-row span:first-child {
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.meta-row strong {
+  margin-left: auto;
+  text-align: right;
 }
 
 body.dark .meta-row,
@@ -852,6 +911,11 @@ body.dark .site-footer {
     flex-direction: column;
   }
 
+  .header-controls {
+    width: 100%;
+    justify-content: center;
+  }
+
   .hero-copy .section-title {
     max-width: none;
   }
@@ -895,5 +959,18 @@ body.dark .site-footer {
   .play-btn,
   .pagination button {
     width: 100%;
+  }
+
+  .header-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lang-switch {
+    width: 100%;
+  }
+
+  .lang-switch button {
+    flex: 1;
   }
 }

@@ -136,6 +136,7 @@
   </footer>
 
   <script src="darkmode.js"></script>
+  <script src="js/i18n.js"></script>
   <script>
     const R2_BASE = "https://audio.yitumulin.com";
     const ITEMS_PER_PAGE = 30;
@@ -152,6 +153,24 @@
     const searchInput = document.getElementById("searchInput");
     const paginationEl = document.getElementById("pagination");
 
+    function getLang() {
+      if (window.siteI18n && typeof window.siteI18n.getLanguage === "function") {
+        return window.siteI18n.getLanguage();
+      }
+      return "zh";
+    }
+
+    function t(path, fallback, vars) {
+      if (window.siteI18n && typeof window.siteI18n.t === "function") {
+        return window.siteI18n.t(path, fallback, vars);
+      }
+      return fallback;
+    }
+
+    function episodeLabel(number) {
+      return getLang() === "zh" ? ("第 " + number + " 集") : ("Episode " + number);
+    }
+
     function getEpisodeNumber(item, fallback) {
       const source = [item && item.title, item && item.file].filter(Boolean).join(" ");
       const match = source.match(/\d+/);
@@ -160,12 +179,17 @@
 
     function updateProgressLabel(index) {
       if (index < 0 || index >= audioList.length) {
-        progressEl.textContent = "共 " + audioList.length + " 集";
+        progressEl.textContent = t("listening.totalEpisodes", "Total {total} episodes", {
+          total: audioList.length
+        });
         return;
       }
 
       const episodeNumber = getEpisodeNumber(audioList[index], index + 1);
-      progressEl.textContent = "第 " + episodeNumber + " 集 / 共 " + audioList.length + " 集";
+      progressEl.textContent = t("listening.currentProgress", "Episode {episode} / {total}", {
+        episode: episodeNumber,
+        total: audioList.length
+      });
     }
 
     function savePlayProgress() {
@@ -179,7 +203,7 @@
 
       currentIndex = index;
       const item = audioList[index];
-      const trackTitle = item.title || "未命名分集";
+      const trackTitle = item.title || t("listening.unnamedEpisode", "Untitled Episode");
       titleEl.textContent = trackTitle;
       titleEl.style.color = "";
       updateProgressLabel(index);
@@ -223,7 +247,7 @@
       listContainer.innerHTML = "";
 
       if (!list.length) {
-        listContainer.innerHTML = '<div class="loading">没有匹配到相关分集。</div>';
+        listContainer.innerHTML = '<div class="loading">' + t("listening.noMatchedEpisode", "No matching episodes found.") + "</div>";
         paginationEl.style.display = "none";
         return;
       }
@@ -240,10 +264,10 @@
         }
 
         card.innerHTML = [
-          "<h4>" + (item.title || "未命名分集") + "</h4>",
-          "<p>第 " + getEpisodeNumber(item, actualIndex + 1) + " 集</p>",
+          "<h4>" + (item.title || t("listening.unnamedEpisode", "Untitled Episode")) + "</h4>",
+          "<p>" + episodeLabel(getEpisodeNumber(item, actualIndex + 1)) + "</p>",
           '<button class="play-btn' + (actualIndex === currentIndex ? " playing" : "") + '" data-index="' + actualIndex + '">',
-          actualIndex === currentIndex ? "播放中" : "播放",
+          actualIndex === currentIndex ? t("listening.playing", "Playing") : t("listening.play", "Play"),
           "</button>"
         ].join("");
 
@@ -264,7 +288,10 @@
       const prevBtn = document.getElementById("prevBtn");
       const nextBtn = document.getElementById("nextBtn");
 
-      pageInfo.textContent = "第 " + currentPage + " 页 / 共 " + totalPages + " 页";
+      pageInfo.textContent = t("listening.pageInfo", "Page {current} / {total}", {
+        current: currentPage,
+        total: totalPages
+      });
       prevBtn.disabled = currentPage === 1;
       nextBtn.disabled = currentPage === totalPages;
       paginationEl.style.display = filteredFiles.length ? "flex" : "none";
@@ -289,7 +316,7 @@
       if (currentIndex + 1 < audioList.length) {
         setTrack(currentIndex + 1, true);
       } else {
-        titleEl.textContent = "已经是最后一集。";
+        titleEl.textContent = t("listening.lastEpisode", "Already the last episode.");
         titleEl.style.color = "#376c43";
       }
     }
@@ -298,7 +325,7 @@
       if (currentIndex > 0) {
         setTrack(currentIndex - 1, true);
       } else {
-        titleEl.textContent = "已经是第一集。";
+        titleEl.textContent = t("listening.firstEpisode", "Already the first episode.");
         titleEl.style.color = "#376c43";
       }
     }
@@ -314,6 +341,7 @@
 
     async function loadList() {
       try {
+        listContainer.innerHTML = '<div class="loading">' + t("listening.loadingList", "Loading audio list...") + "</div>";
         const response = await fetch("audio_list.json", { cache: "no-cache" });
         const data = await response.json();
         audioList = Array.isArray(data) ? data : [];
@@ -326,7 +354,7 @@
         updateProgressLabel(currentIndex);
       } catch (error) {
         console.error("Failed to load audio list:", error);
-        listContainer.innerHTML = '<div class="error-message">音频列表加载失败，请稍后重试。</div>';
+        listContainer.innerHTML = '<div class="error-message">' + t("listening.loadFailed", "Failed to load audio list. Please try again later.") + "</div>";
       }
     }
 
@@ -345,6 +373,14 @@
     audioEl.addEventListener("ended", playNextAudio);
     audioEl.addEventListener("timeupdate", savePlayProgress);
     document.addEventListener("DOMContentLoaded", loadList);
+    document.addEventListener("site-language-changed", function() {
+      if (currentIndex < 0) {
+        titleEl.textContent = t("listening.chooseStart", "Choose an episode to start");
+      }
+      updateProgressLabel(currentIndex);
+      renderList(filteredFiles);
+      updatePagination();
+    });
   </script>
 </body>
 </html>
