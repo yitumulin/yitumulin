@@ -1,70 +1,46 @@
 [
   {
     "id": "1",
-    "title": "Home - 一土木林 yitumulin",
-    "title_zh": "首页 - 一土木林 yitumulin",
+    "title": "Home - yitumulin",
+    "title_zh": "首页 - yitumulin",
     "url": "index.html",
     "content": "AI engineer portfolio homepage with core expertise, project evidence, and recruiter-focused highlights.",
     "content_zh": "AI 工程师作品集首页，包含核心能力、项目证据与面向招聘方的重点信息。",
     "date": "2026-03-16",
-    "tags": [
-      "Home",
-      "Portfolio",
-      "AI",
-      "一土木林",
-      "yitumulin"
-    ],
+    "tags": ["home", "portfolio", "ai", "yitumulin", "一土木林"],
     "category": "Profile"
   },
   {
     "id": "2",
-    "title": "Projects - 一土木林 yitumulin",
-    "title_zh": "项目 - 一土木林 yitumulin",
+    "title": "Projects - yitumulin",
+    "title_zh": "项目 - yitumulin",
     "url": "posts.html",
-    "content": "Project highlights for AI engineering roles: BCI-SSVEP, WhisperMail, and Weclone local deployment.",
-    "content_zh": "?? AI ??????????BCI-SSVEP?WhisperMail ? Weclone ?????",
+    "content": "Project showcase including Shapeville, MiniMind, WeClone, BCI-SSVEP, and WhisperMail.",
+    "content_zh": "项目展示页，包含 Shapeville、MiniMind、WeClone、BCI-SSVEP 和 WhisperMail。",
     "date": "2026-03-16",
-    "tags": [
-      "Projects",
-      "AI",
-      "Engineering",
-      "一土木林",
-      "yitumulin"
-    ],
+    "tags": ["projects", "portfolio", "ai engineering", "yitumulin"],
     "category": "Projects"
   },
   {
     "id": "3",
-    "title": "Resume - 一土木林 yitumulin",
-    "title_zh": "简历 - 一土木林 yitumulin",
+    "title": "Resume - yitumulin",
+    "title_zh": "简历 - yitumulin",
     "url": "about.html",
-    "content": "Resume page with education, technical strengths, papers, and software copyright portfolio.",
-    "content_zh": "简历页面，包含教育背景、技术能力、论文成果与软件著作权成果。",
+    "content": "Resume page with education, technical strengths, papers, and software copyright achievements.",
+    "content_zh": "简历页，包含教育背景、技术能力、论文成果与软件著作权成果。",
     "date": "2026-03-16",
-    "tags": [
-      "Resume",
-      "Research",
-      "Software Copyright",
-      "一土木林",
-      "yitumulin"
-    ],
+    "tags": ["resume", "research", "software copyright", "yitumulin"],
     "category": "Profile"
   },
   {
     "id": "4",
-    "title": "Contact - 一土木林 yitumulin",
-    "title_zh": "联系 - 一土木林 yitumulin",
+    "title": "Contact - yitumulin",
+    "title_zh": "联系 - yitumulin",
     "url": "contact.html",
-    "content": "Contact email and GitHub for AI collaboration and engineering opportunities.",
-    "content_zh": "用于 AI 合作与工程机会沟通的邮箱与 GitHub 联系方式。",
+    "content": "Contact page for AI collaboration, internship communication, and technical discussions.",
+    "content_zh": "联系页，用于 AI 合作、实习沟通与技术交流。",
     "date": "2026-03-16",
-    "tags": [
-      "Contact",
-      "Email",
-      "GitHub",
-      "一土木林",
-      "yitumulin"
-    ],
+    "tags": ["contact", "email", "github", "yitumulin"],
     "category": "Profile"
   },
   {
@@ -72,76 +48,109 @@
     "title": "Listening - Wudangdao",
     "title_zh": "听书 - 吾当道",
     "url": "wudangdao.html",
-    "content": "Listening page with search, pagination, and resume playback.",
-    "content_zh": "听书页面，支持搜索、分页与续播。",
+    "content": "Listening page with search, pagination, and resume playback support.",
+    "content_zh": "听书页面，支持搜索、分页和断点续播。",
     "date": "2026-03-16",
-    "tags": [
-      "Listening",
-      "Audio",
-      "Chinese"
-    ],
+    "tags": ["listening", "audio", "wudangdao"],
     "category": "Media"
   },
   {
     "id": "6",
-    "title": "BCI-SSVEP (GitHub)",
-    "title_zh": "BCI-SSVEP（GitHub）",
-    "url": "https://github.com/yitumulin/BCI-SSVEP",
-    "content": "EEG-oriented brain-computer interaction prototype with signal processing workflow.",
-    "content_zh": "面向脑电信号处理流程的脑机交互原型项目。",
+    "title": "Shapeville Geometry Education (GitHub)",
+    "title_zh": "Shapeville 几何教育应用（GitHub）",
+    "url": "https://github.com/yitumulin/shapeville-geometry-education",
+    "content": "Java/Swing geometry learning application with staged modules, scoring feedback, and progress tracking.",
+    "content_zh": "基于 Java/Swing 的几何学习应用，包含分阶段模块、评分反馈和进度追踪。",
     "date": "2025-01-01",
-    "tags": [
-      "BCI",
-      "EEG",
-      "GitHub"
-    ],
+    "tags": ["shapeville", "java", "swing", "education app"],
     "category": "Projects"
   },
   {
     "id": "7",
-    "title": "WhisperMail (GitHub)",
-    "title_zh": "WhisperMail（GitHub）",
-    "url": "https://github.com/yitumulin/WhisperMail",
-    "content": "Speech-to-email workflow demo for practical AI productivity scenarios.",
-    "content_zh": "用于实际 AI 生产力场景的语音到邮件工作流演示项目。",
+    "title": "MiniMind Full-Pipeline Reproduction (GitHub)",
+    "title_zh": "MiniMind 全流程复现（GitHub）",
+    "url": "https://github.com/jingyaogong/minimind",
+    "content": "Completed full MiniMind workflow on local environment: pretraining, SFT, LoRA, evaluation, and checkpoint resume.",
+    "content_zh": "在本地环境完成 MiniMind 全流程：预训练、SFT、LoRA、评估与断点续训。",
     "date": "2025-01-01",
-    "tags": [
-      "LLM",
-      "Speech",
-      "GitHub"
-    ],
+    "tags": ["minimind", "llm", "pytorch", "reproduction"],
     "category": "Projects"
   },
   {
     "id": "8",
-    "title": "Name Aliases - 一土木林 yitumulin",
-    "title_zh": "名称别名 - 一土木林 yitumulin",
-    "url": "index.html",
-    "content": "Search aliases: 一土木林, yitumulin, 伊土木林.",
-    "content_zh": "检索别名：一土木林、yitumulin、伊土木林。",
-    "date": "2026-03-16",
-    "tags": [
-      "Alias",
-      "一土木林",
-      "yitumulin",
-      "伊土木林"
-    ],
-    "category": "Profile"
+    "title": "WeClone End-to-End Deployment (GitHub)",
+    "title_zh": "WeClone 端到端部署（GitHub）",
+    "url": "https://github.com/xming521/WeClone",
+    "content": "Completed local setup, data preparation, service startup, and chatbot integration validation for end-to-end WeClone deployment.",
+    "content_zh": "完成 WeClone 本地搭建、数据准备、服务启动与聊天平台联调验证，跑通端到端部署。",
+    "date": "2025-05-04",
+    "tags": ["weclone", "deployment", "agent", "llm application"],
+    "category": "Projects"
   },
   {
     "id": "9",
-    "title": "Weclone Local Deployment (Douyin Demo)",
-    "title_zh": "Weclone ??????????",
-    "url": "https://v.douyin.com/cvn7YBScsek/",
-    "content": "Independently completed environment setup, dependency alignment, service startup, WeChat clone workflow run-through, issue diagnosis, and final delivery demo.",
-    "content_zh": "????????????????????????????????????????",
-    "date": "2025-05-04",
-    "tags": [
-      "Weclone",
-      "Deployment",
-      "AI Engineering",
-      "Douyin"
-    ],
+    "title": "BCI-SSVEP (GitHub)",
+    "title_zh": "BCI-SSVEP（GitHub）",
+    "url": "https://github.com/yitumulin/BCI-SSVEP",
+    "content": "EEG-oriented brain-computer interaction prototype with signal processing and interaction pipeline.",
+    "content_zh": "面向 EEG 的脑机交互原型项目，包含信号处理与交互链路实现。",
+    "date": "2025-01-01",
+    "tags": ["bci", "eeg", "signal processing"],
     "category": "Projects"
+  },
+  {
+    "id": "10",
+    "title": "WhisperMail (GitHub)",
+    "title_zh": "WhisperMail（GitHub）",
+    "url": "https://github.com/yitumulin/WhisperMail",
+    "content": "Speech-to-email AI productivity workflow integrating recognition and task execution.",
+    "content_zh": "语音到邮件的 AI 效率工作流项目，整合识别与任务执行。",
+    "date": "2025-01-01",
+    "tags": ["whispermail", "speech", "workflow", "llm"],
+    "category": "Projects"
+  },
+  {
+    "id": "11",
+    "title": "BECA Dataset Paper (DOI)",
+    "title_zh": "BECA 数据集论文（DOI）",
+    "url": "https://doi.org/10.1038/s41597-025-06326-5",
+    "content": "Scientific Data publication on long-term cattle recognition dataset and baseline workflow.",
+    "content_zh": "发表于 Scientific Data 的长期牛只识别数据集与基线流程论文。",
+    "date": "2025-01-01",
+    "tags": ["beca", "scientific data", "computer vision", "doi"],
+    "category": "Research"
+  },
+  {
+    "id": "12",
+    "title": "CRODNet Paper (DOI)",
+    "title_zh": "CRODNet 论文（DOI）",
+    "url": "https://doi.org/10.1016/j.compag.2025.111160",
+    "content": "Computers and Electronics in Agriculture publication on top-view rotated cattle detection and lightweight modeling.",
+    "content_zh": "发表于 Computers and Electronics in Agriculture 的顶视角牛体旋转检测与轻量化建模论文。",
+    "date": "2025-01-01",
+    "tags": ["crodnet", "object detection", "computer vision", "doi"],
+    "category": "Research"
+  },
+  {
+    "id": "13",
+    "title": "Narrative Complexity Analysis (Under Review)",
+    "title_zh": "叙事复杂度分析（在审）",
+    "url": "about.html",
+    "content": "Under-review work on semantic entropy and character diversity modeling for computational literary studies.",
+    "content_zh": "在审研究：基于语义熵与角色多样性建模的计算文学叙事复杂度分析。",
+    "date": "2026-01-01",
+    "tags": ["semantic entropy", "nlp", "computational literary studies"],
+    "category": "Research"
+  },
+  {
+    "id": "14",
+    "title": "Name Aliases - yitumulin",
+    "title_zh": "姓名别名 - yitumulin",
+    "url": "index.html",
+    "content": "Search aliases: yitumulin, 一土木林, 伊土木林.",
+    "content_zh": "搜索别名：yitumulin、一土木林、伊土木林。",
+    "date": "2026-03-16",
+    "tags": ["alias", "yitumulin", "一土木林", "伊土木林"],
+    "category": "Profile"
   }
 ]
