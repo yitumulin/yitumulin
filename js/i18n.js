@@ -670,19 +670,15 @@
     ensureLanguageSwitcher();
 
     const manualOverride = localStorage.getItem(MANUAL_OVERRIDE_KEY) === "1";
-    const storedLanguage = normalizeLanguage(localStorage.getItem(LANG_STORAGE_KEY));
-    const fallback = inferLanguageFromNavigator();
+    const stored = localStorage.getItem(LANG_STORAGE_KEY);
+    const storedLanguage = stored === "zh" || stored === "en" ? stored : null;
 
-    setLanguage(storedLanguage || fallback, false);
-
-    if (!manualOverride) {
-      detectLanguageByIP().then(function(detected) {
-        if (!detected) return;
-        if (detected !== currentLanguage) {
-          setLanguage(detected, false);
-        }
-      });
+    if (manualOverride && storedLanguage) {
+      setLanguage(storedLanguage, false);
+      return;
     }
+
+    setLanguage("zh", false);
   }
 
   window.siteI18n = {

@@ -2,22 +2,22 @@
   "use strict";
 
   var PAGE_LINKS = [
-    { label: "Home", href: "index-claude.html", hint: "Portfolio overview" },
-    { label: "Projects", href: "posts-claude.html", hint: "Case studies and delivery proof" },
-    { label: "Resume", href: "about-claude.html", hint: "Research and software achievements" },
-    { label: "Contact", href: "contact-claude.html", hint: "Collaboration and hiring contact" },
-    { label: "Search", href: "search-claude.html", hint: "Search content" },
-    { label: "Archives", href: "archives-claude.html", hint: "Timeline" },
-    { label: "Listening", href: "wudangdao-claude.html", hint: "Audio library" },
-    { label: "Tag View", href: "tag-view-claude.html", hint: "Browse by tag/category" }
+    { label: "Home", href: "index.html", hint: "Portfolio overview" },
+    { label: "Projects", href: "posts.html", hint: "Case studies and delivery proof" },
+    { label: "Resume", href: "about.html", hint: "Research and software achievements" },
+    { label: "Contact", href: "contact.html", hint: "Collaboration and hiring contact" },
+    { label: "Search", href: "search.html", hint: "Search content" },
+    { label: "Archives", href: "archives.html", hint: "Timeline" },
+    { label: "Listening", href: "wudangdao.html", hint: "Audio library" },
+    { label: "Tag View", href: "tag-view.html", hint: "Browse by tag/category" }
   ];
 
   function currentPathName() {
     var path = window.location.pathname || "";
-    if (!path || path.endsWith("/")) return "index-claude.html";
+    if (!path || path.endsWith("/")) return "index.html";
     var idx = path.lastIndexOf("/");
     var name = idx >= 0 ? path.slice(idx + 1) : path;
-    return name || "index-claude.html";
+    return name || "index.html";
   }
 
   function fileNameFromHref(href) {
@@ -32,19 +32,19 @@
     if (/^(https?:|mailto:|tel:|javascript:|#)/i.test(href)) return href;
 
     var homeAnchor = document.querySelector(
-      '.sidebar-nav a[href$="index-claude.html"], .sidebar-brand a[href$="index-claude.html"], .brand[href$="index-claude.html"]'
+      '.sidebar-nav a[href$="index.html"], .sidebar-brand a[href$="index.html"], .brand[href$="index.html"]'
     );
     if (!homeAnchor) return href;
 
     var homeHref = homeAnchor.getAttribute("href") || "";
-    var marker = "index-claude.html";
+    var marker = "index.html";
     var markerIndex = homeHref.lastIndexOf(marker);
     if (markerIndex < 0) return href;
 
     return homeHref.slice(0, markerIndex) + href;
   }
 
-  function toClaudeHref(href) {
+  function normalizeInternalHref(href) {
     if (!href) return href;
     if (/^(https?:|mailto:|tel:|javascript:|#)/i.test(href)) return href;
 
@@ -65,21 +65,23 @@
     }
 
     if (!/\.html$/i.test(base)) return href;
-    if (/-claude\.html$/i.test(base)) return href;
-
-    return base.replace(/\.html$/i, "-claude.html") + query + hash;
+    return base.replace(/-claude\.html$/i, ".html") + query + hash;
   }
 
   function toOriginalHref(pathname) {
     if (!pathname) return pathname;
-    return pathname.replace(/-claude\.html$/i, ".html");
+    if (pathname.endsWith("/")) return pathname + "index-fix.html";
+    if (/-claude\.html$/i.test(pathname)) return pathname.replace(/-claude\.html$/i, "-fix.html");
+    if (/-fix\.html$/i.test(pathname)) return pathname.replace(/-fix\.html$/i, ".html");
+    if (/\.html$/i.test(pathname)) return pathname.replace(/\.html$/i, "-fix.html");
+    return pathname;
   }
 
   function rewriteInternalLinks(root) {
     (root || document).querySelectorAll("a[href]").forEach(function(anchor) {
       var rawHref = anchor.getAttribute("href");
       if (!rawHref) return;
-      var nextHref = toClaudeHref(rawHref);
+      var nextHref = normalizeInternalHref(rawHref);
       if (nextHref !== rawHref) {
         anchor.setAttribute("href", nextHref);
       }
@@ -205,7 +207,7 @@
     var link = document.createElement("a");
     link.className = "original-link";
     link.href = originalHref;
-    link.textContent = "Open Original Version";
+    link.textContent = "Open Previous Version";
     container.appendChild(link);
   }
 
