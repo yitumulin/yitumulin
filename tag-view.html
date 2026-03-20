@@ -3,101 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tag View - yitumulin</title>
-
-  <meta name="description" content="Browse yitumulin content by tags and categories, including AI projects and research topics.">
-  <meta name="keywords" content="tag view, content tags, AI topics">
-  <meta name="author" content="yitumulin">
+  <title>Tag View | Claude Workspace | yitumulin</title>
   <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://yitumulin.com/tag-view.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="yitumulin">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Tag View - yitumulin">
-  <meta property="og:description" content="Browse yitumulin content by tags and categories, including AI projects and research topics.">
-  <meta property="og:url" content="https://yitumulin.com/tag-view.html">
-  <meta property="og:image" content="https://yitumulin.com/favicon.png">
-  <meta property="og:image:alt" content="yitumulin profile image">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tag View - yitumulin">
-  <meta name="twitter:description" content="Browse yitumulin content by tags and categories, including AI projects and research topics.">
-  <meta name="twitter:image" content="https://yitumulin.com/favicon.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Tag View - yitumulin","url":"https://yitumulin.com/tag-view.html","description":"Browse content by tags on yitumulin."}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="claude-theme.css">
 </head>
-<body>
+<body class="claude-ui">
   <script>
-    (function() {
+    (function(){
       try {
         var theme = localStorage.getItem("theme");
         var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (theme === "dark" || (!theme && prefersDark)) {
-          document.body.classList.add("dark");
-        }
-      } catch (e) {
-        console.error("Error applying initial theme:", e);
-      }
+        if (theme === "dark" || (!theme && prefersDark)) document.body.classList.add("dark");
+      } catch (e) {}
     })();
   </script>
 
-  <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
-
   <header class="site-header">
     <div class="container">
-      <a href="index.html" class="logo">yitumulin</a>
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="posts.html">Projects</a>
-        <a href="about.html">Resume</a>
-      </nav>
-      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+      <a href="index-claude.html" class="brand">yitumulin workspace</a>
+      <div class="header-actions">
+        <button class="sidebar-toggle" data-sidebar-toggle>Menu</button>
+        <button class="cmd-open" data-cmd-open>Jump</button>
+        <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+      </div>
     </div>
   </header>
 
-  <main class="container" style="position: relative; z-index: 1;">
-    <h1 id="tag-view-title">Tag View</h1>
-    <div id="tag-results-container"></div>
-  </main>
+  <div class="claude-app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <a href="index-claude.html">yitumulin</a>
+        <button class="sidebar-toggle" data-sidebar-toggle>Close</button>
+      </div>
+      <div class="sidebar-label">Pages</div>
+      <nav class="sidebar-nav">
+        <a href="index-claude.html">Home</a>
+        <a href="posts-claude.html">Projects</a>
+        <a href="about-claude.html">Resume</a>
+        <a href="contact-claude.html">Contact</a>
+      </nav>
+      <div class="sidebar-label">Tools</div>
+      <nav class="sidebar-subnav">
+        <a href="search-claude.html">Search</a>
+        <a href="archives-claude.html">Archives</a>
+        <a href="wudangdao-claude.html">Listening</a>
+        <a href="tag-view-claude.html">Tag View</a>
+      </nav>
+      <div class="sidebar-footer"></div>
+    </aside>
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <main class="main">
+      <section class="main-top">
+        <div>
+          <div class="page-kicker">Browse</div>
+          <h1 id="tag-view-title" class="page-title">Tag View</h1>
+          <p class="page-intro">Filtered items by tag or category.</p>
+        </div>
+      </section>
+
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Results</span>
+          <span class="turn-role">Filtered list</span>
+        </div>
+        <div class="turn-body">
+          <div id="tag-results-container" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <footer class="foot">
+        yitumulin · 一土木林 · <a href="search-claude.html">Search</a> · <a href="wudangdao-claude.html">Listening</a> · <a href="contact-claude.html">Contact</a>
+      </footer>
+    </main>
+  </div>
+
   <script src="darkmode.js"></script>
   <script src="js/i18n.js"></script>
   <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#ffffff" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.5 },
-        "size": { "value": 3 },
-        "line_linked": { "enable": true, "distance": 120, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-        "move": { "enable": true, "speed": 2 }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "grab" },
-          "onclick": { "enable": true, "mode": "push" },
-          "resize": true
-        }
-      },
-      "retina_detect": true
-    });
-
-    const legacyTagAlias = {
-      "娴滃搫浼愰弲楦垮厴": "AI",
-      "缁夋垹鐖?: "Research",
-      "閸嬨儱鎮嶇粔鎴炲Η": "HealthTech"
-    };
-    const legacyCategoryAlias = {
-      "椤圭洰": "Projects",
-      "妗ｆ": "Profile",
-      "濯掍綋": "Media"
-    };
+    const legacyTagAlias = {};
+    const legacyCategoryAlias = {};
     let allPostsCache = null;
 
     function getLang() {
@@ -124,7 +109,7 @@
 
     function getLocalizedType(type) {
       if (getLang() === "zh") {
-        return type === "tag" ? "鏍囩" : "鍒嗙被";
+        return type === "tag" ? "标签" : "分类";
       }
       return type;
     }
@@ -135,7 +120,6 @@
       if (!resultsContainer || !pageTitleElement) return;
 
       resultsContainer.innerHTML = "";
-
       const params = new URLSearchParams(window.location.search);
       const tagName = params.get("tag");
       const categoryName = params.get("category");
@@ -186,7 +170,7 @@
         }
 
         const ul = document.createElement("ul");
-        ul.className = "post-list";
+        ul.className = "result-list";
         filteredPosts.forEach(function(post) {
           const li = document.createElement("li");
           const a = document.createElement("a");
@@ -195,6 +179,8 @@
           li.appendChild(a);
           if (post.date) {
             const span = document.createElement("span");
+            span.style.marginLeft = "0.5rem";
+            span.style.color = "var(--muted)";
             span.textContent = post.date;
             li.appendChild(span);
           }
@@ -202,7 +188,6 @@
         });
         resultsContainer.appendChild(ul);
       } catch (error) {
-        console.error("Error rendering tag/category view:", error);
         resultsContainer.innerHTML = "<p>" + t("tagView.error", "Something went wrong while loading the list.") + "</p>";
       }
     }
@@ -210,8 +195,6 @@
     document.addEventListener("DOMContentLoaded", renderTagView);
     document.addEventListener("site-language-changed", renderTagView);
   </script>
+  <script src="claude-theme.js"></script>
 </body>
 </html>
-
-
-

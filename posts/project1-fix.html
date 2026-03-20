@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project: AI & Aging Research - yitumulin</title>
+
+  <meta name="description" content="Research notes on AI and aging, including problem framing, modeling ideas, and practical system directions.">
+  <meta name="keywords" content="AI and aging, healthcare AI, aging research, project notes">
+  <meta name="author" content="yitumulin">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://yitumulin.com/posts/project1.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="yitumulin">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Project: AI &amp; Aging Research - yitumulin">
+  <meta property="og:description" content="Research notes on AI and aging, including problem framing, modeling ideas, and practical system directions.">
+  <meta property="og:url" content="https://yitumulin.com/posts/project1.html">
+  <meta property="og:image" content="https://yitumulin.com/favicon.png">
+  <meta property="og:image:alt" content="yitumulin profile image">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Project: AI &amp; Aging Research - yitumulin">
+  <meta name="twitter:description" content="Research notes on AI and aging, including problem framing, modeling ideas, and practical system directions.">
+  <meta name="twitter:image" content="https://yitumulin.com/favicon.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Project: AI \u0026 Aging Research","description":"Research notes on AI and aging, from background and challenges to practical AI solution directions.","author":{"@type":"Person","name":"Yitumulin"},"datePublished":"2025-05-10","mainEntityOfPage":"https://yitumulin.com/posts/project1.html","image":"https://yitumulin.com/favicon.png"}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <style>
+    .post-container {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .post-content {
+      flex: 1;
+      min-width: 0;
+      margin-left: 270px;
+    }
+    #toc-container {
+      width: 250px;
+      position: fixed;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .dark #toc-container {
+      background: rgba(30, 30, 30, 0.9);
+    }
+    #toc-container h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    #toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #toc-list ul {
+      list-style: none;
+      padding-left: 1.5rem;
+      margin: 0.5rem 0;
+    }
+    #toc-list a {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+      padding: 0.25rem 0;
+      font-size: 0.9rem;
+    }
+    #toc-list a:hover {
+      color: #666;
+    }
+    .dark #toc-list a:hover {
+      color: #999;
+    }
+    .post-meta {
+      margin: 1rem 0 2rem;
+      color: #666;
+    }
+    .dark .post-meta {
+      color: #999;
+    }
+    .post-tags {
+      margin-top: 1rem;
+    }
+    .post-tags a {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      margin: 0.25rem;
+      background: #f0f0f0;
+      border-radius: 15px;
+      color: #666;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .dark .post-tags a {
+      background: #333;
+      color: #ccc;
+    }
+    .post-tags a:hover {
+      background: #e0e0e0;
+    }
+    .dark .post-tags a:hover {
+      background: #444;
+    }
+    @media (max-width: 768px) {
+      .post-content {
+        margin-left: 0;
+      }
+      #toc-container {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
+        }
+      } catch (e) {
+        console.error("Error applying initial theme:", e);
+      }
+    })();
+  </script>
+  <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="logo">yitumulin</a>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="../posts.html">Projects</a>
+        <a href="../about.html">Resume</a>
+      </nav>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+    </div>
+  </header>
+
+  <main class="container" style="position: relative; z-index: 1;">
+    <aside id="toc-container">
+      <h3>鐩綍</h3>
+      <ul id="toc-list"></ul>
+    </aside>
+    <div class="post-container">
+      <article class="post-content">
+        <h1>Project: AI & Aging Research</h1>
+        <div class="post-meta">
+          <time datetime="2025-05-10">2025-05-10</time>
+          <div class="post-tags">
+            <a href="../tag-view.html?tag=AI">AI</a>
+            <a href="../tag-view.html?tag=Research">Research</a>
+            <a href="../tag-view.html?tag=HealthTech">HealthTech</a>
+          </div>
+        </div>
+
+        <h2>寮曡█</h2>
+        <p>闅忕潃鍏ㄧ悆鑰侀緞鍖栧姞閫燂紝鍖荤枟璧勬簮绱у紶銆佹參鐥呯鐞嗗鏉傘€佺収鎶ゆ垚鏈笂鍗囩瓑闂瓒婃潵瓒婄獊鍑恒€傝繖涓」鐩仛鐒︹€淎I 濡備綍鍦ㄨ€侀緞鍖栧満鏅噷鍒涢€犲疄闄呬环鍊尖€濓紝鐩爣鏄妸鐮旂┒闂鎷嗚В鎴愬彲钀藉湴鐨勬暟鎹换鍔°€佹ā鍨嬩换鍔″拰浜у搧浠诲姟銆?/p>
+
+        <h2>鐮旂┒鑳屾櫙</h2>
+        <p>鑰侀緞鍖栫浉鍏冲満鏅叿鏈夋槑鏄剧殑鏁版嵁鍜屼笟鍔＄壒寰侊細鏁版嵁鏉ユ簮澶氭牱銆佹爣娉ㄦ垚鏈珮銆佷釜浣撳樊寮傚ぇ銆侀暱鏈熻拷韪渶姹傚己銆傜浉姣斿崟鐐规ā鍨嬩紭鍖栵紝鏇撮噸瑕佺殑鏄缓绔嬬ǔ瀹氱殑鏁版嵁闂幆鍜屽彲瑙ｉ噴鐨勫喅绛栨祦绋嬨€?/p>
+
+        <h3>褰撳墠鎸戞垬</h3>
+        <ul>
+          <li>鏁版嵁鍒嗗竷涓嶅潎锛屾満鏋勯棿鏁版嵁鏍囧噯涓嶇粺涓€銆?/li>
+          <li>妯″瀷鍦ㄧ湡瀹炲満鏅腑瀹规槗鍑虹幇鎬ц兘琛板噺銆?/li>
+          <li>涓氬姟渚ф洿鍏虫敞椋庨櫓鎺у埗鍜岃В閲婃€э紝鑰屼笉鍙槸绂荤嚎鎸囨爣銆?/li>
+        </ul>
+
+        <h2>AI 瑙ｅ喅鏂规鏂瑰悜</h2>
+        <p>椤圭洰浠庘€滈闄╅娴?+ 鏅鸿兘鐩戞祴 + 宸ヤ綔娴佸崗鍚屸€濅笁涓眰闈㈣璁℃柟妗堬紝寮鸿皟绔埌绔氦浠橈紝鑰屼笉鏄彧鍋滅暀鍦ㄨ鏂囩骇鍒疄楠屻€?/p>
+
+        <h3>椋庨櫓棰勬祴妯″瀷</h3>
+        <ul>
+          <li>鍩轰簬澶氭簮鐗瑰緛鍋氬仴搴烽闄╁垎灞傦紝鏀寔鏃╂湡棰勮銆?/li>
+          <li>浣跨敤鏃堕棿搴忓垪涓庣粨鏋勫寲鐗瑰緛铻嶅悎锛屾彁鍗囩ǔ瀹氭€с€?/li>
+          <li>寮曞叆鍙В閲婅緭鍑猴紝甯姪鍖荤敓鍜岀収鎶や汉鍛樺揩閫熷垽鏂€?/li>
+        </ul>
+
+        <h3>鏅鸿兘鐩戞祴绯荤粺</h3>
+        <ul>
+          <li>缁撳悎瑙嗚鎴栦紶鎰熷櫒鏁版嵁璇嗗埆寮傚父琛屼负涓庣姸鎬佸彉鍖栥€?/li>
+          <li>鏀寔浜嬩欢绾у憡璀︿笌鍥炴斁锛屽噺灏戞紡鎶ュ拰璇姤鎴愭湰銆?/li>
+          <li>涓庝汉宸ユ祦绋嬭鎺ワ紝纭繚绯荤粺寤鸿鍙墽琛屻€佸彲杩借釜銆?/li>
+        </ul>
+
+        <h2>鏈潵灞曟湜</h2>
+        <p>鍚庣画閲嶇偣涓嶆槸鈥滃崟娆℃ā鍨嬪埛鏂扳€濓紝鑰屾槸鎸佺画杩唬鏈哄埗锛氭暟鎹弽棣堛€佹ā鍨嬫洿鏂般€佽鍒欏崗鍚屻€佹晥鏋滆瘎浼般€傚彧鏈夊舰鎴愰暱鏈熼棴鐜紝AI 鎵嶈兘鍦ㄥ仴搴峰吇鑰佸満鏅噷绋冲畾鍒涢€犱环鍊笺€?/p>
+
+        <h3>涓嬩竴姝ヨ鍒?/h3>
+        <ul>
+          <li>瀹屽杽璇勪及浣撶郴锛氫粠妯″瀷鎸囨爣鎵╁睍鍒颁笟鍔℃寚鏍囥€?/li>
+          <li>琛ュ厖鐪熷疄鍦烘櫙娴嬭瘯锛岄獙璇佽法鍦烘櫙娉涘寲鑳藉姏銆?/li>
+          <li>鎺ㄥ姩杞婚噺鍖栭儴缃诧紝闄嶄綆绯荤粺鎺ュ叆鍜岀淮鎶ゆ垚鏈€?/li>
+        </ul>
+      </article>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="../darkmode.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3 },
+        "line_linked": { "enable": true, "distance": 120, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
+        }
+      },
+      "retina_detect": true
+    });
+
+    // Build TOC from headings in article body.
+    document.addEventListener("DOMContentLoaded", function() {
+      const contentElement = document.querySelector(".post-content");
+      const tocListElement = document.getElementById("toc-list");
+
+      if (!contentElement || !tocListElement) return;
+
+      const headings = contentElement.querySelectorAll("h2, h3, h4");
+      let currentLevel2List = null;
+      let currentLevel3List = null;
+
+      headings.forEach(function(heading, index) {
+        const level = parseInt(heading.tagName.substring(1), 10);
+
+        if (!heading.id) {
+          heading.id = "toc-heading-" + index + "-" + heading.textContent.trim().toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
+        }
+
+        const listItem = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = "#" + heading.id;
+        link.textContent = heading.textContent.trim();
+        listItem.appendChild(link);
+
+        if (level === 2) {
+          tocListElement.appendChild(listItem);
+          currentLevel2List = document.createElement("ul");
+          listItem.appendChild(currentLevel2List);
+          currentLevel3List = null;
+        } else if (level === 3) {
+          if (!currentLevel2List) {
+            currentLevel2List = tocListElement;
+          }
+          currentLevel2List.appendChild(listItem);
+          currentLevel3List = document.createElement("ul");
+          listItem.appendChild(currentLevel3List);
+        } else if (level === 4) {
+          if (!currentLevel3List) {
+            if (!currentLevel2List) currentLevel2List = tocListElement;
+            currentLevel2List.appendChild(listItem);
+          } else {
+            currentLevel3List.appendChild(listItem);
+          }
+        }
+      });
+
+      tocListElement.querySelectorAll("ul").forEach(function(ul) {
+        if (!ul.hasChildNodes()) {
+          ul.remove();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+

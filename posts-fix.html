@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects | 一土木林 yitumulin</title>
+
+  <meta name="description" content="Project showcase of 一土木林（yitumulin）, covering Shapeville, MiniMind, WeClone, BCI-SSVEP, and WhisperMail with engineering evidence.">
+  <meta name="keywords" content="一土木林, yitumulin, 伊土木林, Shapeville, MiniMind, WeClone, BCI-SSVEP, WhisperMail, AI product engineering, portfolio projects">
+  <meta name="author" content="yitumulin">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://yitumulin.com/posts.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="yitumulin">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Projects | 一土木林 yitumulin">
+  <meta property="og:description" content="Project showcase of 一土木林（yitumulin）, covering Shapeville, MiniMind, WeClone, BCI-SSVEP, and WhisperMail with engineering evidence.">
+  <meta property="og:url" content="https://yitumulin.com/posts.html">
+  <meta property="og:image" content="https://yitumulin.com/favicon.png">
+  <meta property="og:image:alt" content="yitumulin profile image">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Projects | 一土木林 yitumulin">
+  <meta name="twitter:description" content="Project showcase of 一土木林（yitumulin）, covering Shapeville, MiniMind, WeClone, BCI-SSVEP, and WhisperMail with engineering evidence.">
+  <meta name="twitter:image" content="https://yitumulin.com/favicon.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Projects - yitumulin","url":"https://yitumulin.com/posts.html","description":"Collection of project evidence and engineering showcases by yitumulin."}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
+        }
+      } catch (e) {
+        console.error("Error applying initial theme:", e);
+      }
+    })();
+  </script>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">yitumulin</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="posts.html">Projects</a>
+        <a href="about.html">Resume</a>
+      </nav>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-panel">
+      <div class="eyebrow">LLM Systems</div>
+      <h2 class="section-title" style="font-size: clamp(1.4rem, 2.5vw, 2rem); margin-bottom: 1rem;">LLM / Model Application Engineering</h2>
+      <ul class="post-list">
+        <li>
+          <a href="https://github.com/jingyaogong/minimind" target="_blank" rel="noreferrer">MiniMind Full-Pipeline Reproduction (GitHub)</a>
+          <span>PyTorch / LLM · End-to-end training and inference workflow</span>
+          <p><strong>Problem:</strong> Open-source LLM training projects are often hard to reproduce end-to-end in constrained local environments.</p>
+          <p><strong>My Ownership:</strong> Independently executed the full MiniMind pipeline from pretraining to SFT, LoRA fine-tuning, and evaluation/inference.</p>
+          <p><strong>Tech Stack:</strong> Python, PyTorch, distributed/multi-stage training scripts, checkpoint resume, and inference deployment scripts.</p>
+          <p><strong>Measurable Output:</strong> Completed 4 core pipeline stages (Pretrain, SFT, LoRA, Eval) with reproducible local runs and validated checkpoint continuation workflow.</p>
+        </li>
+        <li>
+          <a href="https://github.com/xming521/WeClone" target="_blank" rel="noreferrer">WeClone End-to-End Deployment (GitHub)</a>
+          <span>LLM Agent / Service integration · Local deployment and validation</span>
+          <p><strong>Problem:</strong> Real-world LLM applications require stable deployment chains, not just model demos.</p>
+          <p><strong>My Ownership:</strong> Completed local environment setup, training data preparation, model tuning configuration, API service startup, and chatbot platform connection.</p>
+          <p><strong>Tech Stack:</strong> Python ecosystem, model service APIs, retrieval/chat orchestration, and deployment scripts.</p>
+          <p><strong>Measurable Output:</strong> Ran a 5-step deployment chain from data to service response, completed end-to-end verification, and published deployment evidence video.</p>
+          <p><a href="https://v.douyin.com/cvn7YBScsek/" target="_blank" rel="noreferrer">Deployment evidence (Douyin)</a></p>
+        </li>
+        <li>
+          <a href="https://github.com/yitumulin/WhisperMail" target="_blank" rel="noreferrer">WhisperMail (GitHub)</a>
+          <span>LLM + Speech · Productivity workflow prototype</span>
+          <p><strong>Problem:</strong> Voice-to-task workflows often break between speech recognition and downstream action execution.</p>
+          <p><strong>My Ownership:</strong> Integrated speech recognition and email task processing into a usable productivity-oriented AI prototype.</p>
+          <p><strong>Tech Stack:</strong> Speech pipeline, workflow orchestration, and LLM-assisted task flow integration.</p>
+          <p><strong>Measurable Output:</strong> Delivered a complete runnable loop: voice input -> transcript parsing -> email workflow execution.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="page-panel" style="margin-top: 1rem;">
+      <div class="eyebrow">Product Build</div>
+      <h2 class="section-title" style="font-size: clamp(1.4rem, 2.5vw, 2rem); margin-bottom: 1rem;">AI Product and Application Development</h2>
+      <ul class="post-list">
+        <li>
+          <a href="https://github.com/yitumulin/shapeville-geometry-education" target="_blank" rel="noreferrer">Shapeville Geometry Education (GitHub)</a>
+          <span>Java / Swing · Geometry learning product implementation</span>
+          <p><strong>Problem:</strong> Geometry education tools often lack progressive challenge design and interactive feedback loops.</p>
+          <p><strong>My Ownership:</strong> Implemented a complete desktop geometry learning app with seven staged modules (2D, 3D, angle, circle, composite shape, sector, stage challenge).</p>
+          <p><strong>Tech Stack:</strong> Java, Swing, object-oriented architecture, modular UI panels, and Javadoc-based maintainability setup.</p>
+          <p><strong>Measurable Output:</strong> Built 7 runnable learning modules, unified score feedback flow, and persistent progress display for productized learning interaction.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="page-panel" style="margin-top: 1rem;">
+      <div class="eyebrow">Perception</div>
+      <h2 class="section-title" style="font-size: clamp(1.4rem, 2.5vw, 2rem); margin-bottom: 1rem;">Computer Vision and BCI Engineering</h2>
+      <ul class="post-list">
+        <li>
+          <a href="https://github.com/yitumulin/BCI-SSVEP" target="_blank" rel="noreferrer">BCI-SSVEP (GitHub)</a>
+          <span>BCI / Signal Processing · EEG interaction prototype</span>
+          <p><strong>Problem:</strong> Brain-computer interaction applications need robust signal-to-command conversion under noisy EEG conditions.</p>
+          <p><strong>My Ownership:</strong> Implemented EEG-oriented signal processing and BCI interaction workflow for practical experiment scenarios.</p>
+          <p><strong>Tech Stack:</strong> EEG signal processing, feature engineering, and interaction pipeline implementation.</p>
+          <p><strong>Measurable Output:</strong> Delivered a runnable prototype pipeline covering preprocessing, feature extraction, and interaction output.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>yitumulin · 一土木林</p>
+      <p class="footer-links"><a href="search.html">Search</a> · <a href="wudangdao.html">Listening</a> · <a href="contact.html">Contact</a></p>
+    </div>
+  </footer>
+
+  <script src="darkmode.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>
+
+
+

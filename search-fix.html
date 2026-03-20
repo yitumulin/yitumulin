@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search - yitumulin</title>
+
+  <meta name="description" content="Search the yitumulin website for projects, posts, listening content, and research notes.">
+  <meta name="keywords" content="site search, yitumulin search, find projects">
+  <meta name="author" content="yitumulin">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://yitumulin.com/search.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="yitumulin">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Search - yitumulin">
+  <meta property="og:description" content="Search the yitumulin website for projects, posts, listening content, and research notes.">
+  <meta property="og:url" content="https://yitumulin.com/search.html">
+  <meta property="og:image" content="https://yitumulin.com/favicon.png">
+  <meta property="og:image:alt" content="yitumulin profile image">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Search - yitumulin">
+  <meta name="twitter:description" content="Search the yitumulin website for projects, posts, listening content, and research notes.">
+  <meta name="twitter:image" content="https://yitumulin.com/favicon.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SearchResultsPage","name":"Search - yitumulin","url":"https://yitumulin.com/search.html","description":"Search page for content on yitumulin."}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
+        }
+      } catch (e) {
+        console.error("Error applying initial theme:", e);
+      }
+    })();
+  </script>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">yitumulin</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="posts.html">Projects</a>
+        <a href="about.html">Resume</a>
+      </nav>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-panel">
+      <div class="page-intro">
+        <div class="eyebrow">Search</div>
+        <h1 class="section-title">Find Any Page Quickly</h1>
+        <p class="lead">Search by project name, topic, or page title.</p>
+      </div>
+
+      <div class="search-box" style="max-width: 760px; margin: 1.4rem 0 0;">
+        <input type="text" id="searchInput" placeholder="Try: LLM / project / contact">
+      </div>
+      <div id="searchResults" style="margin-top: 1.2rem;"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>yitumulin</p>
+      <p class="footer-links"><a href="search.html">Search</a> · <a href="wudangdao.html">Listening</a> · <a href="contact.html">Contact</a></p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script src="darkmode.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="search.js"></script>
+</body>
+</html>
+
+
+
+
+

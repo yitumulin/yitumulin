@@ -3,201 +3,220 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>一土木林 yitumulin | AI Portfolio</title>
-
-  <meta name="description" content="一土木林（yitumulin）AI and LLM application engineering portfolio. Includes end-to-end project delivery, research output, and software achievements for internship hiring.">
-  <meta name="keywords" content="一土木林, yitumulin, 伊土木林, AI portfolio, LLM application engineer, AI developer intern, AI product engineering, BCI, computer vision, database">
-  <meta name="google-site-verification" content="oqfx2l9NFi2uXeOYy-nj-FTjFQxLFgOiOwJmXgwaBgQ">
-  <meta name="baidu-site-verification" content="codeva-chM7GhxTPM">
-  <meta name="author" content="yitumulin">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://yitumulin.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="yitumulin">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="一土木林 yitumulin | AI Portfolio">
-  <meta property="og:description" content="一土木林（yitumulin）AI and LLM application engineering portfolio with end-to-end project evidence and measurable outcomes.">
-  <meta property="og:url" content="https://yitumulin.com/">
-  <meta property="og:image" content="https://yitumulin.com/favicon.png">
-  <meta property="og:image:alt" content="yitumulin profile image">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="一土木林 yitumulin | AI Portfolio">
-  <meta name="twitter:description" content="一土木林（yitumulin）AI and LLM application engineering portfolio with end-to-end project evidence and measurable outcomes.">
-  <meta name="twitter:image" content="https://yitumulin.com/favicon.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Yitumulin","alternateName":["一土木林","yitumulin","伊土木林"],"url":"https://yitumulin.com/","image":"https://yitumulin.com/favicon.png","email":"mailto:yitumulin@yitumulin.com","sameAs":["https://github.com/yitumulin"],"jobTitle":"AI and Software Engineering Candidate","affiliation":"Beijing University of Posts and Telecommunications","knowsAbout":["Large Language Models","Computer Vision","AI Product Engineering","Brain-Computer Interface","Database Engineering"]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"yitumulin","alternateName":["一土木林","yitumulin","伊土木林"],"url":"https://yitumulin.com/","potentialAction":{"@type":"SearchAction","target":"https://yitumulin.com/search.html?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>Home | Claude Workspace | yitumulin</title>
+  <meta name="description" content="Claude-style workspace UI for yitumulin portfolio.">
+  <meta name="robots" content="noindex,follow">
   <link rel="icon" type="image/png" href="favicon.png">
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "rhkatcquvv");
-  </script>
+  <link rel="stylesheet" href="claude-theme.css">
 </head>
-<body>
+<body class="claude-ui">
   <script>
-    (function() {
+    (function(){
       try {
         var theme = localStorage.getItem("theme");
         var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (theme === "dark" || (!theme && prefersDark)) {
-          document.body.classList.add("dark");
-        }
-      } catch (e) {
-        console.error("Error applying initial theme:", e);
-      }
+        if (theme === "dark" || (!theme && prefersDark)) document.body.classList.add("dark");
+      } catch (e) {}
     })();
   </script>
 
   <header class="site-header">
     <div class="container">
-      <a href="index.html" class="logo">yitumulin</a>
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="posts.html">Projects</a>
-        <a href="about.html">Resume</a>
-      </nav>
-      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+      <a href="index-claude.html" class="brand">yitumulin workspace</a>
+      <div class="header-actions">
+        <button class="sidebar-toggle" data-sidebar-toggle>Menu</button>
+        <button class="cmd-open" data-cmd-open>Jump</button>
+        <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+      </div>
     </div>
   </header>
 
-  <main class="home-shell">
-    <section class="hero-panel home-hero">
-      <div class="eyebrow">Portfolio</div>
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <h1 class="section-title">LLM Application, AI Development, AI Product Engineering</h1>
-          <p class="lead">
-            I am a Telecommunication Engineering and Management student at Beijing University of Posts and Telecommunications, currently building in LLM application engineering, AI development, and AI product engineering.
-          </p>
-          <p class="hero-note">
-            This portfolio shows what I built, what I owned, and what measurable outcomes I delivered.
-          </p>
-          <div class="tag-cluster" style="margin-top: 1rem;">
-            <span class="tag-pill">5 End-to-End AI Projects</span>
-            <span class="tag-pill">2 Published Papers + 1 Under Review</span>
-            <span class="tag-pill">2 Software Copyrights</span>
+  <div class="claude-app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <a href="index-claude.html">yitumulin</a>
+        <button class="sidebar-toggle" data-sidebar-toggle>Close</button>
+      </div>
+      <div class="sidebar-label">Pages</div>
+      <nav class="sidebar-nav">
+        <a href="index-claude.html">Home</a>
+        <a href="posts-claude.html">Projects</a>
+        <a href="about-claude.html">Resume</a>
+        <a href="contact-claude.html">Contact</a>
+      </nav>
+      <div class="sidebar-label">Tools</div>
+      <nav class="sidebar-subnav">
+        <a href="search-claude.html">Search</a>
+        <a href="archives-claude.html">Archives</a>
+        <a href="wudangdao-claude.html">Listening</a>
+        <a href="tag-view-claude.html">Tag View</a>
+      </nav>
+      <div class="sidebar-footer"></div>
+    </aside>
+
+    <main class="main">
+      <section class="main-top">
+        <div>
+          <div class="page-kicker">Home</div>
+          <h1 class="page-title">AI Portfolio Workspace</h1>
+          <p class="page-intro">A recruiter-first interface that highlights who I am, what I can build, and what evidence I can provide.</p>
+        </div>
+        <div class="top-right">
+          <a class="action-link" href="about-claude.html">Open Resume</a>
+          <a class="action-link primary" href="posts-claude.html">Open Projects</a>
+        </div>
+      </section>
+
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Prompt</span>
+          <span class="turn-role">Who is yitumulin?</span>
+        </div>
+        <div class="turn-body">
+          <p>I am a Telecommunication Engineering and Management student at Beijing University of Posts and Telecommunications, currently building in LLM application engineering, AI development, and AI product engineering.</p>
+          <div class="metric-row">
+            <span class="metric">5 End-to-End AI Projects</span>
+            <span class="metric">2 Published Papers + 1 Under Review</span>
+            <span class="metric">2 Software Copyrights</span>
           </div>
-          <p class="section-subtitle" style="margin-top: 0.9rem;">
-            <strong>Core Stack:</strong> Python, PyTorch, Transformers, LangChain, SQL, Docker, OpenAI API, Java.
-          </p>
-          <div class="hero-actions">
-            <a href="about.html" class="btn btn-primary">View Resume</a>
-            <a href="posts.html" class="btn">View Projects</a>
+          <div class="chip-row">
+            <span class="chip">LLM Application</span>
+            <span class="chip">AI Product Engineering</span>
+            <span class="chip">Computer Vision</span>
+            <span class="chip">BCI</span>
+            <span class="chip">Database</span>
           </div>
-          <div class="social">
-            <a href="https://github.com/yitumulin" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="mailto:yitumulin@yitumulin.com">Email</a>
+          <p><strong>Core Stack:</strong> Python, PyTorch, Transformers, LangChain, SQL, Docker, OpenAI API, Java.</p>
+          <div class="action-row">
+            <a class="action-link" href="https://github.com/yitumulin" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="action-link" href="mailto:yitumulin@yitumulin.com">Email</a>
           </div>
         </div>
+      </section>
 
-        <div class="hero-side">
-          <article class="card-panel mini-panel">
-            <img src="favicon.png" alt="yitumulin avatar" class="hero-portrait">
-            <div class="tag-cluster">
-              <span class="tag-pill">LLM Application</span>
-              <span class="tag-pill">AI Product Engineering</span>
-              <span class="tag-pill">Computer Vision</span>
-              <span class="tag-pill">BCI</span>
-              <span class="tag-pill">Database</span>
-            </div>
-            <div class="facts-grid" style="margin-top: 1rem;">
-              <div class="fact-chip">
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Mode</span>
+          <span class="turn-role">Recruiter View / Technical View</span>
+        </div>
+        <div class="turn-body">
+          <div class="filter-row">
+            <button class="filter-btn active" data-view-toggle="recruiter">Recruiter View</button>
+            <button class="filter-btn" data-view-toggle="technical">Technical View</button>
+          </div>
+
+          <div class="dual-col" data-view-pane="recruiter" style="margin-top: 0.75rem;">
+            <div class="fact-grid">
+              <div class="fact">
                 <strong>Education</strong>
                 <span>Beijing University of Posts and Telecommunications · Telecommunication Engineering and Management</span>
               </div>
-              <div class="fact-chip">
-                <strong>Specialized Areas</strong>
-                <span>LLM Application, AI Product Engineering, Computer Vision, BCI, Database</span>
+              <div class="fact">
+                <strong>Positioning</strong>
+                <span>LLM Application / AI Development / AI Product Engineering</span>
               </div>
-              <div class="fact-chip">
-                <strong>Core Stack</strong>
-                <span>Python, PyTorch, Transformers, LangChain, SQL, Docker, OpenAI API, Java</span>
+              <div class="fact">
+                <strong>Delivery Style</strong>
+                <span>clear scope, measurable progress, practical results</span>
               </div>
             </div>
-          </article>
+            <div class="fact-grid">
+              <div class="fact">
+                <strong>What Teams Get</strong>
+                <span>engineering execution, reproducible pipelines, and product-focused implementation</span>
+              </div>
+              <div class="fact">
+                <strong>Research Profile</strong>
+                <span>2 published papers + 1 under review with explicit technical ownership</span>
+              </div>
+              <div class="fact">
+                <strong>Software Assets</strong>
+                <span>2 software copyrights with algorithm modules and validation scripts</span>
+              </div>
+            </div>
+          </div>
 
+          <div class="dual-col" data-view-pane="technical" hidden style="margin-top: 0.75rem;">
+            <div class="fact-grid">
+              <div class="fact">
+                <strong>LLM Workflow Delivery</strong>
+                <span>pretraining, SFT, LoRA fine-tuning, inference validation</span>
+              </div>
+              <div class="fact">
+                <strong>System Deployment</strong>
+                <span>local environment setup, service orchestration, issue diagnosis</span>
+              </div>
+              <div class="fact">
+                <strong>Data and Evaluation</strong>
+                <span>dataset analysis, protocol design, reproducible experiments</span>
+              </div>
+            </div>
+            <div class="fact-grid">
+              <div class="fact">
+                <strong>Modeling Domains</strong>
+                <span>LLM, computer vision, BCI signal processing</span>
+              </div>
+              <div class="fact">
+                <strong>Engineering Priorities</strong>
+                <span>maintainability, clear architecture, measurable output</span>
+              </div>
+              <div class="fact">
+                <strong>Stack Evidence</strong>
+                <span>Python, PyTorch, Transformers, LangChain, SQL, Docker</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="page-panel" style="margin-top: 1.5rem;">
-      <div class="eyebrow">Professional Profile</div>
-      <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 1rem;">What I Bring to a Team</h2>
-      <div class="focus-grid">
-        <article class="card-panel signal-card">
-          <h3>Project Evidence</h3>
-          <ul class="profile-list">
-            <li><strong>Shapeville Geometry Education</strong>: built a Java/Swing geometry learning application with staged tasks, scoring feedback, and progress tracking.</li>
-            <li><strong>MiniMind Full-Pipeline Reproduction</strong>: completed single-GPU full workflow runs across pretraining, SFT, LoRA, and evaluation with checkpoint resume.</li>
-            <li><strong>WeClone End-to-End Deployment</strong>: completed local setup, data preparation, fine-tuning configuration, API service startup, and chatbot integration validation.</li>
-          </ul>
-        </article>
-        <article class="card-panel signal-card">
-          <h3>Roles and Strengths</h3>
-          <ul class="profile-list">
-            <li><strong>Software Development</strong>: solid coding practice and disciplined engineering execution.</li>
-            <li><strong>Full-Stack Understanding</strong>: connects product logic, implementation details, and delivery quality.</li>
-            <li><strong>Database Engineering</strong>: can design and organize structured content for searchable product experiences.</li>
-            <li><strong>LLM Workflow Delivery</strong>: can execute pretraining, SFT, LoRA fine-tuning, and inference validation in reproducible steps.</li>
-            <li><strong>Deployment Debugging</strong>: able to complete environment setup, service orchestration, and issue diagnosis for local AI services.</li>
-          </ul>
-        </article>
-        <article class="card-panel signal-card">
-          <h3>Highlights</h3>
-          <ul class="profile-list">
-            <li><strong>Publications with DOI</strong>: peer-reviewed outputs linked directly for recruiter verification.</li>
-            <li><strong>Software Copyright Portfolio</strong>: two software copyright projects with clear algorithm modules.</li>
-            <li><strong>Project Breadth</strong>: 5 end-to-end projects across LLM, AI product, computer vision, and BCI tasks.</li>
-            <li><strong>Research Output</strong>: 2 published papers and 1 paper currently under review.</li>
-            <li><strong>Practical Prototypes</strong>: delivered runnable pipelines including WhisperMail and BCI-SSVEP implementations.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Preview</span>
+          <span class="turn-role">Top Project Evidence</span>
+        </div>
+        <div class="turn-body">
+          <div class="case-list">
+            <details class="case" open>
+              <summary>MiniMind Full-Pipeline Reproduction <span class="meta">LLM / PyTorch</span></summary>
+              <div class="case-content">
+                <p><strong>Problem:</strong> end-to-end reproduction of open-source LLM pipelines is often unstable on constrained local setups.</p>
+                <p><strong>My Ownership:</strong> executed pretrain -> SFT -> LoRA -> eval/inference full chain.</p>
+                <p><strong>Output:</strong> completed 4 pipeline stages with checkpoint resume validation.</p>
+              </div>
+            </details>
 
-    <section class="spotlight-grid">
-      <article class="card-panel spotlight-card">
-        <div class="eyebrow">Resume</div>
-        <h3>Resume</h3>
-        <p>Recruiter-focused summary of my background, technical strengths, and collaboration value.</p>
-        <a href="about.html" class="btn">Open Resume</a>
-      </article>
+            <details class="case">
+              <summary>WeClone End-to-End Deployment <span class="meta">LLM Agent / Service</span></summary>
+              <div class="case-content">
+                <p><strong>Problem:</strong> production-like deployment chain is often missing from demo-only projects.</p>
+                <p><strong>My Ownership:</strong> completed local env setup, data prep, tuning config, API service startup, and chatbot connection.</p>
+                <p><strong>Output:</strong> ran 5-step deployment chain and published demonstration evidence.</p>
+              </div>
+            </details>
 
-      <article class="card-panel spotlight-card">
-        <div class="eyebrow">Projects</div>
-        <h3>Projects</h3>
-        <p>Project pages that show scope, my role, implementation details, and outcomes.</p>
-        <a href="posts.html" class="btn">Open Projects</a>
-      </article>
+            <details class="case">
+              <summary>Shapeville Geometry Education <span class="meta">Java / Product Build</span></summary>
+              <div class="case-content">
+                <p><strong>Problem:</strong> geometry learning tools often lack staged challenge design and clear feedback loops.</p>
+                <p><strong>My Ownership:</strong> built seven staged modules with score feedback and progress tracking.</p>
+                <p><strong>Output:</strong> productized runnable desktop learning system.</p>
+              </div>
+            </details>
+          </div>
+          <div class="action-row">
+            <a class="action-link primary" href="posts-claude.html">View Full Case Studies</a>
+          </div>
+        </div>
+      </section>
 
-      <article class="card-panel spotlight-card">
-        <div class="eyebrow">Listening</div>
-        <h3>Wudangdao</h3>
-        <p>Productized listening page with searchable episodes and resume playback support.</p>
-      </article>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>yitumulin · 一土木林</p>
-      <p class="footer-links"><a href="search.html">Search</a> · <a href="wudangdao.html">Listening</a> · <a href="contact.html">Contact</a></p>
-    </div>
-  </footer>
+      <footer class="foot">
+        yitumulin · 一土木林 · <a href="search-claude.html">Search</a> · <a href="wudangdao-claude.html">Listening</a> · <a href="contact-claude.html">Contact</a>
+      </footer>
+    </main>
+  </div>
 
   <script src="darkmode.js"></script>
   <script src="js/i18n.js"></script>
-  <script src="js/transitions.js"></script>
+  <script src="claude-theme.js"></script>
 </body>
 </html>
-
-
-
-
-

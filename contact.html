@@ -3,98 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact | 一土木林 yitumulin</title>
-
-  <meta name="description" content="Contact 一土木林（yitumulin）for AI collaboration, research communication, and technical project discussions.">
-  <meta name="keywords" content="一土木林, yitumulin, 伊土木林, AI collaboration, research communication">
-  <meta name="author" content="yitumulin">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://yitumulin.com/contact.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="yitumulin">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Contact | 一土木林 yitumulin">
-  <meta property="og:description" content="Contact 一土木林（yitumulin）for AI collaboration, research communication, and technical project discussions.">
-  <meta property="og:url" content="https://yitumulin.com/contact.html">
-  <meta property="og:image" content="https://yitumulin.com/favicon.png">
-  <meta property="og:image:alt" content="yitumulin profile image">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact | 一土木林 yitumulin">
-  <meta name="twitter:description" content="Contact 一土木林（yitumulin）for AI collaboration, research communication, and technical project discussions.">
-  <meta name="twitter:image" content="https://yitumulin.com/favicon.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact - 一土木林 yitumulin","url":"https://yitumulin.com/contact.html","mainEntity":{"@type":"Person","name":"Yitumulin","email":"mailto:yitumulin@yitumulin.com"}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>Contact | Claude Workspace | yitumulin</title>
+  <meta name="description" content="Claude-style contact workspace for yitumulin.">
+  <meta name="robots" content="noindex,follow">
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="claude-theme.css">
 </head>
-<body>
+<body class="claude-ui">
   <script>
-    (function() {
+    (function(){
       try {
         var theme = localStorage.getItem("theme");
         var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (theme === "dark" || (!theme && prefersDark)) {
-          document.body.classList.add("dark");
-        }
-      } catch (e) {
-        console.error("Error applying initial theme:", e);
-      }
+        if (theme === "dark" || (!theme && prefersDark)) document.body.classList.add("dark");
+      } catch (e) {}
     })();
   </script>
 
   <header class="site-header">
     <div class="container">
-      <a href="index.html" class="logo">yitumulin</a>
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="posts.html">Projects</a>
-        <a href="about.html">Resume</a>
-      </nav>
-      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+      <a href="index-claude.html" class="brand">yitumulin workspace</a>
+      <div class="header-actions">
+        <button class="sidebar-toggle" data-sidebar-toggle>Menu</button>
+        <button class="cmd-open" data-cmd-open>Jump</button>
+        <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
+      </div>
     </div>
   </header>
 
-  <main class="page-shell">
-    <section class="page-panel">
-      <div class="page-intro">
-        <div class="eyebrow">Contact</div>
-        <h1 class="section-title">Let's Work Together</h1>
-        <p class="lead">If you want to discuss LLM projects, engineering collaboration, or research ideas, reach me here.</p>
+  <div class="claude-app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <a href="index-claude.html">yitumulin</a>
+        <button class="sidebar-toggle" data-sidebar-toggle>Close</button>
       </div>
+      <div class="sidebar-label">Pages</div>
+      <nav class="sidebar-nav">
+        <a href="index-claude.html">Home</a>
+        <a href="posts-claude.html">Projects</a>
+        <a href="about-claude.html">Resume</a>
+        <a href="contact-claude.html">Contact</a>
+      </nav>
+      <div class="sidebar-label">Tools</div>
+      <nav class="sidebar-subnav">
+        <a href="search-claude.html">Search</a>
+        <a href="archives-claude.html">Archives</a>
+        <a href="wudangdao-claude.html">Listening</a>
+        <a href="tag-view-claude.html">Tag View</a>
+      </nav>
+      <div class="sidebar-footer"></div>
+    </aside>
 
-      <div class="focus-grid" style="margin-top: 1.2rem;">
-        <article class="card-panel signal-card">
-          <h3>Email</h3>
-          <p><a href="mailto:yitumulin@yitumulin.com">yitumulin@yitumulin.com</a></p>
-        </article>
-        <article class="card-panel signal-card">
-          <h3>GitHub</h3>
-          <p><a href="https://github.com/yitumulin" target="_blank" rel="noreferrer">github.com/yitumulin</a></p>
-        </article>
-        <article class="card-panel signal-card">
-          <h3>Notes</h3>
-          <p>For faster replies, include your goal, use case, expected deliverables, and timeline.</p>
-        </article>
-      </div>
-    </section>
-  </main>
+    <main class="main">
+      <section class="main-top">
+        <div>
+          <div class="page-kicker">Contact</div>
+          <h1 class="page-title">Let's Work Together</h1>
+          <p class="page-intro">If you want to discuss LLM projects, engineering collaboration, or research ideas, reach me here.</p>
+        </div>
+      </section>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>yitumulin · 一土木林</p>
-      <p class="footer-links"><a href="search.html">Search</a> · <a href="wudangdao.html">Listening</a> · <a href="contact.html">Contact</a></p>
-    </div>
-  </footer>
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Channel</span>
+          <span class="turn-role">Direct Contact</span>
+        </div>
+        <div class="turn-body">
+          <div class="dual-col">
+            <div class="fact-grid">
+              <div class="fact">
+                <strong>Email</strong>
+                <span>yitumulin@yitumulin.com</span>
+              </div>
+              <div class="fact">
+                <strong>GitHub</strong>
+                <span>github.com/yitumulin</span>
+              </div>
+              <div class="fact">
+                <strong>Best for</strong>
+                <span>internship opportunities, technical collaboration, project review.</span>
+              </div>
+            </div>
+            <div class="fact-grid">
+              <div class="fact">
+                <strong>Reply quality</strong>
+                <span>faster when message includes goal, use case, expected deliverable, timeline.</span>
+              </div>
+              <div class="fact">
+                <strong>Technical scope</strong>
+                <span>LLM applications, AI product engineering, computer vision and BCI-related work.</span>
+              </div>
+            </div>
+          </div>
+          <div class="action-row">
+            <a class="action-link primary" href="mailto:yitumulin@yitumulin.com">Email Me</a>
+            <button class="ui-btn" data-copy-email="yitumulin@yitumulin.com">Copy Email</button>
+            <a class="action-link" href="https://github.com/yitumulin" target="_blank" rel="noreferrer">Open GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="turn">
+        <div class="turn-head">
+          <span class="turn-role">Collaboration</span>
+          <span class="turn-role">What I can help with</span>
+        </div>
+        <div class="turn-body">
+          <div class="case-list">
+            <details class="case" open>
+              <summary>LLM Application Engineering <span class="meta">workflow and deployment</span></summary>
+              <div class="case-content">
+                <p>Prompt flow design, data preparation, fine-tuning, retrieval orchestration, local deployment validation.</p>
+              </div>
+            </details>
+            <details class="case">
+              <summary>AI Product Engineering <span class="meta">from prototype to runnable system</span></summary>
+              <div class="case-content">
+                <p>Scope decomposition, implementation planning, engineering execution, measurable delivery output.</p>
+              </div>
+            </details>
+            <details class="case">
+              <summary>Perception and Signal Pipeline <span class="meta">CV / BCI</span></summary>
+              <div class="case-content">
+                <p>Computer vision data pipeline design and BCI-oriented signal processing experiment pipelines.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <footer class="foot">
+        yitumulin · 一土木林 · <a href="search-claude.html">Search</a> · <a href="wudangdao-claude.html">Listening</a> · <a href="contact-claude.html">Contact</a>
+      </footer>
+    </main>
+  </div>
 
   <script src="darkmode.js"></script>
   <script src="js/i18n.js"></script>
+  <script src="claude-theme.js"></script>
 </body>
 </html>
-
-
-
-
-
-

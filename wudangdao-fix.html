@@ -3,100 +3,135 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Listening | Claude Workspace | yitumulin</title>
-  <meta name="robots" content="noindex,follow">
+  <title>Listening | 一土木林 yitumulin</title>
+
+  <meta name="description" content="Wudangdao listening page with search, pagination, and resume playback for long-form audio content.">
+  <meta name="keywords" content="一土木林, yitumulin, 伊土木林, wudangdao, audio listening, resume playback, podcast archive">
+  <meta name="author" content="yitumulin">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://yitumulin.com/wudangdao.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="yitumulin">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Listening | 一土木林 yitumulin">
+  <meta property="og:description" content="Wudangdao listening page with search, pagination, and resume playback for long-form audio content.">
+  <meta property="og:url" content="https://yitumulin.com/wudangdao.html">
+  <meta property="og:image" content="https://yitumulin.com/favicon.png">
+  <meta property="og:image:alt" content="yitumulin profile image">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Listening | 一土木林 yitumulin">
+  <meta name="twitter:description" content="Wudangdao listening page with search, pagination, and resume playback for long-form audio content.">
+  <meta name="twitter:image" content="https://yitumulin.com/favicon.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Wudangdao Listening - yitumulin","url":"https://yitumulin.com/wudangdao.html","description":"Listening page with searchable long-form audio content."}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="stylesheet" href="claude-theme.css">
-</head>
-<body class="claude-ui">
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rhkatcquvv");
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GR93DR478"></script>
   <script>
-    (function(){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag("js", new Date());
+    gtag("config", "G-6GR93DR478");
+  </script>
+</head>
+<body>
+  <script>
+    (function() {
       try {
         var theme = localStorage.getItem("theme");
         var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (theme === "dark" || (!theme && prefersDark)) document.body.classList.add("dark");
-      } catch (e) {}
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.body.classList.add("dark");
+        }
+      } catch (e) {
+        console.error("Error applying initial theme:", e);
+      }
     })();
   </script>
 
   <header class="site-header">
     <div class="container">
-      <a href="index-claude.html" class="brand">yitumulin workspace</a>
-      <div class="header-actions">
-        <button class="sidebar-toggle" data-sidebar-toggle>Menu</button>
-        <button class="cmd-open" data-cmd-open>Jump</button>
-        <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
-      </div>
+      <a href="index.html" class="logo">yitumulin</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="posts.html">Projects</a>
+        <a href="about.html">Resume</a>
+      </nav>
+      <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
     </div>
   </header>
 
-  <div class="claude-app">
-    <aside class="sidebar">
-      <div class="sidebar-brand">
-        <a href="index-claude.html">yitumulin</a>
-        <button class="sidebar-toggle" data-sidebar-toggle>Close</button>
+  <main class="page-shell listening-shell">
+    <section class="page-panel listening-hero">
+      <div class="eyebrow">Listening</div>
+      <h1 class="section-title">Wudangdao</h1>
+    </section>
+
+    <section class="listening-layout">
+      <div class="listening-column">
+        <article class="card-panel player-shell">
+          <div class="current-track">
+            <h3 id="currentTrackTitle">Choose an episode to start</h3>
+            <p id="episodeProgress" class="episode-progress">Total 0 episodes</p>
+          </div>
+
+          <div class="audio-player">
+            <audio id="audioPlayer" controls>
+              Your browser does not support audio playback.
+            </audio>
+          </div>
+
+          <div class="play-controls">
+            <button class="control-btn" onclick="playPrevious()">Previous Episode</button>
+            <button class="control-btn" onclick="playNextAudio()">Next Episode</button>
+          </div>
+        </article>
+
+        <article class="card-panel mini-panel">
+          <h3>Quick Guide</h3>
+          <ul class="note-list">
+            <li><strong>Search</strong>: Enter keywords to quickly locate episodes.</li>
+            <li><strong>Resume Playback</strong>: Automatically remembers your last playback position.</li>
+            <li><strong>Auto-Play</strong>: Moves to the next episode when the current one finishes.</li>
+          </ul>
+        </article>
       </div>
-      <div class="sidebar-label">Pages</div>
-      <nav class="sidebar-nav">
-        <a href="index-claude.html">Home</a>
-        <a href="posts-claude.html">Projects</a>
-        <a href="about-claude.html">Resume</a>
-        <a href="contact-claude.html">Contact</a>
-      </nav>
-      <div class="sidebar-label">Tools</div>
-      <nav class="sidebar-subnav">
-        <a href="search-claude.html">Search</a>
-        <a href="archives-claude.html">Archives</a>
-        <a href="wudangdao-claude.html">Listening</a>
-        <a href="tag-view-claude.html">Tag View</a>
-      </nav>
-      <div class="sidebar-footer"></div>
-    </aside>
 
-    <main class="main">
-      <section class="main-top">
-        <div>
-          <div class="page-kicker">Listening</div>
-          <h1 class="page-title">Wudangdao Audio Workspace</h1>
-          <p class="page-intro">Structured audio library with search, pagination, and playback progress memory.</p>
-        </div>
-      </section>
-
-      <section class="turn">
-        <div class="turn-head">
-          <span class="turn-role">Player</span>
-          <span class="turn-role">Playback controls and episode queue</span>
-        </div>
-        <div class="turn-body player-grid">
-          <article class="fact-grid">
-            <div class="fact">
-              <strong id="currentTrackTitle">Choose an episode to start</strong>
-              <span id="episodeProgress" class="episode-progress">Total 0 episodes</span>
-            </div>
-            <audio id="audioPlayer" controls style="width:100%; margin-top: 0.4rem;">Your browser does not support audio playback.</audio>
-            <div class="action-row">
-              <button class="control-btn" onclick="playPrevious()">Previous Episode</button>
-              <button class="control-btn" onclick="playNextAudio()">Next Episode</button>
-            </div>
-          </article>
-
-          <article class="fact-grid">
+      <div class="listening-column">
+        <article class="card-panel library-shell">
+          <div class="search-box">
             <input type="text" id="searchInput" placeholder="Search episodes">
-            <div class="audio-list" id="audioList"><div class="fact"><span>Loading audio list...</span></div></div>
-            <div class="pagination" id="pagination" style="display:none;">
-              <button id="prevBtn" onclick="previousPage()">Previous</button>
-              <span class="page-info" id="pageInfo">Page 1 / 1</span>
-              <button id="nextBtn" onclick="nextPage()">Next</button>
-            </div>
-          </article>
-        </div>
-      </section>
+          </div>
 
-      <footer class="foot">
-        yitumulin · 一土木林 · <a href="search-claude.html">Search</a> · <a href="wudangdao-claude.html">Listening</a> · <a href="contact-claude.html">Contact</a>
-      </footer>
-    </main>
-  </div>
+          <div class="audio-list" id="audioList">
+            <div class="loading">Loading audio list...</div>
+          </div>
+
+          <div class="pagination" id="pagination" style="display: none;">
+            <button id="prevBtn" onclick="previousPage()">Previous</button>
+            <span class="page-info" id="pageInfo">Page 1 / 1</span>
+            <button id="nextBtn" onclick="nextPage()">Next</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>yitumulin · 一土木林</p>
+      <p class="footer-links"><a href="search.html">Search</a> · <a href="wudangdao.html">Listening</a> · <a href="contact.html">Contact</a></p>
+    </div>
+  </footer>
 
   <script src="darkmode.js"></script>
   <script src="js/i18n.js"></script>
@@ -142,7 +177,9 @@
 
     function updateProgressLabel(index) {
       if (index < 0 || index >= audioList.length) {
-        progressEl.textContent = t("listening.totalEpisodes", "Total {total} episodes", { total: audioList.length });
+        progressEl.textContent = t("listening.totalEpisodes", "Total {total} episodes", {
+          total: audioList.length
+        });
         return;
       }
 
@@ -187,7 +224,9 @@
       if (autoplay) {
         try {
           await audioEl.play();
-        } catch (_) {}
+        } catch (e) {
+          console.error("Autoplay blocked:", e);
+        }
       }
     }
 
@@ -195,15 +234,18 @@
       document.querySelectorAll(".play-btn").forEach(function(button) {
         button.classList.remove("playing");
       });
+
       const activeButton = listContainer.querySelector('.play-btn[data-index="' + index + '"]');
-      if (activeButton) activeButton.classList.add("playing");
+      if (activeButton) {
+        activeButton.classList.add("playing");
+      }
     }
 
     function renderList(list) {
       listContainer.innerHTML = "";
 
       if (!list.length) {
-        listContainer.innerHTML = '<div class="fact"><span>' + t("listening.noMatchedEpisode", "No matching episodes found.") + "</span></div>";
+        listContainer.innerHTML = '<div class="loading">' + t("listening.noMatchedEpisode", "No matching episodes found.") + "</div>";
         paginationEl.style.display = "none";
         return;
       }
@@ -215,7 +257,9 @@
         const actualIndex = audioList.indexOf(item);
         const card = document.createElement("div");
         card.className = "audio-item";
-        if (actualIndex === currentIndex) card.classList.add("playing");
+        if (actualIndex === currentIndex) {
+          card.classList.add("playing");
+        }
 
         card.innerHTML = [
           "<h4>" + (item.title || t("listening.unnamedEpisode", "Untitled Episode")) + "</h4>",
@@ -271,6 +315,7 @@
         setTrack(currentIndex + 1, true);
       } else {
         titleEl.textContent = t("listening.lastEpisode", "Already the last episode.");
+        titleEl.style.color = "#376c43";
       }
     }
 
@@ -279,6 +324,7 @@
         setTrack(currentIndex - 1, true);
       } else {
         titleEl.textContent = t("listening.firstEpisode", "Already the first episode.");
+        titleEl.style.color = "#376c43";
       }
     }
 
@@ -293,7 +339,7 @@
 
     async function loadList() {
       try {
-        listContainer.innerHTML = '<div class="fact"><span>' + t("listening.loadingList", "Loading audio list...") + "</span></div>";
+        listContainer.innerHTML = '<div class="loading">' + t("listening.loadingList", "Loading audio list...") + "</div>";
         const response = await fetch("audio_list.json", { cache: "no-cache" });
         const data = await response.json();
         audioList = Array.isArray(data) ? data : [];
@@ -304,8 +350,9 @@
         updatePagination();
         restorePlayProgress();
         updateProgressLabel(currentIndex);
-      } catch (_) {
-        listContainer.innerHTML = '<div class="fact"><span>' + t("listening.loadFailed", "Failed to load audio list. Please try again later.") + "</span></div>";
+      } catch (error) {
+        console.error("Failed to load audio list:", error);
+        listContainer.innerHTML = '<div class="error-message">' + t("listening.loadFailed", "Failed to load audio list. Please try again later.") + "</div>";
       }
     }
 
@@ -333,6 +380,8 @@
       updatePagination();
     });
   </script>
-  <script src="claude-theme.js"></script>
 </body>
 </html>
+
+
+
