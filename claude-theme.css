@@ -494,6 +494,25 @@ a {
   color: var(--text);
 }
 
+.foot-extra {
+  margin-top: 0.58rem;
+  padding-top: 0.56rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.52rem;
+  flex-wrap: wrap;
+}
+
+.foot-extra a {
+  font-weight: 700;
+}
+
+.foot-sep {
+  color: color-mix(in srgb, var(--muted) 70%, var(--line));
+}
+
 .search-wrap input,
 #searchInput {
   width: 100%;

@@ -197,18 +197,34 @@
     });
   }
 
-  function mountOriginalLink() {
-    var container = document.querySelector(".sidebar-footer");
-    if (!container || container.querySelector(".original-link")) return;
+  function mountBottomUtilityLinks() {
+    var footer = document.querySelector(".foot");
+    if (!footer || footer.querySelector(".foot-extra")) return;
 
     var originalPath = toOriginalHref(window.location.pathname || "");
     var originalHref = originalPath + window.location.search + window.location.hash;
+
+    var wrapper = document.createElement("div");
+    wrapper.className = "foot-extra";
+
+    var archive = document.createElement("a");
+    archive.className = "foot-archive";
+    archive.href = commandHref("archives.html");
+    archive.textContent = "归档";
+
+    var separator = document.createElement("span");
+    separator.className = "foot-sep";
+    separator.textContent = "·";
 
     var link = document.createElement("a");
     link.className = "original-link";
     link.href = originalHref;
     link.textContent = "Open Previous Version";
-    container.appendChild(link);
+
+    wrapper.appendChild(archive);
+    wrapper.appendChild(separator);
+    wrapper.appendChild(link);
+    footer.appendChild(wrapper);
   }
 
   function initProjectFilter() {
@@ -290,7 +306,7 @@
 
     rewriteInternalLinks(document);
     markActiveNav();
-    mountOriginalLink();
+    mountBottomUtilityLinks();
     initSidebarToggle();
     createCmdPalette();
     initProjectFilter();
