@@ -83,6 +83,7 @@
                     <span>3 Papers</span>
                     <span>4 Applied Projects</span>
                     <span>2 Software Copyrights</span>
+                    <span>IELTS 17.0</span>
                 </div>
                 <p class="whoami-summary">
                     I study Telecommunication Engineering and Management at Beijing University of Posts and Telecommunications. I focus on LLM application engineering, AI product development, and computer vision, and I care about turning ideas into measurable shipped outcomes.
@@ -231,7 +232,7 @@
         const topbarEl = document.querySelector('.topbar');
         const isMobileLayout = window.matchMedia('(max-width: 900px)').matches;
 
-        const finalLogoScale = 0.042;
+        const finalLogoScale = 0.046;
         if (!isMobileLayout) {
             gsap.to(logo, {
                 top: () => {
@@ -394,12 +395,12 @@
                 });
 
             gsap.to(whoamiBloom, {
-                scale: isMobileLayout ? 10 : 21,
-                opacity: isMobileLayout ? 0.9 : 1,
+                scale: isMobileLayout ? 8.5 : 16,
+                opacity: isMobileLayout ? 0.82 : 0.94,
                 ease: "power1.out",
                 scrollTrigger: {
                     trigger: whoamiSection,
-                    start: isMobileLayout ? "top 26%" : "top 8%",
+                    start: isMobileLayout ? "top 30%" : "top 12%",
                     end: "bottom top",
                     scrub: 0.8
                 }
@@ -523,18 +524,8 @@
             }
 
             if (zone === 'whoami') {
-                if (dirDown) {
-                    if (isNearBottom(whoamiStage, 2) && event.deltaY > 24) {
-                        event.preventDefault();
-                        jumpToSection(workSection, 620, 0);
-                    }
-                    return;
-                }
-                if (isNearTop(whoamiStage, 2) && event.deltaY < -24) {
-                    event.preventDefault();
-                    jumpToSection(heroTop, 620, 0);
-                }
-                return;
+                event.preventDefault();
+                jumpToSection(dirDown ? workSection : heroTop, 620, 0);
             }
         }, { passive: false });
         
