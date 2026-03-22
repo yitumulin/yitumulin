@@ -231,7 +231,7 @@
         const topbarEl = document.querySelector('.topbar');
         const isMobileLayout = window.matchMedia('(max-width: 900px)').matches;
 
-        const finalLogoScale = 0.036;
+        const finalLogoScale = 0.042;
         if (!isMobileLayout) {
             gsap.to(logo, {
                 top: () => {
@@ -394,12 +394,12 @@
                 });
 
             gsap.to(whoamiBloom, {
-                scale: isMobileLayout ? 8.5 : 16,
-                opacity: isMobileLayout ? 0.82 : 0.94,
+                scale: isMobileLayout ? 10 : 21,
+                opacity: isMobileLayout ? 0.9 : 1,
                 ease: "power1.out",
                 scrollTrigger: {
                     trigger: whoamiSection,
-                    start: isMobileLayout ? "top 30%" : "top 12%",
+                    start: isMobileLayout ? "top 26%" : "top 8%",
                     end: "bottom top",
                     scrub: 0.8
                 }
@@ -494,7 +494,8 @@
                 if (dirDown) {
                     if (isNearBottom(workSection, 2) && event.deltaY > 24) {
                         event.preventDefault();
-                        jumpToSection(contactSection, 620, 0);
+                        const contactEntryOffset = -Math.round(window.innerHeight * 0.22);
+                        jumpToSection(contactSection, 620, contactEntryOffset);
                     }
                     return;
                 }
@@ -522,8 +523,18 @@
             }
 
             if (zone === 'whoami') {
-                event.preventDefault();
-                jumpToSection(dirDown ? workSection : heroTop, 620, 0);
+                if (dirDown) {
+                    if (isNearBottom(whoamiStage, 2) && event.deltaY > 24) {
+                        event.preventDefault();
+                        jumpToSection(workSection, 620, 0);
+                    }
+                    return;
+                }
+                if (isNearTop(whoamiStage, 2) && event.deltaY < -24) {
+                    event.preventDefault();
+                    jumpToSection(heroTop, 620, 0);
+                }
+                return;
             }
         }, { passive: false });
         
