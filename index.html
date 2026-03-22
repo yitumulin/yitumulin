@@ -92,7 +92,7 @@
     </div>
 
     <!-- SECTION 2: WHO I AM -->
-    <section id="whoami" class="section-intro whoami-section" style="padding-top: 5vh; padding-bottom: 16vh; border-top: none;">
+    <section id="whoami" class="section-intro whoami-section" style="padding-top: 6vh; padding-bottom: 10vh; border-top: none;">
         <div class="whoami-shell">
             <div class="whoami-merged reveal-up">
                 <div class="whoami-kicker">WHOAMI</div>
@@ -366,13 +366,12 @@
         const whoamiSection = document.querySelector('.whoami-section');
         const whoamiWordmark = document.querySelector('.whoami-wordmark');
         const whoamiBloom = document.querySelector('.whoami-bloom');
-        let whoamiTransitionProgress = 0;
-        const WHOAMI_CUT_PROGRESS = 0.92;
+        const workSectionForFade = document.getElementById('work');
         if (whoamiSection && whoamiWordmark && whoamiBloom) {
             gsap.set(whoamiWordmark, {
                 scale: 1,
                 xPercent: 0,
-                yPercent: 18,
+                yPercent: 0,
                 opacity: 1
             });
 
@@ -381,10 +380,7 @@
                     trigger: whoamiSection,
                     start: "top top",
                     end: "bottom top",
-                    scrub: 0.85,
-                    onUpdate: (self) => {
-                        whoamiTransitionProgress = self.progress;
-                    }
+                    scrub: 0.85
                 }
             });
 
@@ -392,15 +388,15 @@
                 .to(whoamiWordmark, {
                     scale: 2.7,
                     xPercent: -16,
-                    yPercent: 28,
+                    yPercent: 15,
                     opacity: 1,
                     ease: "none",
                     duration: 0.52
                 })
                 .to(whoamiWordmark, {
-                    scale: 24,
-                    xPercent: -40,
-                    yPercent: 22,
+                    scale: 17.5,
+                    xPercent: -46,
+                    yPercent: 8,
                     opacity: 1,
                     ease: "none",
                     duration: 0.48
@@ -412,11 +408,35 @@
                 ease: "power1.out",
                 scrollTrigger: {
                     trigger: whoamiSection,
-                    start: "top 16%",
+                    start: "top 12%",
                     end: "bottom top",
                     scrub: 0.8
                 }
             });
+
+            if (workSectionForFade) {
+                gsap.to(whoamiWordmark, {
+                    opacity: 0,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: workSectionForFade,
+                        start: "top bottom",
+                        end: "top 76%",
+                        scrub: 0.55
+                    }
+                });
+
+                gsap.to(whoamiBloom, {
+                    opacity: 0,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: workSectionForFade,
+                        start: "top bottom",
+                        end: "top 80%",
+                        scrub: 0.55
+                    }
+                });
+            }
         }
 
         // Section-jump storytelling scroll
@@ -467,17 +487,6 @@
             }, SNAP_LOCK_MS);
         }
 
-        function cutToSection(el, offsetPx = 0) {
-            if (!el) return;
-            isSectionAutoScrolling = true;
-            sectionScrollLockUntil = performance.now() + 260;
-            const targetY = Math.max(0, Math.round(elementTop(el) - offsetPx));
-            window.scrollTo(0, targetY);
-            setTimeout(() => {
-                isSectionAutoScrolling = false;
-            }, 260);
-        }
-
         window.addEventListener('wheel', (event) => {
             if (window.innerWidth <= 1024) return;
             const now = performance.now();
@@ -522,18 +531,8 @@
             }
 
             if (zone === 'whoami') {
-                if (dirDown) {
-                    if (whoamiTransitionProgress >= WHOAMI_CUT_PROGRESS && event.deltaY > 14) {
-                        event.preventDefault();
-                        cutToSection(workSection, 0);
-                    }
-                    return;
-                }
-                if (isNearTop(whoamiStage, 2) && event.deltaY < -24) {
-                    event.preventDefault();
-                    jumpToSection(heroTop, 620, 0);
-                }
-                return;
+                event.preventDefault();
+                jumpToSection(dirDown ? workSection : heroTop, 620, 0);
             }
         }, { passive: false });
         

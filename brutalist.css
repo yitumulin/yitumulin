@@ -540,8 +540,8 @@ body.project-page .filter-chip.is-active {
 }
 
 .whoami-summary {
-    font-size: clamp(31px, 2.6vw, 50px);
-    line-height: 1.56;
+    font-size: clamp(25px, 2.05vw, 40px);
+    line-height: 1.64;
     max-width: 95%;
 }
 
@@ -556,13 +556,13 @@ body.project-page .filter-chip.is-active {
     border-top: 2px solid var(--text-black);
     padding-top: 0.9rem;
     background: transparent;
-    font-size: clamp(22px, 1.68vw, 31px);
-    line-height: 1.58;
+    font-size: clamp(18px, 1.26vw, 24px);
+    line-height: 1.66;
 }
 
 .whoami-focus-list strong {
     font-family: var(--font-display);
-    font-size: clamp(22px, 1.68vw, 31px);
+    font-size: clamp(18px, 1.25vw, 24px);
     letter-spacing: 0.04em;
     text-transform: uppercase;
     margin-right: 0.45rem;
@@ -574,19 +574,19 @@ body.project-page .filter-chip.is-active {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: center;
-    min-height: 420px;
+    justify-content: flex-start;
+    min-height: 360px;
 }
 
 .whoami-wordmark-stage {
-    padding-top: 10vh;
+    padding-top: 0;
 }
 
 .whoami-wordmark {
     font-family: var(--font-display);
-    font-size: clamp(102px, 11vw, 250px);
+    font-size: clamp(78px, 8.8vw, 186px);
     font-weight: 900;
-    line-height: 0.86;
+    line-height: 0.9;
     text-transform: uppercase;
     text-align: right;
     color: #ffffff;
@@ -647,7 +647,7 @@ body.project-page .filter-chip.is-active {
 .whoami-bloom {
     position: absolute;
     right: 3%;
-    top: 58%;
+    top: 42%;
     width: 260px;
     height: 260px;
     border-radius: 50%;
@@ -865,7 +865,7 @@ body.project-page .filter-chip.is-active {
     .whoami-summary { max-width: 100%; }
     .whoami-shell { grid-template-columns: 1fr; }
     .whoami-visual { min-height: 240px; align-items: flex-start; }
-    .whoami-wordmark { text-align: left; transform-origin: left center; font-size: clamp(68px, 18vw, 130px); line-height: 0.9; }
+    .whoami-wordmark { text-align: left; transform-origin: left center; font-size: clamp(52px, 15vw, 96px); }
     .whoami-bloom { right: 50%; top: 78%; }
     .project-mini-logo { display: none; }
     .footer-signature-row { flex-direction: column; gap: 0.5rem; }
