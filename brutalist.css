@@ -944,39 +944,39 @@ body.project-page .topbar-left {
         min-height: auto;
         height: auto;
         justify-content: flex-start;
-        padding: calc(var(--nav-height) + 6px) 12px 12px;
+        padding: calc(var(--nav-height) + 10px) 12px 24px;
     }
 
     .hero-deco {
-        top: calc(var(--nav-height) + 10px);
+        top: calc(var(--nav-height) + 12px);
         left: 12px;
-        width: clamp(92px, 31vw, 146px);
-        height: clamp(56px, 12vh, 92px);
-        gap: 10px;
+        width: clamp(84px, 28vw, 126px);
+        height: clamp(50px, 10vh, 78px);
+        gap: 8px;
         right: auto;
     }
 
     .hero-title-container {
         text-align: left;
-        margin-top: clamp(20px, 5vh, 46px);
-        margin-bottom: 0;
+        margin-top: clamp(94px, 17vh, 136px);
+        margin-bottom: clamp(14px, 3vh, 26px);
     }
 
     .hero-proof {
         font-size: 11px;
         letter-spacing: 0.08em;
-        margin-bottom: 10px;
+        margin-bottom: 14px;
         line-height: 1.4;
         max-width: 100%;
         white-space: normal;
     }
 
     .hero-title {
-        font-size: clamp(54px, 15vw, 82px);
-        line-height: 0.88;
+        font-size: clamp(52px, 14.5vw, 78px);
+        line-height: 0.9;
     }
 
-    .hero-marquee-container { opacity: 0.11; }
+    .hero-marquee-container { opacity: 0.09; }
 
     .whoami-stage-block {
         min-height: auto;
@@ -990,7 +990,7 @@ body.project-page .topbar-left {
     }
 
     .whoami-section {
-        padding: 24px 16px 44px !important;
+        padding: 34px 16px 44px !important;
     }
 
     .intro-left, .intro-right, .text-block-title, .text-block-content {
