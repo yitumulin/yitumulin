@@ -203,6 +203,7 @@ a {
     opacity: 0.85;
     margin-bottom: 2vh;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .hero-title {
@@ -614,7 +615,7 @@ body.project-page .filter-chip.is-active {
 }
 
 .whoami-wordmark-stage {
-    padding-top: 0;
+    padding-top: 7vh;
 }
 
 .whoami-wordmark {
@@ -915,6 +916,7 @@ body.project-page .filter-chip.is-active {
         margin-bottom: 12px;
         line-height: 1.45;
         max-width: 95%;
+        white-space: normal;
     }
 
     .hero-title {
@@ -1022,7 +1024,7 @@ body.project-page .filter-chip.is-active {
         justify-content: flex-end;
     }
 
-    .whoami-wordmark-stage { padding-top: 0; }
+    .whoami-wordmark-stage { padding-top: 3vh; }
 
     .whoami-wordmark {
         text-align: right;
