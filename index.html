@@ -62,8 +62,8 @@
         </div>
         
         <div class="hero-title-container reveal-up">
-            <div style="font-family: monospace; font-size: 1.8vw; font-weight: 700; letter-spacing: 0.1em; opacity: 0.85; margin-bottom: 2vh; text-transform: uppercase;" class="glitch-text-init">
-                BUPT / 3 Papers / 4 Applied Projects / 2 Software Copyrights
+            <div class="hero-proof glitch-text-init">
+                AI Product Builder / LLM Engineer / CV Practitioner / Turning Ideas Into Shipped Systems
             </div>
             <div class="hero-title">
                 <span class="hover-magnetic glitch-text-init">Yitumulin's</span>
@@ -96,6 +96,11 @@
         <div class="whoami-shell">
             <div class="whoami-merged reveal-up">
                 <div class="whoami-kicker">WHOAMI</div>
+                <div class="whoami-proof">
+                    <span>3 Papers</span>
+                    <span>4 Applied Projects</span>
+                    <span>2 Software Copyrights</span>
+                </div>
                 <p class="whoami-summary">
                     I study Telecommunication Engineering and Management at Beijing University of Posts and Telecommunications. I focus on LLM application engineering, AI product development, and computer vision, and I care about turning ideas into measurable shipped outcomes.
                 </p>
@@ -124,7 +129,7 @@
     <section id="work" class="section-list stage-white">
         <div class="list-header reveal-up">
             Works<br>
-            <a href="project.html" style="font-size: 2vw; text-decoration: underline;">to all projects →</a>
+            <a href="project.html" class="works-link" style="text-decoration: underline;">to all projects →</a>
         </div>
 
         <div class="list-item reveal-up">
@@ -241,26 +246,29 @@
         const logo = document.getElementById('hero-logo');
         const titleEl = document.querySelector('.topbar-left');
         const topbarEl = document.querySelector('.topbar');
+        const isMobileLayout = window.matchMedia('(max-width: 900px)').matches;
 
         const finalLogoScale = 0.036;
-        gsap.to(logo, {
-            top: () => {
-                const navRect = topbarEl.getBoundingClientRect();
-                const scaledLogoHeight = logo.offsetHeight * finalLogoScale;
-                return `${navRect.top + (navRect.height - scaledLogoHeight) / 2}px`;
-            },
-            left: () => `${titleEl.getBoundingClientRect().right + 16}px`,
-            scale: finalLogoScale,
-            transformOrigin: "top left",
-            ease: "none",
-            scrollTrigger: {
-                trigger: document.body,
-                start: "top top",
-                end: "+=420",
-                scrub: 0.6,
-                invalidateOnRefresh: true
-            }
-        });
+        if (!isMobileLayout) {
+            gsap.to(logo, {
+                top: () => {
+                    const navRect = topbarEl.getBoundingClientRect();
+                    const scaledLogoHeight = logo.offsetHeight * finalLogoScale;
+                    return `${navRect.top + (navRect.height - scaledLogoHeight) / 2}px`;
+                },
+                left: () => `${titleEl.getBoundingClientRect().right + 16}px`,
+                scale: finalLogoScale,
+                transformOrigin: "top left",
+                ease: "none",
+                scrollTrigger: {
+                    trigger: document.body,
+                    start: "top top",
+                    end: "+=420",
+                    scrub: 0.6,
+                    invalidateOnRefresh: true
+                }
+            });
+        }
 
         window.addEventListener('resize', () => {
             ScrollTrigger.refresh();
@@ -270,13 +278,15 @@
         });
 
         // W & S Initial Animation (Vertical Drop from top)
-        gsap.from(".w-shape, .s-shape", {
-            y: -100, // Come from top
-            opacity: 0,
-            duration: 2.9,
-            ease: "power4.out",
-            stagger: 0.12
-        });
+        if (!isMobileLayout) {
+            gsap.from(".w-shape, .s-shape", {
+                y: -100, // Come from top
+                opacity: 0,
+                duration: 2.9,
+                ease: "power4.out",
+                stagger: 0.12
+            });
+        }
         
         // Flash and jitter effect every 3 seconds
         function triggerLogoPulse() {
@@ -287,7 +297,9 @@
                 logo.classList.remove('flash-active');
             }, 500);
         }
-        setInterval(triggerLogoPulse, 3000);
+        if (!isMobileLayout) {
+            setInterval(triggerLogoPulse, 3000);
+        }
 
         // Marquee Animations (Seamless Infinite Loop)
         // By animating x from 0 to -50% and repeating infinitely with no delay/gap
@@ -386,35 +398,35 @@
 
             whoamiWordmarkTimeline
                 .to(whoamiWordmark, {
-                    scale: 2.7,
-                    xPercent: -16,
-                    yPercent: 15,
+                    scale: isMobileLayout ? 1.8 : 2.7,
+                    xPercent: isMobileLayout ? -8 : -16,
+                    yPercent: isMobileLayout ? 10 : 15,
                     opacity: 1,
                     ease: "none",
                     duration: 0.52
                 })
                 .to(whoamiWordmark, {
-                    scale: 17.5,
-                    xPercent: -46,
-                    yPercent: 8,
+                    scale: isMobileLayout ? 8.2 : 17.5,
+                    xPercent: isMobileLayout ? -20 : -46,
+                    yPercent: isMobileLayout ? 14 : 8,
                     opacity: 1,
                     ease: "none",
                     duration: 0.48
                 });
 
             gsap.to(whoamiBloom, {
-                scale: 16,
-                opacity: 0.94,
+                scale: isMobileLayout ? 8.5 : 16,
+                opacity: isMobileLayout ? 0.82 : 0.94,
                 ease: "power1.out",
                 scrollTrigger: {
                     trigger: whoamiSection,
-                    start: "top 12%",
+                    start: isMobileLayout ? "top 30%" : "top 12%",
                     end: "bottom top",
                     scrub: 0.8
                 }
             });
 
-            if (workSectionForFade) {
+            if (workSectionForFade && !isMobileLayout) {
                 gsap.to(whoamiWordmark, {
                     opacity: 0,
                     ease: "none",
@@ -537,19 +549,27 @@
         }, { passive: false });
         
         // Scroll Reveal Animations
-        gsap.utils.toArray('.reveal-up').forEach(element => {
-            gsap.to(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
-                },
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                ease: "power3.out"
+        const revealNodes = gsap.utils.toArray('.reveal-up');
+        if (isMobileLayout) {
+            revealNodes.forEach((element) => {
+                element.style.opacity = "1";
+                element.style.transform = "none";
             });
-        });
+        } else {
+            revealNodes.forEach(element => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+        }
 
     </script>
 </body>

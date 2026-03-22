@@ -195,6 +195,16 @@ a {
     margin-bottom: 10vh;
 }
 
+.hero-proof {
+    font-family: var(--font-mono);
+    font-size: 1.8vw;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    opacity: 0.85;
+    margin-bottom: 2vh;
+    text-transform: uppercase;
+}
+
 .hero-title {
     font-size: 10vw;
     font-weight: 700;
@@ -309,6 +319,10 @@ a {
     margin-bottom: 5vh;
     color: var(--text-white);
     font-family: var(--font-display);
+}
+
+.works-link {
+    font-size: 2vw;
 }
 
 .stage-white .list-header {
@@ -537,6 +551,27 @@ body.project-page .filter-chip.is-active {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     opacity: 0.7;
+}
+
+.whoami-proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.15rem;
+}
+
+.whoami-proof span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--text-black);
+    padding: 0.36rem 0.62rem;
+    font-family: var(--font-display);
+    font-size: clamp(13px, 0.95vw, 18px);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.16);
 }
 
 .whoami-summary {
@@ -839,34 +874,353 @@ body.project-page .filter-chip.is-active {
 }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-    .topbar { font-size: 0.9rem; }
-    .topbar-center { gap: 10px; }
-    .intro-left, .intro-right { width: 100%; margin-bottom: 20px; }
-    .section-intro, .section-text-block { flex-direction: column; }
-    .text-block-title, .text-block-content { width: 100%; margin-bottom: 20px; }
-    .intro-right { font-size: 4.5vw; }
-    .intro-right span.bold { font-size: 5.5vw; }
-    .text-block-content { font-size: 4vw; }
-    .item-meta { width: 100%; margin-bottom: 10px; }
-    .list-item { flex-direction: column; }
+@media (max-width: 900px) {
+    :root { --nav-height: 62px; }
+
+    .topbar {
+        height: var(--nav-height);
+        padding: 0 16px;
+        color: #ffffff;
+    }
+
+    .topbar-left, .topbar-right {
+        font-size: 0.76rem;
+        letter-spacing: 0.02em;
+    }
+
+    .topbar-right { display: none; }
+
+    .topbar-center {
+        gap: 8px;
+        font-size: 0.78rem;
+    }
+
+    .slash { opacity: 0.35; }
+
+    .hero {
+        min-height: 100svh;
+        padding: calc(var(--nav-height) + 10px) 16px 8vh;
+    }
+
+    .hero-deco { display: none; }
+
+    .hero-title-container {
+        text-align: left;
+        margin-bottom: 8vh;
+    }
+
+    .hero-proof {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        margin-bottom: 12px;
+        line-height: 1.45;
+        max-width: 95%;
+    }
+
+    .hero-title {
+        font-size: 18vw;
+        line-height: 0.88;
+    }
+
+    .hero-marquee-container { opacity: 0.11; }
+
+    .whoami-stage-block {
+        min-height: auto;
+    }
+
+    .whoami-stage-block .section-marquee {
+        padding: 8px 0 !important;
+    }
+
+    .whoami-stage-block .marquee-fast {
+        font-size: 6vw !important;
+    }
+
+    .whoami-stage-block .marquee-math {
+        font-size: 4.2vw !important;
+        opacity: 0.9 !important;
+        line-height: 1.22;
+    }
+
+    .section-intro,
+    .section-text-block {
+        flex-direction: column;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .whoami-section {
+        padding: 24px 16px 44px !important;
+    }
+
+    .intro-left, .intro-right, .text-block-title, .text-block-content {
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    .intro-right {
+        font-size: clamp(16px, 4.6vw, 21px);
+        line-height: 1.55;
+    }
+
+    .intro-right span.bold {
+        font-size: inherit;
+    }
+
+    .whoami-shell {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .whoami-merged {
+        gap: 14px;
+        padding-top: 0;
+    }
+
+    .whoami-kicker {
+        font-size: 12px;
+        letter-spacing: 0.16em;
+    }
+
+    .whoami-proof {
+        gap: 0.4rem;
+        margin-top: 0;
+    }
+
+    .whoami-proof span {
+        padding: 0.28rem 0.46rem;
+        border-width: 1px;
+        font-size: 11px;
+        letter-spacing: 0.07em;
+    }
+
+    .whoami-summary {
+        max-width: 100%;
+        font-size: clamp(20px, 6vw, 31px);
+        line-height: 1.46;
+    }
+
+    .whoami-focus-list {
+        margin-top: 4px;
+        gap: 0.75rem;
+    }
+
+    .whoami-focus-list p {
+        font-size: clamp(15px, 4.2vw, 20px);
+        line-height: 1.55;
+        padding-top: 0.72rem;
+    }
+
+    .whoami-focus-list strong {
+        font-size: inherit;
+        margin-right: 0.35rem;
+    }
+
+    .whoami-visual {
+        min-height: 150px;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    .whoami-wordmark-stage { padding-top: 0; }
+
+    .whoami-wordmark {
+        text-align: right;
+        transform-origin: right center;
+        font-size: clamp(52px, 16vw, 92px);
+        line-height: 0.88;
+    }
+
+    .whoami-bloom {
+        width: 160px;
+        height: 160px;
+        right: 10%;
+        top: 70%;
+        transform: translate(50%, -50%) scale(0.06);
+    }
+
+    #work.section-list {
+        padding: 8vh 16px 10vh;
+    }
+
+    .list-header {
+        font-size: 14vw;
+        margin-bottom: 24px;
+        line-height: 0.9;
+    }
+
+    .works-link {
+        font-size: 15px !important;
+    }
+
+    .item-meta {
+        width: 100%;
+        margin-bottom: 6px;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+    }
+
+    .list-item {
+        flex-direction: column;
+        gap: 8px;
+        padding: 18px 0;
+    }
+
     .item-content { width: 100%; }
-    .item-title { font-size: 6vw; }
-    .item-desc { font-size: 3.5vw; }
-    .footer-grid { flex-direction: column; gap: 30px; }
-    .footer-col strong { font-size: 3vw; }
-    .footer-grid { font-size: 4vw; }
-    .project-meta { width: 100%; margin-bottom: 10px; font-size: 3.4vw; }
-    .project-card { flex-direction: column; }
-    .project-content { width: 100%; }
-    .project-title { font-size: 7vw; }
-    .protocol-panel { grid-template-columns: 1fr; font-size: 3.6vw; }
-    .project-controls { padding-bottom: 3vh; }
-    .whoami-summary { max-width: 100%; }
-    .whoami-shell { grid-template-columns: 1fr; }
-    .whoami-visual { min-height: 240px; align-items: flex-start; }
-    .whoami-wordmark { text-align: left; transform-origin: left center; font-size: clamp(52px, 15vw, 96px); }
-    .whoami-bloom { right: 50%; top: 78%; }
+
+    .item-title {
+        font-size: clamp(26px, 8.5vw, 42px);
+        margin-bottom: 8px;
+        line-height: 1.04;
+    }
+
+    .item-desc {
+        font-size: clamp(15px, 4.4vw, 20px);
+        line-height: 1.5;
+    }
+
+    .footer {
+        min-height: auto;
+        padding: 12vh 16px 5vh;
+    }
+
+    .footer-huge {
+        font-size: 21vw;
+        margin-bottom: 6vh;
+        line-height: 0.84;
+    }
+
+    .footer-grid {
+        flex-direction: column;
+        gap: 22px;
+        font-size: 16px;
+        padding-top: 18px;
+        padding-bottom: 7vh;
+    }
+
+    .footer-col strong {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+
+    .footer-col a,
+    .footer-col span {
+        font-size: clamp(17px, 4.8vw, 22px) !important;
+        line-height: 1.4;
+        display: inline-block;
+    }
+
+    .footer-signature-row {
+        justify-content: center;
+        gap: 1rem;
+        flex-direction: row;
+    }
+
+    .footer-signature-row > span,
+    .footer-signature-row > a {
+        font-size: 13px !important;
+    }
+
     .project-mini-logo { display: none; }
-    .footer-signature-row { flex-direction: column; gap: 0.5rem; }
+
+    body.project-page .topbar {
+        color: var(--text-black);
+    }
+
+    .project-page .section-intro {
+        padding-top: 14vh !important;
+        min-height: auto !important;
+        gap: 16px;
+    }
+
+    .project-page .intro-left {
+        width: 100%;
+        font-size: clamp(34px, 12vw, 60px);
+        line-height: 0.92;
+    }
+
+    .project-page .intro-right {
+        width: 100%;
+        font-size: clamp(16px, 4.5vw, 20px);
+    }
+
+    .project-controls {
+        padding: 0 16px 18px;
+        gap: 0.75rem;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .project-filter-label {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+    }
+
+    .project-filters { gap: 8px; }
+
+    .filter-chip {
+        padding: 7px 11px;
+        font-size: 12px;
+        border-width: 1.5px;
+    }
+
+    .project-category.section-list {
+        padding: 4vh 16px 8vh;
+    }
+
+    .project-category .list-header {
+        font-size: clamp(28px, 12vw, 58px);
+        margin-bottom: 2vh;
+    }
+
+    .project-meta {
+        width: 100%;
+        margin-bottom: 2px;
+        font-size: 12px;
+        letter-spacing: 0.07em;
+    }
+
+    .project-card {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px 0;
+    }
+
+    .project-content { width: 100%; }
+
+    .project-title {
+        font-size: clamp(28px, 10vw, 44px);
+        margin-bottom: 14px;
+        line-height: 1.03;
+    }
+
+    .protocol-panel {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        font-size: clamp(13px, 3.8vw, 17px);
+        padding: 12px 12px;
+        border-left-width: 2px;
+        margin-bottom: 16px;
+    }
+
+    .field-label {
+        font-size: 11px;
+        margin-bottom: 4px;
+        letter-spacing: 0.08em;
+    }
+
+    .field-value {
+        font-size: clamp(13px, 3.8vw, 17px);
+        line-height: 1.5;
+    }
+
+    .project-link {
+        font-size: clamp(15px, 4.4vw, 20px);
+        margin-top: 6px;
+    }
+
+    .reveal-up {
+        opacity: 1;
+        transform: none;
+    }
 }
