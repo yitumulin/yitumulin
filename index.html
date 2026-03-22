@@ -72,30 +72,13 @@
         </div>
     </section>
 
-    <!-- STAGE 2: MARQUEE + WHOAMI -->
+    <!-- STAGE 2: WHOAMI -->
     <section id="whoami-stage" class="whoami-stage-block">
-    <!-- COMPACTED MARQUEES (Moved to Top as Section Marker) -->
-    <div style="border-top: 2px solid var(--text-black); border-bottom: 2px solid var(--text-black); margin-top: 0;">
-        <!-- Marquee 1 (Black) -->
-        <section class="section-marquee" style="border: none; padding: 1vh 0; min-height: auto;">
-            <div class="marquee-text marquee-fast" style="font-size: 2.9vw;">
-                An Engineer • A Researcher • A Creator • An Engineer • A Researcher • A Creator • An Engineer • A Researcher • A Creator • 
-            </div>
-        </section>
-
-        <!-- Marquee 2 (Red with Formula) -->
-        <section class="section-marquee" style="background: var(--bg-color); color: var(--text-black); border: none; padding: 1vh 0; min-height: auto; border-top: 2px solid var(--text-black);">
-            <div class="marquee-text marquee-math" style="font-family: monospace; font-size: 2vw; opacity: 0.88;">
-                Attention(Q, K, V) = softmax(QK^T / sqrt(d_k))V • L = -sum y log(p) • import torch.nn as nn • pip install transformers • 
-            </div>
-        </section>
-    </div>
-
     <!-- SECTION 2: WHO I AM -->
-    <section id="whoami" class="section-intro whoami-section" style="padding-top: 6vh; padding-bottom: 10vh; border-top: none;">
+    <section id="whoami" class="section-intro whoami-section" style="padding-top: 12vh; padding-bottom: 12vh; border-top: none;">
         <div class="whoami-shell">
             <div class="whoami-merged reveal-up">
-                <div class="whoami-kicker">WHOAMI</div>
+                <div class="whoami-kicker">WHO AM I</div>
                 <div class="whoami-proof">
                     <span>3 Papers</span>
                     <span>4 Applied Projects</span>
@@ -336,10 +319,6 @@
          setupMarquee(".marquee-row-3", 94);
          setupMarquee(".marquee-row-4", 123, true);
  
-         // Apply to the intro marquees
-         setupMarquee(".marquee-fast", 54);
-         setupMarquee(".marquee-math", 54);
-
         // Fast smooth scroll for in-page anchors
         function fastScrollToElement(target, duration = 520, offsetPx = null) {
             const startY = window.scrollY;
