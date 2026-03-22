@@ -251,6 +251,7 @@ a {
     color: var(--text-black);
     overflow: hidden;
     isolation: isolate;
+    min-height: 100vh;
 }
 
 .marquee-text {
@@ -539,8 +540,8 @@ body.project-page .filter-chip.is-active {
 }
 
 .whoami-summary {
-    font-size: clamp(19px, 1.6vw, 32px);
-    line-height: 1.72;
+    font-size: clamp(25px, 2.05vw, 40px);
+    line-height: 1.64;
     max-width: 95%;
 }
 
@@ -555,13 +556,13 @@ body.project-page .filter-chip.is-active {
     border-top: 2px solid var(--text-black);
     padding-top: 0.9rem;
     background: transparent;
-    font-size: clamp(15px, 1.02vw, 19px);
-    line-height: 1.72;
+    font-size: clamp(18px, 1.26vw, 24px);
+    line-height: 1.66;
 }
 
 .whoami-focus-list strong {
     font-family: var(--font-display);
-    font-size: clamp(15px, 1.05vw, 20px);
+    font-size: clamp(18px, 1.25vw, 24px);
     letter-spacing: 0.04em;
     text-transform: uppercase;
     margin-right: 0.45rem;
@@ -583,8 +584,8 @@ body.project-page .filter-chip.is-active {
 
 .whoami-wordmark {
     font-family: var(--font-display);
-    font-size: clamp(58px, 7vw, 140px);
-    font-weight: 800;
+    font-size: clamp(78px, 8.8vw, 186px);
+    font-weight: 900;
     line-height: 0.9;
     text-transform: uppercase;
     text-align: right;
@@ -593,7 +594,7 @@ body.project-page .filter-chip.is-active {
     transform-origin: right center;
     will-change: transform, opacity;
     filter: none;
-    text-shadow: 0 0 12px rgba(255,255,255,0.2);
+    text-shadow: none;
     position: relative;
     z-index: 4;
     pointer-events: none;
