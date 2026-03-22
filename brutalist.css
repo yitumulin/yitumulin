@@ -263,7 +263,6 @@ a {
     overflow: hidden;
     isolation: isolate;
     min-height: 108vh;
-    --whoami-transition-progress: 0;
 }
 
 .marquee-text {
@@ -703,16 +702,6 @@ body.project-page .filter-chip.is-active {
     will-change: transform, opacity;
 }
 
-.whoami-screenwipe {
-    position: absolute;
-    inset: -12vmax;
-    background: #ffffff;
-    pointer-events: none;
-    z-index: 1;
-    clip-path: circle(calc(var(--whoami-transition-progress) * 170vmax) at 87% 63%);
-    will-change: clip-path;
-}
-
 @keyframes spin-ring {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -1064,10 +1053,6 @@ body.project-page .filter-chip.is-active {
         right: 10%;
         top: 70%;
         transform: translate(50%, -50%) scale(0.06);
-    }
-
-    .whoami-screenwipe {
-        clip-path: circle(calc(var(--whoami-transition-progress) * 190vmax) at 85% 66%);
     }
 
     #work.section-list {
