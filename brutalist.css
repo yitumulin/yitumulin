@@ -1,0 +1,468 @@
+/* brutalist.css */
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-color: #F00000;
+    --text-black: #000000;
+    --text-white: #FFFFFF;
+    --font-main: 'Cabin', sans-serif;
+    --nav-height: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-black);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: var(--text-black);
+    color: var(--text-white);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* --- NAVIGATION --- */
+.topbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--nav-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4vw;
+    z-index: 1000;
+    mix-blend-mode: difference;
+    color: #fff;
+}
+
+.topbar-left, .topbar-right {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.topbar-center {
+    display: flex;
+    gap: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.slash {
+    opacity: 0.5;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding: 0 4vw;
+}
+
+/* --- WS LOGO FLASH EFFECT --- */
+.hero-deco {
+    position: fixed; /* Changed to fixed so it stays on screen when scrolled */
+    top: 15vh;
+    left: 4vw;
+    right: auto;
+    width: 50vw; /* Hardcode a narrower width so it doesn't stretch across the screen */
+    height: 40vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 4vw; /* Reduce gap to make it tighter */
+    z-index: 1001; 
+    pointer-events: none;
+    transform-origin: top left;
+    position: relative;
+    overflow: hidden; /* To contain the flash sweep */
+}
+
+/* The flash element that sweeps across */
+.hero-deco::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-20deg);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.flash-active {
+    animation: jitter 0.4s ease-in-out;
+}
+
+.flash-active::after {
+    animation: sweep 0.4s ease-out forwards;
+}
+
+@keyframes sweep {
+    0% { left: -100%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 200%; opacity: 0; }
+}
+
+@keyframes jitter {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 1px); }
+    40% { transform: translate(2px, -1px); }
+    60% { transform: translate(-1px, 2px); }
+    80% { transform: translate(1px, -2px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* We will handle the shrinking purely with GSAP Scrub now, so remove the .is-shrunk class */
+
+.hero-marquee-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 0;
+    opacity: 0.15;
+}
+
+.marquee-row {
+    display: flex;
+    white-space: nowrap;
+    font-size: 12vw;
+    font-weight: 700;
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+.hero-title-container {
+    position: relative;
+    z-index: 10;
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: 10vh;
+}
+
+.hero-title {
+    font-size: 10vw;
+    font-weight: 700;
+    line-height: 0.85;
+    color: var(--text-white);
+    text-transform: uppercase;
+}
+
+.hero-title span {
+    display: block;
+}
+
+/* --- INTRO SECTION --- */
+.section-intro {
+    padding: 15vh 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-top: 2px solid var(--text-black);
+}
+
+.intro-left {
+    font-size: 4vw;
+    font-weight: 700;
+    width: 30%;
+}
+
+.intro-right {
+    width: 60%;
+    font-size: 2.5vw;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.intro-right span.bold {
+    font-weight: 700;
+    font-size: 3vw;
+}
+
+/* --- MARQUEE SECTION --- */
+.section-marquee {
+    padding: 10vh 0;
+    border-top: 2px solid var(--text-black);
+    border-bottom: 2px solid var(--text-black);
+    overflow: hidden;
+    background: var(--text-black);
+    color: var(--bg-color);
+}
+
+.marquee-text {
+    font-size: 8vw;
+    font-weight: 700;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+/* --- TEXT BLOCK SECTION --- */
+.section-text-block {
+    padding: 15vh 4vw;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--text-black);
+}
+
+.text-block-title {
+    font-size: 6vw;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-white);
+    width: 40%;
+}
+
+.text-block-content {
+    width: 50%;
+    font-size: 2vw;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* --- WORKS / LIST SECTION --- */
+.section-list {
+    padding: 15vh 4vw;
+    border-bottom: 2px solid var(--text-black);
+}
+
+.list-header {
+    font-size: 6vw;
+    font-weight: 700;
+    margin-bottom: 5vh;
+    color: var(--text-white);
+}
+
+/* --- PROJECT HOVER PANEL --- */
+.project-card {
+    position: relative;
+    padding: 4vh 0;
+    border-top: 2px solid var(--text-black);
+    text-decoration: none;
+    color: var(--text-black);
+    display: flex;
+    transition: background 0.3s;
+}
+
+/* Removed hover invert background as requested */
+.project-card:hover {
+    /* No background change */
+}
+
+.project-meta {
+    width: 20%;
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+
+.project-content {
+    width: 80%;
+    position: relative;
+}
+
+.project-title {
+    font-size: 3vw;
+    font-weight: 700;
+    margin-bottom: 2vh;
+}
+
+.project-desc {
+    font-size: 1.5vw;
+    font-weight: 500;
+    margin-bottom: 2vh;
+}
+
+.project-link {
+    display: inline-block;
+    font-size: 1.2vw;
+    font-family: monospace;
+    text-decoration: none;
+    background-color: var(--text-black);
+    color: var(--bg-color);
+    padding: 8px 16px;
+    font-weight: 700;
+    margin-top: 1vh;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.project-link:hover {
+    transform: translateY(-2px);
+    background-color: #333;
+}
+
+/* Protocol System Panel - Now always visible */
+.protocol-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vh 4vw;
+    font-family: monospace;
+    font-size: 1.1vw;
+    color: var(--text-black);
+    padding: 2vh 2vw;
+    border-left: 4px solid var(--text-black);
+    margin-bottom: 3vh;
+    background: rgba(0, 0, 0, 0.05); /* Very subtle background to group it */
+}
+
+.panel-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-label {
+    font-weight: 700;
+    opacity: 0.6;
+    margin-bottom: 0.5vh;
+}
+
+.field-value {
+    font-weight: 600;
+}
+
+/* --- SCROLL CURVE --- */
+#scroll-curve {
+    position: fixed;
+    top: 0;
+    right: 20px;
+    width: 40px;
+    height: 100vh;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* --- FOOTER / CONTACT --- */
+.footer {
+    padding: 15vh 4vw 5vh 4vw;
+    background: var(--text-white); /* Changed to white */
+    color: var(--text-black); /* Changed to black */
+}
+
+.footer-huge {
+    font-size: 12vw;
+    font-weight: 700;
+    line-height: 0.8;
+    margin-bottom: 10vh;
+    color: var(--text-black); /* Changed to black */
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5vw;
+    font-weight: 500;
+    border-top: 1px solid var(--text-black); /* Changed to black */
+    padding-top: 4vh;
+    padding-bottom: 10vh; /* Add padding for bottom elements */
+}
+
+.footer-col strong {
+    display: block;
+    margin-bottom: 1vh;
+    font-size: 1.2vw;
+    opacity: 0.7;
+}
+
+/* --- HOVER ANIMATIONS --- */
+/* Scale and Color Shift */
+.hover-scale {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+.hover-scale:hover {
+    transform: scale(1.1);
+    color: var(--text-black);
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+/* For elements that are already black and should invert/scale */
+.hover-scale-invert {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease, background-color 0.3s ease;
+}
+.hover-scale-invert:hover {
+    transform: scale(1.1) rotate(-2deg);
+    color: var(--bg-color);
+    background-color: var(--text-black);
+    padding: 0 10px;
+}
+
+/* Subtle underline slide */
+.hover-underline {
+    position: relative;
+    text-decoration: none !important;
+}
+.hover-underline::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+.hover-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Magnetic style text (heavy scale) */
+.hover-magnetic {
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.hover-magnetic:hover {
+    transform: scale(1.15) translateY(-5px);
+    letter-spacing: 0.05em;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* --- GSAP ANIMATION CLASSES --- */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .topbar { font-size: 0.9rem; }
+    .topbar-center { gap: 10px; }
+    .intro-left, .intro-right { width: 100%; margin-bottom: 20px; }
+    .section-intro, .section-text-block { flex-direction: column; }
+    .text-block-title, .text-block-content { width: 100%; margin-bottom: 20px; }
+    .intro-right { font-size: 4.5vw; }
+    .intro-right span.bold { font-size: 5.5vw; }
+    .text-block-content { font-size: 4vw; }
+    .item-meta { width: 100%; margin-bottom: 10px; }
+    .list-item { flex-direction: column; }
+    .item-content { width: 100%; }
+    .item-title { font-size: 6vw; }
+    .item-desc { font-size: 3.5vw; }
+    .footer-grid { flex-direction: column; gap: 30px; }
+    .footer-col strong { font-size: 3vw; }
+    .footer-grid { font-size: 4vw; }
+}

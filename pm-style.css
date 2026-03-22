@@ -1,0 +1,323 @@
+/* pm-style.css */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    --bg-dark: #050505;
+    --neon-green: #39FF14;
+    --neon-pink: #FF007F;
+    --neon-blue: #00F0FF;
+    --text-main: #FFFFFF;
+    --text-muted: #666666;
+    
+    /* 
+      Anton is an ultra-bold sans-serif, perfect for BIG numbers and BIG titles.
+      Space Mono (Italic) provides the ultra-thin, highly technical contrast.
+    */
+    --font-bold: 'Anton', sans-serif;
+    --font-thin: 'Space Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-bold);
+    overflow-x: hidden;
+    /* Hide scrollbar for a more immersive app-like feel */
+    scrollbar-width: none; 
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Background Canvas for Pipeline/Particles */
+#pipeline-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Base Wrapper to sit above canvas */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+/* Typography Classes */
+.huge-text {
+    font-family: var(--font-bold);
+    font-size: clamp(6rem, 15vw, 15rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+.thin-italic {
+    font-family: var(--font-thin);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 2rem);
+    color: var(--neon-blue);
+}
+
+.highlight-green { color: var(--neon-green); }
+.highlight-pink { color: var(--neon-pink); }
+.highlight-blue { color: var(--neon-blue); }
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5vw;
+    position: relative;
+}
+
+.hero-tagline {
+    font-family: var(--font-thin);
+    font-size: 1.5rem;
+    color: var(--neon-green);
+    margin-bottom: -1rem;
+    z-index: 2;
+}
+
+.hero-title {
+    position: relative;
+    z-index: 2;
+    mix-blend-mode: difference;
+}
+
+/* --- PIPELINE METRICS SECTION --- */
+.metrics-section {
+    min-height: 100vh;
+    padding: 15vh 5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 15vh;
+}
+
+.metric-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0; /* Handled by GSAP */
+    transform: translateY(100px);
+}
+
+.metric-block.reverse {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.metric-number-container {
+    flex: 1;
+    display: flex;
+    align-items:baseline;
+    gap: 10px;
+}
+
+.metric-block.reverse .metric-number-container {
+    justify-content: flex-end;
+}
+
+.metric-number {
+    font-size: clamp(8rem, 20vw, 25rem);
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 3px var(--text-main);
+    transition: all 0.4s ease;
+}
+
+.metric-block:hover .metric-number {
+    color: var(--neon-pink);
+    -webkit-text-stroke: 0px;
+    text-shadow: 0 0 40px var(--neon-pink);
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.metric-block:nth-child(even):hover .metric-number {
+    color: var(--neon-blue);
+    text-shadow: 0 0 40px var(--neon-blue);
+    transform: scale(1.05) rotate(2deg);
+}
+
+.metric-symbol {
+    font-size: clamp(3rem, 8vw, 10rem);
+    color: var(--neon-green);
+}
+
+.metric-desc {
+    flex: 1;
+    max-width: 400px;
+}
+
+.metric-desc h3 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.metric-desc p {
+    font-family: var(--font-thin);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* --- 3D CARD / PROJECT SECTION --- */
+.projects-section {
+    padding: 15vh 5vw;
+    perspective: 1000px;
+}
+
+.projects-title {
+    font-size: clamp(4rem, 10vw, 10rem);
+    text-align: center;
+    margin-bottom: 10vh;
+    color: var(--text-main);
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 5vw;
+}
+
+.project-card {
+    background: rgba(20, 20, 20, 0.6);
+    border: 2px solid var(--text-muted);
+    padding: 40px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.4s;
+    backdrop-filter: blur(10px);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background: linear-gradient(45deg, var(--neon-green), var(--neon-blue), var(--neon-pink));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    filter: blur(20px);
+}
+
+.project-card:hover {
+    transform: translateY(-20px) rotateX(10deg) rotateY(-5deg);
+    border-color: var(--text-main);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    transform: translateZ(30px);
+}
+
+.card-tag {
+    font-family: var(--font-thin);
+    color: var(--neon-blue);
+    font-size: 1rem;
+    border: 1px solid var(--neon-blue);
+    padding: 5px 15px;
+    border-radius: 50px;
+}
+
+.card-title {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    transform: translateZ(50px);
+}
+
+.card-desc {
+    font-family: var(--font-thin);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    transform: translateZ(20px);
+}
+
+/* --- LIQUID BUTTON --- */
+.liquid-btn {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 20px 40px;
+    font-family: var(--font-bold);
+    font-size: 1.5rem;
+    color: var(--bg-dark);
+    background: var(--neon-green);
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(40px);
+    transition: transform 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.liquid-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--neon-blue);
+    border-radius: 40%;
+    z-index: -1;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(100%) rotate(0deg);
+}
+
+.liquid-btn:hover {
+    color: var(--bg-dark);
+    transform: translateZ(50px) scale(1.05);
+}
+
+.liquid-btn:hover::after {
+    transform: translateY(-20%) rotate(180deg);
+}
+.liquid-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- PAGE TRANSITION OVERLAY --- */
+.page-transition {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: var(--neon-pink);
+    z-index: 9999;
+    transform: scaleY(1);
+    transform-origin: top;
+}
+
+@media (max-width: 768px) {
+    .metric-block, .metric-block.reverse {
+        flex-direction: column;
+        text-align: left;
+        gap: 20px;
+        align-items: flex-start;
+    }
+    .metric-number { font-size: 8rem; }
+    .card-grid { grid-template-columns: 1fr; }
+}
