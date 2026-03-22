@@ -83,7 +83,7 @@
                     <span>3 Papers</span>
                     <span>4 Applied Projects</span>
                     <span>2 Software Copyrights</span>
-                    <span>IELTS 17.0</span>
+                    <span>IELTS 7.0</span>
                 </div>
                 <p class="whoami-summary">
                     I study Telecommunication Engineering and Management at Beijing University of Posts and Telecommunications. I focus on LLM application engineering, AI product development, and computer vision, and I care about turning ideas into measurable shipped outcomes.
@@ -316,11 +316,17 @@
             }); 
         }
 
-        // Apply to the 4 hero marquee rows
-         setupMarquee(".marquee-row-1", 103);
-         setupMarquee(".marquee-row-2", 111, true);
-         setupMarquee(".marquee-row-3", 94);
-         setupMarquee(".marquee-row-4", 123, true);
+        // Apply marquee animations (disable on mobile for smoother touch scrolling)
+        if (!isMobileExperience) {
+             setupMarquee(".marquee-row-1", 103);
+             setupMarquee(".marquee-row-2", 111, true);
+             setupMarquee(".marquee-row-3", 94);
+             setupMarquee(".marquee-row-4", 123, true);
+        } else {
+            document.querySelectorAll('.marquee-row').forEach((row) => {
+                row.style.willChange = "auto";
+            });
+        }
  
         // Fast smooth scroll for in-page anchors
         function fastScrollToElement(target, duration = 520, offsetPx = null) {
@@ -370,67 +376,74 @@
                 opacity: 1
             });
 
-            const whoamiWordmarkTimeline = gsap.timeline({
-                scrollTrigger: {
-                    trigger: whoamiSection,
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: 0.85
-                }
-            });
-
-            whoamiWordmarkTimeline
-                .to(whoamiWordmark, {
-                    scale: isMobileLayout ? 1.8 : 2.7,
-                    xPercent: isMobileLayout ? -8 : -16,
-                    yPercent: isMobileLayout ? 10 : 15,
-                    opacity: 1,
-                    ease: "none",
-                    duration: 0.52
-                })
-                .to(whoamiWordmark, {
-                    scale: isMobileLayout ? 8.2 : 17.5,
-                    xPercent: isMobileLayout ? -20 : -46,
-                    yPercent: isMobileLayout ? 14 : 8,
-                    opacity: 1,
-                    ease: "none",
-                    duration: 0.48
+            if (isMobileExperience) {
+                gsap.set(whoamiBloom, {
+                    scale: 1,
+                    opacity: 0.18
                 });
-
-            gsap.to(whoamiBloom, {
-                scale: isMobileLayout ? 8.5 : 16,
-                opacity: isMobileLayout ? 0.82 : 0.94,
-                ease: "power1.out",
-                scrollTrigger: {
-                    trigger: whoamiSection,
-                    start: isMobileLayout ? "top 30%" : "top 12%",
-                    end: "bottom top",
-                    scrub: 0.8
-                }
-            });
-
-            if (workSectionForFade && !isMobileExperience) {
-                gsap.to(whoamiWordmark, {
-                    opacity: 0,
-                    ease: "none",
+            } else {
+                const whoamiWordmarkTimeline = gsap.timeline({
                     scrollTrigger: {
-                        trigger: workSectionForFade,
-                        start: "top bottom",
-                        end: "top 76%",
-                        scrub: 0.55
+                        trigger: whoamiSection,
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: 0.85
                     }
                 });
+
+                whoamiWordmarkTimeline
+                    .to(whoamiWordmark, {
+                        scale: 2.7,
+                        xPercent: -16,
+                        yPercent: 15,
+                        opacity: 1,
+                        ease: "none",
+                        duration: 0.52
+                    })
+                    .to(whoamiWordmark, {
+                        scale: 17.5,
+                        xPercent: -46,
+                        yPercent: 8,
+                        opacity: 1,
+                        ease: "none",
+                        duration: 0.48
+                    });
 
                 gsap.to(whoamiBloom, {
-                    opacity: 0,
-                    ease: "none",
+                    scale: 16,
+                    opacity: 0.94,
+                    ease: "power1.out",
                     scrollTrigger: {
-                        trigger: workSectionForFade,
-                        start: "top bottom",
-                        end: "top 80%",
-                        scrub: 0.55
+                        trigger: whoamiSection,
+                        start: "top 12%",
+                        end: "bottom top",
+                        scrub: 0.8
                     }
                 });
+
+                if (workSectionForFade) {
+                    gsap.to(whoamiWordmark, {
+                        opacity: 0,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: workSectionForFade,
+                            start: "top bottom",
+                            end: "top 76%",
+                            scrub: 0.55
+                        }
+                    });
+
+                    gsap.to(whoamiBloom, {
+                        opacity: 0,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: workSectionForFade,
+                            start: "top bottom",
+                            end: "top 80%",
+                            scrub: 0.55
+                        }
+                    });
+                }
             }
         }
 
@@ -528,7 +541,7 @@
 
             if (zone === 'whoami') {
                 if (dirDown) {
-                    if (isNearBottom(whoamiStage, 2) && event.deltaY > 24) {
+                    if (event.deltaY > 24) {
                         event.preventDefault();
                         jumpToSection(workSection, 620, 0);
                     }

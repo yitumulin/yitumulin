@@ -176,6 +176,7 @@ a {
     justify-content: center;
     z-index: 0;
     opacity: 0.15;
+    pointer-events: none;
 }
 
 .marquee-row {
@@ -884,6 +885,11 @@ body.project-page .filter-chip.is-active {
 @media (max-width: 900px) {
     :root { --nav-height: 58px; }
 
+    html, body {
+        overscroll-behavior-y: contain;
+        touch-action: pan-y;
+    }
+
     .topbar {
         height: var(--nav-height);
         padding: 0 10px;
@@ -891,6 +897,7 @@ body.project-page .filter-chip.is-active {
         justify-content: flex-start;
         gap: 10px;
         overflow: hidden;
+        touch-action: pan-y;
     }
 
     .topbar-left, .topbar-right {
@@ -923,17 +930,18 @@ body.project-page .filter-chip.is-active {
     .slash { opacity: 0.35; }
 
     .hero {
-        min-height: 100svh;
+        min-height: auto;
+        height: auto;
         justify-content: flex-start;
-        padding: calc(var(--nav-height) + 8px) 12px 5vh;
+        padding: calc(var(--nav-height) + 6px) 12px 12px;
     }
 
     .hero-deco { display: none; }
 
     .hero-title-container {
         text-align: left;
-        margin-top: 8vh;
-        margin-bottom: 4vh;
+        margin-top: clamp(20px, 5vh, 46px);
+        margin-bottom: 0;
     }
 
     .hero-proof {
@@ -946,7 +954,7 @@ body.project-page .filter-chip.is-active {
     }
 
     .hero-title {
-        font-size: 17vw;
+        font-size: clamp(54px, 15vw, 82px);
         line-height: 0.88;
     }
 
@@ -1033,12 +1041,12 @@ body.project-page .filter-chip.is-active {
     }
 
     .whoami-visual {
-        min-height: 150px;
+        min-height: 88px;
         align-items: flex-end;
         justify-content: flex-end;
     }
 
-    .whoami-wordmark-stage { padding-top: 10vh; }
+    .whoami-wordmark-stage { padding-top: 2vh; }
 
     .whoami-wordmark {
         text-align: right;
@@ -1048,11 +1056,7 @@ body.project-page .filter-chip.is-active {
     }
 
     .whoami-bloom {
-        width: 160px;
-        height: 160px;
-        right: 10%;
-        top: 70%;
-        transform: translate(50%, -50%) scale(0.06);
+        display: none;
     }
 
     #work.section-list {
