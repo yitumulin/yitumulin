@@ -1,11 +1,13 @@
 /* brutalist.css */
-@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Noto+Sans+SC:wght@400;500;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
     --bg-color: #F00000;
     --text-black: #000000;
     --text-white: #FFFFFF;
-    --font-main: 'Cabin', sans-serif;
+    --font-body: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --font-display: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Space Grotesk', monospace;
     --nav-height: 80px;
 }
 
@@ -18,9 +20,26 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-black);
-    font-family: var(--font-main);
+    font-family: var(--font-body);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+}
+
+body.project-page {
+    background-color: #ffffff;
+    color: var(--text-black);
+}
+
+body.project-page .topbar {
+    mix-blend-mode: normal;
+    color: var(--text-black);
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid var(--text-black);
+    backdrop-filter: blur(8px);
+}
+
+body.project-page .list-header {
+    color: var(--text-black);
 }
 
 ::selection {
@@ -52,6 +71,7 @@ a {
     font-size: 1.2rem;
     font-weight: 700;
     text-transform: uppercase;
+    font-family: var(--font-display);
 }
 
 .topbar-center {
@@ -59,6 +79,7 @@ a {
     gap: 20px;
     font-size: 1.2rem;
     font-weight: 700;
+    font-family: var(--font-display);
 }
 
 .slash {
@@ -78,11 +99,11 @@ a {
 /* --- WS LOGO FLASH EFFECT --- */
 .hero-deco {
     position: fixed; /* Changed to fixed so it stays on screen when scrolled */
-    top: 15vh;
+    top: 8vh;
     left: 4vw;
     right: auto;
-    width: 50vw; /* Hardcode a narrower width so it doesn't stretch across the screen */
-    height: 40vh;
+    width: 45vw;
+    height: 34vh;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
@@ -90,8 +111,8 @@ a {
     z-index: 1001; 
     pointer-events: none;
     transform-origin: top left;
-    position: relative;
     overflow: hidden; /* To contain the flash sweep */
+    will-change: transform, top, left;
 }
 
 /* The flash element that sweeps across */
@@ -110,11 +131,16 @@ a {
 }
 
 .flash-active {
-    animation: jitter 0.4s ease-in-out;
+    animation: pulse-glow 0.45s ease-in-out;
 }
 
 .flash-active::after {
     animation: sweep 0.4s ease-out forwards;
+}
+
+.flash-active .w-shape,
+.flash-active .s-shape {
+    animation: micro-jitter-shape 0.45s steps(3, end);
 }
 
 @keyframes sweep {
@@ -124,12 +150,18 @@ a {
     100% { left: 200%; opacity: 0; }
 }
 
-@keyframes jitter {
+@keyframes pulse-glow {
+    0% { filter: brightness(1) contrast(1); }
+    45% { filter: brightness(1.24) contrast(1.12); }
+    100% { filter: brightness(1) contrast(1); }
+}
+
+@keyframes micro-jitter-shape {
     0% { transform: translate(0, 0); }
-    20% { transform: translate(-2px, 1px); }
-    40% { transform: translate(2px, -1px); }
-    60% { transform: translate(-1px, 2px); }
-    80% { transform: translate(1px, -2px); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(1px, -1px); }
+    60% { transform: translate(-1px, 0); }
+    80% { transform: translate(1px, 1px); }
     100% { transform: translate(0, 0); }
 }
 
@@ -169,6 +201,7 @@ a {
     line-height: 0.85;
     color: var(--text-white);
     text-transform: uppercase;
+    font-family: var(--font-display);
 }
 
 .hero-title span {
@@ -248,11 +281,57 @@ a {
     border-bottom: 2px solid var(--text-black);
 }
 
+.section-list.stage-white {
+    background: #ffffff;
+    color: var(--text-black);
+    position: relative;
+    z-index: 2;
+}
+
 .list-header {
     font-size: 6vw;
     font-weight: 700;
     margin-bottom: 5vh;
     color: var(--text-white);
+    font-family: var(--font-display);
+}
+
+.stage-white .list-header {
+    color: var(--text-black);
+}
+
+.list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 2vw;
+    padding: 4vh 0;
+    border-top: 2px solid var(--text-black);
+}
+
+.item-meta {
+    width: 20%;
+    font-size: 1.5vw;
+    font-weight: 600;
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.item-content {
+    width: 80%;
+}
+
+.item-title {
+    font-size: 3vw;
+    font-weight: 700;
+    margin-bottom: 1vh;
+    font-family: var(--font-display);
+}
+
+.item-desc {
+    font-size: 1.5vw;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 /* --- PROJECT HOVER PANEL --- */
@@ -273,8 +352,11 @@ a {
 
 .project-meta {
     width: 20%;
-    font-size: 1.5vw;
+    font-size: 1.15vw;
     font-weight: 600;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .project-content {
@@ -283,9 +365,10 @@ a {
 }
 
 .project-title {
-    font-size: 3vw;
+    font-size: clamp(30px, 2.8vw, 54px);
     font-weight: 700;
     margin-bottom: 2vh;
+    font-family: var(--font-display);
 }
 
 .project-desc {
@@ -296,19 +379,19 @@ a {
 
 .project-link {
     display: inline-block;
-    font-size: 1.2vw;
-    font-family: monospace;
-    text-decoration: none;
-    background-color: var(--text-black);
-    color: var(--bg-color);
-    padding: 8px 16px;
+    font-size: clamp(18px, 1.6vw, 28px);
+    font-family: var(--font-display);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    color: var(--text-black);
+    padding: 0;
     font-weight: 700;
     margin-top: 1vh;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, letter-spacing 0.3s ease;
 }
 .project-link:hover {
     transform: translateY(-2px);
-    background-color: #333;
+    letter-spacing: 0.03em;
 }
 
 /* Protocol System Panel - Now always visible */
@@ -316,8 +399,7 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2vh 4vw;
-    font-family: monospace;
-    font-size: 1.1vw;
+    font-size: clamp(13px, 0.95vw, 18px);
     color: var(--text-black);
     padding: 2vh 2vw;
     border-left: 4px solid var(--text-black);
@@ -334,22 +416,205 @@ a {
     font-weight: 700;
     opacity: 0.6;
     margin-bottom: 0.5vh;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
 }
 
 .field-value {
-    font-weight: 600;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    line-height: 1.55;
 }
 
-/* --- SCROLL CURVE --- */
-#scroll-curve {
-    position: fixed;
-    top: 0;
-    right: 20px;
-    width: 40px;
-    height: 100vh;
-    z-index: 1000;
+.project-controls {
+    padding: 0 4vw 4vh;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.project-filter-label {
+    font-family: var(--font-display);
+    font-size: clamp(14px, 1vw, 20px);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-chip {
+    border: 2px solid var(--text-black);
+    background: transparent;
+    color: var(--text-black);
+    padding: 8px 14px;
+    font-family: var(--font-display);
+    font-size: clamp(12px, 0.9vw, 16px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.filter-chip:hover {
+    transform: translateY(-1px);
+}
+
+.filter-chip.is-active {
+    background: var(--text-black);
+    color: var(--bg-color);
+}
+
+.project-card.is-hidden {
+    display: none;
+}
+
+.whoami-section {
+    position: relative;
+    overflow: visible;
+}
+
+.whoami-shell {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 62%) minmax(0, 38%);
+    gap: 3vw;
+    align-items: stretch;
+}
+
+.whoami-merged {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    position: relative;
+    z-index: 4;
+}
+
+.whoami-kicker {
+    font-family: var(--font-display);
+    font-size: clamp(14px, 1.1vw, 22px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.whoami-name {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 5vw, 92px);
+    font-weight: 700;
+    line-height: 1.02;
+    text-transform: capitalize;
+}
+
+.whoami-summary {
+    font-size: clamp(19px, 1.6vw, 32px);
+    line-height: 1.72;
+    max-width: 95%;
+}
+
+.whoami-focus-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-top: 2vh;
+}
+
+.whoami-focus-list p {
+    border-top: 2px solid var(--text-black);
+    padding-top: 0.9rem;
+    background: transparent;
+    font-size: clamp(15px, 1.02vw, 19px);
+    line-height: 1.72;
+}
+
+.whoami-focus-list strong {
+    font-family: var(--font-display);
+    font-size: clamp(15px, 1.05vw, 20px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-right: 0.45rem;
+}
+
+.whoami-visual {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+}
+
+.whoami-orb {
+    position: relative;
+    width: clamp(190px, 22vw, 320px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.whoami-orb-core {
+    width: 34%;
+    height: 34%;
+    border-radius: 50%;
+    background: var(--text-white);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.5), 0 0 35px rgba(255,255,255,0.85);
+}
+
+.whoami-orb-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(0,0,0,0.75);
+}
+
+.whoami-orb-ring.ring-a { animation: spin-ring 8s linear infinite; }
+.whoami-orb-ring.ring-b { inset: 13%; animation: spin-ring-reverse 6.5s linear infinite; }
+.whoami-orb-ring.ring-c { inset: 24%; animation: spin-ring 5.8s linear infinite; }
+
+.whoami-visual-caption {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(13px, 1vw, 18px);
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    opacity: 0.78;
+}
+
+.whoami-bloom {
+    position: absolute;
+    right: 8%;
+    top: 54%;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background: #ffffff;
+    transform: translate(50%, -50%) scale(0.2);
+    transform-origin: center center;
+    opacity: 0;
     pointer-events: none;
-    opacity: 0.5;
+    z-index: 3;
+    will-change: transform, opacity;
+}
+
+@keyframes spin-ring {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spin-ring-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
 }
 
 /* --- FOOTER / CONTACT --- */
@@ -382,6 +647,12 @@ a {
     margin-bottom: 1vh;
     font-size: 1.2vw;
     opacity: 0.7;
+}
+
+.footer-signature-row {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
 }
 
 /* --- HOVER ANIMATIONS --- */
@@ -447,6 +718,72 @@ a {
     transform: translateY(50px);
 }
 
+.project-mini-logo {
+    position: fixed;
+    top: 95px;
+    left: 4vw;
+    width: 98px;
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 10px;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.project-mini-logo .w-group {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.project-mini-logo .s-group {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-mini-logo .bar {
+    background: var(--text-black);
+}
+
+.project-mini-logo .w-group .bar:nth-child(1),
+.project-mini-logo .w-group .bar:nth-child(3) {
+    width: 25%;
+    height: 100%;
+}
+
+.project-mini-logo .w-group .bar:nth-child(2) {
+    width: 25%;
+    height: 60%;
+}
+
+.project-mini-logo .s-group .bar:nth-child(1),
+.project-mini-logo .s-group .bar:nth-child(3) {
+    width: 70%;
+    height: 28%;
+}
+
+.project-mini-logo .s-group .bar:nth-child(1) {
+    align-self: flex-end;
+    border-radius: 0 10px 10px 0;
+}
+
+.project-mini-logo .s-group .bar:nth-child(2) {
+    width: 100%;
+    height: 28%;
+}
+
+.project-mini-logo .s-group .bar:nth-child(3) {
+    align-self: flex-start;
+    border-radius: 10px 0 0 10px;
+}
+
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
     .topbar { font-size: 0.9rem; }
@@ -465,4 +802,16 @@ a {
     .footer-grid { flex-direction: column; gap: 30px; }
     .footer-col strong { font-size: 3vw; }
     .footer-grid { font-size: 4vw; }
+    .project-meta { width: 100%; margin-bottom: 10px; font-size: 3.4vw; }
+    .project-card { flex-direction: column; }
+    .project-content { width: 100%; }
+    .project-title { font-size: 7vw; }
+    .protocol-panel { grid-template-columns: 1fr; font-size: 3.6vw; }
+    .project-controls { padding-bottom: 3vh; }
+    .whoami-summary { max-width: 100%; }
+    .whoami-shell { grid-template-columns: 1fr; }
+    .whoami-visual { min-height: 280px; }
+    .whoami-bloom { right: 50%; top: 78%; }
+    .project-mini-logo { display: none; }
+    .footer-signature-row { flex-direction: column; gap: 0.5rem; }
 }

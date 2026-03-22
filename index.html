@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>yitumulin's Space</title>
     <link rel="stylesheet" href="brutalist.css">
     <!-- GSAP for animations -->
@@ -13,7 +13,7 @@
 
     <!-- TOP NAVIGATION -->
     <div class="topbar">
-        <div class="topbar-left" style="transform-origin: left center;">yitumulin's Space</div>
+        <div class="topbar-left" style="transform-origin: left center;">Yitumulin's Space</div>
         <div class="topbar-center">
             <a href="#whoami" class="nav-link hover-underline">WHOAMI</a>
             <div class="slash">/</div>
@@ -21,14 +21,11 @@
             <div class="slash">/</div>
             <a href="#contact" class="nav-link hover-underline">CONTACT</a>
         </div>
-        <div class="topbar-right hover-scale" style="transform-origin: right center;">@yitumulin</div>
+        <div class="topbar-right" style="transform-origin: right center;">@yitumulin</div>
     </div>
 
-    <!-- SCROLL CURVE CANVAS -->
-    <canvas id="scroll-curve"></canvas>
-
     <!-- SECTION 1: HERO -->
-    <section class="hero">
+    <section id="hero-top" class="hero">
         <!-- W & S Deconstructed Graphic (Wang Sen) -->
         <div class="hero-deco" id="hero-logo" aria-hidden="true">
             <!-- W Shape (Inverted M concept) -->
@@ -66,15 +63,17 @@
         
         <div class="hero-title-container reveal-up">
             <div style="font-family: monospace; font-size: 1.8vw; font-weight: 700; letter-spacing: 0.1em; opacity: 0.85; margin-bottom: 2vh; text-transform: uppercase;" class="glitch-text-init">
-                BUPT / AI Product & LLM Systems / 3 Papers / 6+ Projects
+                BUPT / 3 Papers / 4 Applied Projects / 2 Software Copyrights
             </div>
             <div class="hero-title">
-                <span class="hover-magnetic glitch-text-init">yitumulin's</span>
+                <span class="hover-magnetic glitch-text-init">Yitumulin's</span>
                 <span class="hover-magnetic glitch-text-init">SPACE</span>
             </div>
         </div>
     </section>
 
+    <!-- STAGE 2: MARQUEE + WHOAMI -->
+    <section id="whoami-stage" class="whoami-stage-block">
     <!-- COMPACTED MARQUEES (Moved to Top as Section Marker) -->
     <div style="border-top: 2px solid var(--text-black); border-bottom: 2px solid var(--text-black); margin-top: 10vh;">
         <!-- Marquee 1 (Black) -->
@@ -92,54 +91,40 @@
         </section>
     </div>
 
-    <!-- SECTION 2: INTRO & CORE VALUES (Compacted) -->
-    <section id="whoami" class="section-intro" style="padding-top: 10vh; padding-bottom: 10vh; border-top: none;">
-        <div style="display: flex; justify-content: space-between; align-items: stretch; width: 100%;">
-            
-            <!-- Left Column: Identity -->
-            <div style="width: 30%; display: flex; flex-direction: column; justify-content: space-between;">
-                <div class="intro-left reveal-up" style="font-size: 4vw; line-height: 1;">
-                    yitumulin
-                </div>
-                <div class="intro-right reveal-up" style="width: 100%; font-size: 1.5vw; margin-top: 4vh;">
-                    <span class="bold">BUPT student specializing in</span><br>
-                    <span class="bold">LLM Application, AI Product Engineering,</span><br>
-                    <span class="bold">and Computer Vision.</span><br><br>
-                    Telecommunication Engineering and Management student. Dedicated to end-to-end project delivery, research output, and building scalable software.
+    <!-- SECTION 2: WHO I AM -->
+    <section id="whoami" class="section-intro whoami-section" style="padding-top: 10vh; padding-bottom: 10vh; border-top: none;">
+        <div class="whoami-shell">
+            <div class="whoami-merged reveal-up">
+                <div class="whoami-kicker">WHOAMI</div>
+                <h2 class="whoami-name">I Am Yitumulin.</h2>
+                <p class="whoami-summary">
+                    I study Telecommunication Engineering and Management at Beijing University of Posts and Telecommunications. I focus on LLM application engineering, AI product development, and computer vision, and I care about turning ideas into measurable shipped outcomes.
+                </p>
+
+                <div class="whoami-focus-list">
+                    <p><strong>Core Stack</strong> Python, PyTorch, Transformers, LangChain, SQL, Docker, and OpenAI API. I build end-to-end workflows from data preparation and model tuning to deployment and evaluation.</p>
+                    <p><strong>How I Work</strong> I drive projects with a product mindset: define the problem and metrics first, prioritize resources, and iterate based on evidence instead of feature noise.</p>
+                    <p><strong>What I Deliver</strong> I independently push AI products through key 0-to-1 steps: requirement framing, validation, system build, deployment debugging, and reusable assetization.</p>
                 </div>
             </div>
 
-            <!-- Middle Column: Data is Power -->
-            <div class="reveal-up" style="width: 30%; border-left: 2px solid var(--text-black); padding-left: 3vw; display: flex; flex-direction: column;">
-                <div class="text-block-title" style="font-size: 3vw; margin-bottom: 2vh; color: var(--text-black);">
-                    Data<br>is<br>Power
+            <div class="whoami-visual reveal-up" aria-hidden="true">
+                <div class="whoami-orb">
+                    <div class="whoami-orb-ring ring-a"></div>
+                    <div class="whoami-orb-ring ring-b"></div>
+                    <div class="whoami-orb-ring ring-c"></div>
+                    <div class="whoami-orb-core"></div>
                 </div>
-                <div class="text-block-content" style="width: 100%; font-size: 1.2vw; margin-top: auto;">
-                    My core stack includes Python, PyTorch, Transformers, LangChain, SQL, Docker, and OpenAI API. I believe in writing clean code and shipping reproducible, end-to-end workflows.
-                </div>
+                <div class="whoami-visual-caption">Emotion -> System -> Delivery</div>
             </div>
 
-            <!-- Right Column: Delivery is Key -->
-            <div class="reveal-up" style="width: 30%; border-left: 2px solid var(--text-black); padding-left: 3vw; display: flex; flex-direction: column;">
-                <div class="text-block-title" style="font-size: 3vw; margin-bottom: 2vh; color: var(--text-black);">
-                    Delivery<br>is<br>Key
-                </div>
-                <div class="text-block-content" style="width: 100%; font-size: 1.2vw; margin-top: auto;">
-                    Know a little about<br>
-                    <span style="font-size: 1.5vw; font-weight: 700; line-height: 1.4; display: block; margin-top: 10px;">
-                        Full-Stack Understanding,<br>
-                        Database Engineering,<br>
-                        Deployment Debugging,<br>
-                        LLM Workflow Delivery.
-                    </span>
-                </div>
-            </div>
-            
+            <div class="whoami-bloom" aria-hidden="true"></div>
         </div>
+    </section>
     </section>
 
     <!-- SECTION 6: WORKS -->
-    <section id="work" class="section-list">
+    <section id="work" class="section-list stage-white">
         <div class="list-header reveal-up">
             Works<br>
             <a href="project.html" style="font-size: 2vw; text-decoration: underline;">to all projects →</a>
@@ -191,7 +176,7 @@
             </div>
             <div class="footer-col">
                 <strong>GitHub</strong>
-                <a href="https://github.com/yitumulin" target="_blank" class="hover-underline" style="font-weight: 700; font-size: 1.8vw;">@yitumulin</a>
+                <a href="https://github.com/yitumulin" target="_blank" rel="noopener noreferrer" class="hover-underline" style="font-weight: 700; font-size: 1.8vw;">@yitumulin</a>
             </div>
             <div class="footer-col">
                 <strong>Location</strong>
@@ -217,8 +202,9 @@
                 </div>
             </div>
             <!-- Signature -->
-            <div style="font-size: 1.2vw; font-weight: 700; opacity: 0.8; letter-spacing: 0.1em;">
-                @yitumulin
+            <div class="footer-signature-row">
+                <span style="font-size: 1.2vw; font-weight: 700; opacity: 0.8; letter-spacing: 0.1em;">@yitumulin</span>
+                <a href="wudangdao.html" class="hover-underline" style="font-size: 1.1vw; font-weight: 700; letter-spacing: 0.08em;">LISTENING ↗</a>
             </div>
         </div>
     </footer>
@@ -229,48 +215,60 @@
 
         // --- Text Decode / Noise Effect ("Noise to Signal") ---
         const decodeChars = "01X%$#@&*";
+        const decodeTotalDurationMs = 2300;
+        const decodeStepMs = 50;
         document.querySelectorAll('.glitch-text-init').forEach(el => {
             const originalText = el.innerText;
-            let iterations = 0;
-            const maxIterations = 20;
+            const totalFrames = Math.max(1, Math.round(decodeTotalDurationMs / decodeStepMs));
+            let frame = 0;
             
             const interval = setInterval(() => {
                 el.innerText = originalText.split('').map((char, index) => {
-                    if(char === ' ') return ' ';
-                    if(index < iterations / maxIterations * originalText.length) {
+                    if (char === ' ') return ' ';
+                    const revealProgress = Math.min(1, frame / totalFrames);
+                    if (index < revealProgress * originalText.length) {
                         return originalText[index];
                     }
                     return decodeChars[Math.floor(Math.random() * decodeChars.length)];
                 }).join('');
                 
-                iterations++;
-                if(iterations > maxIterations) clearInterval(interval);
-            }, 50);
+                frame++;
+                if (frame > totalFrames) {
+                    el.innerText = originalText;
+                    clearInterval(interval);
+                }
+            }, decodeStepMs);
         });
 
-        // --- Logo Scroll-to-Nav Behavior & Signal Pulse ---
-        // Instead of class toggle, use GSAP Scrub for pixel-perfect smooth interpolation
+        // --- Logo Scroll-to-Nav Behavior ---
         const logo = document.getElementById('hero-logo');
         const titleEl = document.querySelector('.topbar-left');
-        
-        ScrollTrigger.create({
-            trigger: "body", // Bind to body scroll so it stays fixed and scales down based on scroll
-            start: "top top", 
-            end: "300px top", // Complete the animation within the first 300px of scrolling
-            scrub: 0.5, // Smooth scrub tied to scroll position (0.5 adds a slight smoothing delay)
-            animation: gsap.to(logo, {
-                // Dynamically calculate the left position based on the actual width of "yitumulin's Space"
-                // getBoundingClientRect().right gives us the exact pixel position of the right edge of the text
-                top: "20px", 
-                left: () => titleEl.getBoundingClientRect().right + 20 + "px", 
-                scale: 0.1, // Scale down drastically to fit in nav
-                transformOrigin: "top left",
-                ease: "power1.inOut"
-            })
+        const topbarEl = document.querySelector('.topbar');
+
+        const finalLogoScale = 0.063;
+        gsap.to(logo, {
+            top: () => {
+                const navRect = topbarEl.getBoundingClientRect();
+                const scaledLogoHeight = logo.offsetHeight * finalLogoScale;
+                return `${navRect.top + (navRect.height - scaledLogoHeight) / 2}px`;
+            },
+            left: () => `${titleEl.getBoundingClientRect().right + 16}px`,
+            scale: finalLogoScale,
+            transformOrigin: "top left",
+            ease: "none",
+            scrollTrigger: {
+                trigger: document.body,
+                start: "top top",
+                end: "+=420",
+                scrub: 0.6,
+                invalidateOnRefresh: true
+            }
         });
 
-        // Recalculate on window resize to ensure it stays in the right spot
         window.addEventListener('resize', () => {
+            ScrollTrigger.refresh();
+        });
+        window.addEventListener('load', () => {
             ScrollTrigger.refresh();
         });
 
@@ -278,36 +276,21 @@
         gsap.from(".w-shape, .s-shape", {
             y: -100, // Come from top
             opacity: 0,
-            duration: 1.5,
+            duration: 2.9,
             ease: "power4.out",
-            stagger: 0.1
+            stagger: 0.12
         });
         
-        // Flash and Jitter effect periodically
-        setInterval(() => {
-            // Only trigger occasionally, maybe 30% chance every 3 seconds
-            if(Math.random() > 0.7) {
-                const logoContainer = document.getElementById('hero-logo');
-                logoContainer.classList.add('flash-active');
-                
-                // Remove the class after animation completes so it can trigger again
-                setTimeout(() => {
-                    logoContainer.classList.remove('flash-active');
-                }, 500); // slightly longer than the 0.4s animation
-            }
-        }, 3000);
-        document.querySelectorAll('.w-shape, .s-shape').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                if(window.scrollY < 50) {
-                    gsap.to(el, { scale: 1.05, backgroundColor: "#333", duration: 0.3 });
-                }
-            });
-            el.addEventListener('mouseleave', () => {
-                if(window.scrollY < 50) {
-                    gsap.to(el, { scale: 1, backgroundColor: "var(--text-black)", duration: 0.3 });
-                }
-            });
-        });
+        // Flash and jitter effect every 3 seconds
+        function triggerLogoPulse() {
+            logo.classList.remove('flash-active');
+            void logo.offsetWidth;
+            logo.classList.add('flash-active');
+            setTimeout(() => {
+                logo.classList.remove('flash-active');
+            }, 500);
+        }
+        setInterval(triggerLogoPulse, 3000);
 
         // Marquee Animations (Seamless Infinite Loop)
         // By animating x from 0 to -50% and repeating infinitely with no delay/gap
@@ -317,35 +300,173 @@
             const row = document.querySelector(selector);
             if (!row) return;
             
-            // We need two identical children inside the row for a perfect seamless loop
             const content = row.innerHTML;
-            row.innerHTML = content + content; // Duplicate the content
-            
-            // The row now has 2x content, we animate it to -50% of its total width
+            row.innerHTML = content + content + content;
+            const cycleWidth = row.scrollWidth / 3;
+            const wrap = gsap.utils.wrap(-cycleWidth, 0);
+            row.style.willChange = "transform";
+
+            if (reverse) {
+                gsap.set(row, { x: -cycleWidth });
+            }
+
             gsap.to(row, {
-                xPercent: reverse ? 50 : -50,
+                x: reverse ? `+=${cycleWidth}` : `-=${cycleWidth}`,
                 ease: "none",
                 duration: duration,
-                repeat: -1
-            });
-            
-            if(reverse) {
-                gsap.set(row, { xPercent: -50 }); // start shifted left for reverse
-            }
+                repeat: -1,
+                modifiers: {
+                    x: value => `${wrap(parseFloat(value))}px`
+                }
+            }); 
         }
 
         // Apply to the 4 hero marquee rows
-         setupMarquee(".marquee-row-1", 30);
-         setupMarquee(".marquee-row-2", 35, true);
-         setupMarquee(".marquee-row-3", 25);
-         setupMarquee(".marquee-row-4", 40, true);
+         setupMarquee(".marquee-row-1", 103);
+         setupMarquee(".marquee-row-2", 111, true);
+         setupMarquee(".marquee-row-3", 94);
+         setupMarquee(".marquee-row-4", 123, true);
  
          // Apply to the intro marquees
-         setupMarquee(".marquee-fast", 20);
-         setupMarquee(".marquee-math", 40);
-         setupMarquee(".marquee-fast-reverse", 25, true); // Added missing animation for the vitality marquee
-         
-         // Removed the old marquee code that caused stuttering
+         setupMarquee(".marquee-fast", 54);
+         setupMarquee(".marquee-math", 54);
+
+        // Fast smooth scroll for in-page anchors
+        function fastScrollToElement(target, duration = 520) {
+            const startY = window.scrollY;
+            const targetY = target.getBoundingClientRect().top + window.scrollY - 8;
+            const diff = targetY - startY;
+            const startTime = performance.now();
+
+            function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+
+            function step(now) {
+                const elapsed = now - startTime;
+                const p = Math.min(1, elapsed / duration);
+                const eased = easeOutCubic(p);
+                window.scrollTo(0, startY + diff * eased);
+                if (p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        document.querySelectorAll('.topbar-center a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (event) => {
+                const hash = link.getAttribute('href');
+                const target = document.querySelector(hash);
+                if (!target) return;
+                event.preventDefault();
+                fastScrollToElement(target, 520);
+            });
+        });
+
+        // Whoami visual growth and red-to-white transition cue
+        const whoamiSection = document.querySelector('.whoami-section');
+        const whoamiOrb = document.querySelector('.whoami-orb');
+        const whoamiBloom = document.querySelector('.whoami-bloom');
+        if (whoamiSection && whoamiOrb && whoamiBloom) {
+            gsap.to(whoamiOrb, {
+                scale: 1.35,
+                rotation: 18,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: whoamiSection,
+                    start: "top 70%",
+                    end: "bottom top",
+                    scrub: 0.65
+                }
+            });
+
+            gsap.to(whoamiBloom, {
+                scale: 13,
+                opacity: 0.95,
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: whoamiSection,
+                    start: "top 55%",
+                    end: "bottom top",
+                    scrub: 0.8
+                }
+            });
+        }
+
+        // Section-jump storytelling scroll
+        const heroTop = document.getElementById('hero-top');
+        const whoamiStage = document.getElementById('whoami-stage');
+        const workSection = document.getElementById('work');
+        const contactSection = document.getElementById('contact');
+        const sectionFlow = [heroTop, whoamiStage, workSection, contactSection].filter(Boolean);
+        let isSectionAutoScrolling = false;
+        let sectionScrollLockUntil = 0;
+
+        function elementTop(el) {
+            return el.getBoundingClientRect().top + window.scrollY;
+        }
+
+        function elementBottom(el) {
+            return elementTop(el) + el.offsetHeight;
+        }
+
+        function getCurrentSectionIndex() {
+            const y = window.scrollY + 8;
+            let idx = 0;
+            for (let i = 0; i < sectionFlow.length; i++) {
+                if (y >= elementTop(sectionFlow[i])) idx = i;
+            }
+            return idx;
+        }
+
+        function isAtSectionBottom(el, threshold = 10) {
+            return window.scrollY + window.innerHeight >= elementBottom(el) - threshold;
+        }
+
+        function isAtSectionTop(el, threshold = 10) {
+            return window.scrollY <= elementTop(el) + threshold;
+        }
+
+        function jumpToSection(el) {
+            if (!el) return;
+            isSectionAutoScrolling = true;
+            sectionScrollLockUntil = performance.now() + 700;
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => {
+                isSectionAutoScrolling = false;
+            }, 700);
+        }
+
+        window.addEventListener('wheel', (event) => {
+            if (window.innerWidth <= 1024) return;
+            if (isSectionAutoScrolling || performance.now() < sectionScrollLockUntil) {
+                event.preventDefault();
+                return;
+            }
+            if (Math.abs(event.deltaY) < 12) return;
+
+            const dirDown = event.deltaY > 0;
+            const currentIdx = getCurrentSectionIndex();
+            const currentSection = sectionFlow[currentIdx];
+            if (!currentSection) return;
+
+            const isWork = currentSection === workSection;
+
+            if (dirDown) {
+                if (currentIdx >= sectionFlow.length - 1) return;
+                if (isAtSectionBottom(currentSection) && (!isWork || currentSection === workSection)) {
+                    event.preventDefault();
+                    jumpToSection(sectionFlow[currentIdx + 1]);
+                }
+                return;
+            }
+
+            if (currentIdx <= 0) return;
+            if (isAtSectionTop(currentSection)) {
+                event.preventDefault();
+                jumpToSection(sectionFlow[currentIdx - 1]);
+            }
+        }, { passive: false });
+        
         // Scroll Reveal Animations
         gsap.utils.toArray('.reveal-up').forEach(element => {
             gsap.to(element, {
@@ -360,56 +481,6 @@
                 ease: "power3.out"
             });
         });
-
-        // --- Scroll Curve Canvas (Research Trace Line) ---
-        const canvas = document.getElementById('scroll-curve');
-        const ctx = canvas.getContext('2d');
-        
-        function resizeCanvas() {
-            canvas.width = 40;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        let scrollProgress = 0;
-        let time = 0;
-
-        function drawCurve() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Calculate scroll progress (0 to 1)
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            scrollProgress = window.scrollY / maxScroll;
-            
-            ctx.beginPath();
-            ctx.moveTo(20, 0);
-            
-            // Draw the line down to the current scroll progress
-            const currentHeight = canvas.height * scrollProgress;
-            
-            for(let y = 0; y <= canvas.height; y += 5) {
-                // Add noise/wave only to the filled portion
-                let x = 20;
-                if (y <= currentHeight) {
-                    // Combine multiple sine waves for a "brainwave" or "loss curve" feel
-                    const wave1 = Math.sin(y * 0.05 + time) * 10;
-                    const wave2 = Math.sin(y * 0.1 - time * 2) * 5;
-                    x = 20 + wave1 + wave2;
-                    ctx.strokeStyle = "var(--text-black)";
-                    ctx.lineWidth = 2;
-                } else {
-                    ctx.strokeStyle = "rgba(0,0,0,0.1)";
-                    ctx.lineWidth = 1;
-                }
-                ctx.lineTo(x, y);
-            }
-            ctx.stroke();
-            
-            time += 0.05;
-            requestAnimationFrame(drawCurve);
-        }
-        drawCurve();
 
     </script>
 </body>

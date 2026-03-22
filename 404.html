@@ -1,82 +1,49 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>404 | Claude Workspace | yitumulin</title>
-  <meta name="robots" content="noindex,follow">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="stylesheet" href="claude-theme.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Yitumulin</title>
+    <meta name="robots" content="noindex,follow">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="brutalist.css">
 </head>
-<body class="claude-ui">
-  <script>
-    (function(){
-      try {
-        var theme = localStorage.getItem("theme");
-        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (theme === "dark" || (!theme && prefersDark)) document.body.classList.add("dark");
-      } catch (e) {}
-    })();
-  </script>
-
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="brand">yitumulin workspace</a>
-      <div class="header-actions">
-        <button class="sidebar-toggle" data-sidebar-toggle>Menu</button>
-        <button class="cmd-open" data-cmd-open>Jump</button>
-        <button id="darkModeToggle" aria-label="Toggle color theme">Theme</button>
-      </div>
+<body class="project-page">
+    <div class="topbar">
+        <div class="topbar-left" style="transform-origin: left center;">
+            <a href="index.html">Yitumulin's Space</a>
+        </div>
+        <div class="topbar-center">
+            <a href="index.html#whoami" class="nav-link hover-underline">WHOAMI</a>
+            <div class="slash">/</div>
+            <a href="project.html" class="nav-link hover-underline">PROJECT</a>
+            <div class="slash">/</div>
+            <a href="index.html#contact" class="nav-link hover-underline">CONTACT</a>
+        </div>
+        <div class="topbar-right" style="transform-origin: right center;">@yitumulin</div>
     </div>
-  </header>
 
-  <div class="claude-app">
-    <aside class="sidebar">
-      <div class="sidebar-brand">
-        <a href="index.html">yitumulin</a>
-        <button class="sidebar-toggle" data-sidebar-toggle>Close</button>
-      </div>
-      <div class="sidebar-label">Pages</div>
-      <nav class="sidebar-nav">
-        <a href="index.html">Home</a>
-        <a href="posts.html">Projects</a>
-        <a href="about.html">Resume</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </aside>
+    <main class="section-list stage-white" style="min-height: 100vh; padding-top: 22vh;">
+        <div class="list-header" style="margin-bottom: 3vh;">404</div>
+        <div class="item-title" style="font-size: clamp(34px, 3.5vw, 68px); margin-bottom: 2vh;">The Page Is Missing.</div>
+        <p class="item-desc" style="max-width: 860px; font-size: clamp(18px, 1.35vw, 24px); margin-bottom: 5vh;">
+            This route does not exist in the current build. You can continue from the core sections below.
+        </p>
 
-    <main class="main">
-      <section class="main-top">
-        <div>
-          <div class="page-kicker">Error</div>
-          <h1 class="page-title">404 - Page Not Found</h1>
-          <p class="page-intro">This route does not exist in the current workspace build.</p>
+        <div class="project-filters" style="margin-bottom: 8vh;">
+            <a href="index.html" class="filter-chip is-active">Back Home</a>
+            <a href="project.html" class="filter-chip">Open Projects</a>
+            <a href="wudangdao.html" class="filter-chip">Listening</a>
+            <a href="search.html" class="filter-chip">Search</a>
         </div>
-      </section>
 
-      <section class="turn">
-        <div class="turn-head">
-          <span class="turn-role">System</span>
-          <span class="turn-role">Recovery options</span>
+        <div style="border-top: 2px solid var(--text-black); padding-top: 2.2vh; display: flex; gap: 1rem; flex-wrap: wrap; font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.06em;">
+            <a href="index.html#whoami" class="hover-underline">Whoami</a>
+            <span>/</span>
+            <a href="project.html" class="hover-underline">Project</a>
+            <span>/</span>
+            <a href="index.html#contact" class="hover-underline">Contact</a>
         </div>
-        <div class="turn-body">
-          <p>You can continue from the main portfolio pages below.</p>
-          <div class="action-row">
-            <a class="action-link primary" href="index.html">Back to Home</a>
-            <a class="action-link" href="posts.html">Open Projects</a>
-            <a class="action-link" href="search.html">Search Content</a>
-          </div>
-        </div>
-      </section>
-
-      <footer class="foot">
-        yitumulin · 一土木林 · <a href="search.html">Search</a> · <a href="wudangdao.html">Listening</a> · <a href="contact.html">Contact</a>
-      </footer>
     </main>
-  </div>
-
-  <script src="darkmode.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="claude-theme.js"></script>
 </body>
 </html>

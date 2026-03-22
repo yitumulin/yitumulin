@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Projects | yitumulin</title>
     <link rel="stylesheet" href="brutalist.css">
-    <!-- GSAP for animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
-<body>
-
-    <!-- TOP NAVIGATION -->
+<body class="project-page">
     <div class="topbar">
         <div class="topbar-left hover-scale" style="transform-origin: left center;">
-            <a href="index.html">yitumulin's Space</a>
+            <a href="index.html">Yitumulin's Space</a>
         </div>
         <div class="topbar-center">
             <a href="index.html" class="nav-link hover-underline">WHOAMI</a>
@@ -23,280 +20,289 @@
             <div class="slash">/</div>
             <a href="index.html#contact" class="nav-link hover-underline">CONTACT</a>
         </div>
-        <div class="topbar-right hover-scale" style="transform-origin: right center;">@yitumulin</div>
+        <div class="topbar-right" style="transform-origin: right center;">@yitumulin</div>
     </div>
 
-    <!-- SCROLL CURVE CANVAS -->
-    <canvas id="scroll-curve"></canvas>
+    <div class="project-mini-logo" aria-hidden="true">
+        <div class="w-group">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="s-group">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
 
-    <!-- PAGE HERO -->
     <section class="section-intro" style="padding-top: 20vh; min-height: 50vh;">
         <div class="intro-left reveal-up">
             PROJECTS &<br>RESEARCH
         </div>
         <div class="intro-right reveal-up">
-            <span class="bold">A complete archive of engineering works, product builds, and academic outputs.</span><br><br>
-            Focusing on end-to-end execution, from local model fine-tuning and agent orchestration to published scientific data and registered software copyrights.
+            <span class="bold">Structured in a product mindset.</span><br><br>
+            Each project below is presented by Problem, Strategy, Outcome, and Impact so people can quickly read what I solved, how I executed, and what measurable value was delivered.
         </div>
     </section>
 
-    <!-- CATEGORY 1: ENGINEERING & PRODUCT -->
-    <section class="section-list">
-        <div class="list-header reveal-up">
-            LLM & Product Engineering
+    <section class="project-controls reveal-up">
+        <span class="project-filter-label">Filter by focus:</span>
+        <div class="project-filters">
+            <button class="filter-chip is-active" data-filter="ALL" type="button">ALL</button>
+            <button class="filter-chip" data-filter="PM" type="button">PM</button>
+            <button class="filter-chip" data-filter="LLM" type="button">LLM</button>
+            <button class="filter-chip" data-filter="CV" type="button">CV</button>
+            <button class="filter-chip" data-filter="Research" type="button">Research</button>
         </div>
+    </section>
 
-        <div class="project-card reveal-up">
+    <section class="section-list project-category">
+        <div class="list-header reveal-up">LLM & Product Engineering</div>
+
+        <div class="project-card reveal-up" data-tags="PM LLM">
             <div class="project-meta">LLM System</div>
             <div class="project-content">
                 <div class="project-title">MiniMind Full-Pipeline Reproduction</div>
                 <div class="protocol-panel">
                     <div class="panel-field">
-                        <span class="field-label">ROLE</span>
-                        <span class="field-value">Reproduction + Debugging + Pipeline Validation</span>
+                        <span class="field-label">Problem</span>
+                        <span class="field-value">Needed an end-to-end LLM training pipeline that could reliably run on a single GPU and be resumed after interruptions.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">STACK</span>
-                        <span class="field-value">PyTorch / LoRA / SFT / Evaluation</span>
+                        <span class="field-label">Strategy</span>
+                        <span class="field-value">Rebuilt pretraining, SFT, LoRA, and evaluation stages with checkpoint and config validation in a reproducible local workflow.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">IMPACT</span>
-                        <span class="field-value">Completed single-GPU full pipeline with resume & eval</span>
+                        <span class="field-label">Outcome</span>
+                        <span class="field-value">Delivered a full runnable pipeline from data to eval report with stable handoff steps and clear execution documentation.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">TYPE</span>
-                        <span class="field-value">System Reproduction</span>
+                        <span class="field-label">Impact</span>
+                        <span class="field-value">Lowered reproduction risk and iteration friction by making the training loop restart-safe and evaluation-ready on one machine.</span>
                     </div>
                 </div>
-                <a href="https://github.com/jingyaogong/minimind" target="_blank" class="project-link">VIEW ON GITHUB ↗</a>
+                <a href="https://github.com/jingyaogong/minimind" target="_blank" rel="noopener noreferrer" class="project-link">VIEW ON GITHUB ↗</a>
             </div>
         </div>
 
-        <div class="project-card reveal-up">
+        <div class="project-card reveal-up" data-tags="PM LLM">
             <div class="project-meta">LLM Agent</div>
             <div class="project-content">
                 <div class="project-title">WeClone End-to-End Deployment</div>
                 <div class="protocol-panel">
                     <div class="panel-field">
-                        <span class="field-label">ROLE</span>
-                        <span class="field-value">Local Deployment + Data Prep + API Service</span>
+                        <span class="field-label">Problem</span>
+                        <span class="field-value">A complete local agent deployment was required, but the path from raw data to stable service was fragmented.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">STACK</span>
-                        <span class="field-value">Python / Model APIs / Chatbot Integration</span>
+                        <span class="field-label">Strategy</span>
+                        <span class="field-value">Built a staged deployment path covering environment setup, data prep, fine-tuning config, API startup, and chatbot validation.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">IMPACT</span>
-                        <span class="field-value">Validated end-to-end data-to-service pipeline</span>
+                        <span class="field-label">Outcome</span>
+                        <span class="field-value">Shipped a working local service where model output could be consumed through a complete conversational interface.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">TYPE</span>
-                        <span class="field-value">Agent Deployment</span>
+                        <span class="field-label">Impact</span>
+                        <span class="field-value">Turned an experimental stack into an executable product workflow with verifiable end-to-end behavior.</span>
                     </div>
                 </div>
-                <a href="https://github.com/xming521/WeClone" target="_blank" class="project-link">VIEW ON GITHUB ↗</a>
+                <a href="https://github.com/xming521/WeClone" target="_blank" rel="noopener noreferrer" class="project-link">VIEW ON GITHUB ↗</a>
             </div>
         </div>
 
-        <div class="project-card reveal-up">
+        <div class="project-card reveal-up" data-tags="PM LLM">
             <div class="project-meta">LLM + Speech</div>
             <div class="project-content">
                 <div class="project-title">WhisperMail</div>
                 <div class="protocol-panel">
                     <div class="panel-field">
-                        <span class="field-label">ROLE</span>
-                        <span class="field-value">Workflow Design + Integration</span>
+                        <span class="field-label">Problem</span>
+                        <span class="field-value">Users needed a faster way to convert spoken intent into structured email drafts without heavy manual editing.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">STACK</span>
-                        <span class="field-value">Whisper / LLM API / Email Protocol</span>
+                        <span class="field-label">Strategy</span>
+                        <span class="field-value">Connected speech recognition, prompt orchestration, and email protocol handling into one consistent interaction flow.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">IMPACT</span>
-                        <span class="field-value">Delivered usable productivity prototype</span>
+                        <span class="field-label">Outcome</span>
+                        <span class="field-value">Delivered a usable prototype that transforms voice input into action-ready email outputs.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">TYPE</span>
-                        <span class="field-value">Product Prototype</span>
+                        <span class="field-label">Impact</span>
+                        <span class="field-value">Improved productivity path from “idea to send” and validated product feasibility for AI-assisted communication.</span>
                     </div>
                 </div>
-                <a href="https://github.com/yitumulin/WhisperMail" target="_blank" class="project-link">VIEW ON GITHUB ↗</a>
+                <a href="https://github.com/yitumulin/WhisperMail" target="_blank" rel="noopener noreferrer" class="project-link">VIEW ON GITHUB ↗</a>
             </div>
         </div>
 
-        <div class="project-card reveal-up">
+        <div class="project-card reveal-up" data-tags="PM">
             <div class="project-meta">Product Build</div>
             <div class="project-content">
                 <div class="project-title">Shapeville Geometry Education</div>
                 <div class="protocol-panel">
                     <div class="panel-field">
-                        <span class="field-label">ROLE</span>
-                        <span class="field-value">Full-Stack Development + Interaction Design</span>
+                        <span class="field-label">Problem</span>
+                        <span class="field-value">Traditional geometry exercises lacked progressive feedback loops and made student engagement difficult to sustain.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">STACK</span>
-                        <span class="field-value">Java / Swing / Desktop UI</span>
+                        <span class="field-label">Strategy</span>
+                        <span class="field-value">Designed a staged challenge architecture with scoring feedback, progression rules, and interactive desktop UI.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">IMPACT</span>
-                        <span class="field-value">Built complete staged challenge app with feedback loop</span>
+                        <span class="field-label">Outcome</span>
+                        <span class="field-value">Built a complete Java/Swing learning product with guided tasks and measurable learning checkpoints.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">TYPE</span>
-                        <span class="field-value">Desktop Application</span>
+                        <span class="field-label">Impact</span>
+                        <span class="field-value">Converted abstract geometry practice into a structured product experience with higher task completion continuity.</span>
                     </div>
                 </div>
-                <a href="https://github.com/yitumulin/shapeville-geometry-education" target="_blank" class="project-link">VIEW ON GITHUB ↗</a>
+                <a href="https://github.com/yitumulin/shapeville-geometry-education" target="_blank" rel="noopener noreferrer" class="project-link">VIEW ON GITHUB ↗</a>
             </div>
         </div>
     </section>
 
-    <!-- CATEGORY 2: RESEARCH & PAPERS -->
-    <section class="section-list">
-        <div class="list-header reveal-up">
-            Academic Research
-        </div>
+    <section class="section-list project-category">
+        <div class="list-header reveal-up">Academic Research</div>
 
-        <div class="project-card reveal-up">
+        <div class="project-card reveal-up" data-tags="Research CV PM">
             <div class="project-meta">Scientific Data (2025)</div>
             <div class="project-content">
                 <div class="project-title">BECA Dataset</div>
                 <div class="protocol-panel">
                     <div class="panel-field">
-                        <span class="field-label">ROLE</span>
-                        <span class="field-value">Data Pipeline Design + Evaluation Protocol</span>
+                        <span class="field-label">Problem</span>
+                        <span class="field-value">Long-term cattle re-identification lacked a broad and standardized dataset suitable for robust benchmarking.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">STACK</span>
-                        <span class="field-value">Computer Vision / Dataset Engineering</span>
+                        <span class="field-label">Strategy</span>
+                        <span class="field-value">Co-designed data collection and evaluation protocol for multi-scene acquisition with reusable benchmark baselines.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">IMPACT</span>
-                        <span class="field-value">Co-built dataset (16,889 images covering 5,661 cattle)</span>
+                        <span class="field-label">Outcome</span>
+                        <span class="field-value">Published BECA with 16,889 images covering 5,661 cattle and an aligned verification workflow.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">TYPE</span>
-                        <span class="field-value">Published Paper</span>
+                        <span class="field-label">Impact</span>
+                        <span class="field-value">Enabled reproducible long-term identity research and provided a practical standard for downstream CV evaluation.</span>
                     </div>
                 </div>
-                <a href="https://doi.org/10.1038/s41597-025-06326-5" target="_blank" class="project-link">READ PAPER ↗</a>
+                <a href="https://doi.org/10.1038/s41597-025-06326-5" target="_blank" rel="noopener noreferrer" class="project-link">READ PAPER ↗</a>
             </div>
         </div>
 
-        <div class="project-card reveal-up">
+        <div class="project-card reveal-up" data-tags="Research CV">
             <div class="project-meta">Comp. & Electronics in Ag. (2025)</div>
             <div class="project-content">
                 <div class="project-title">CRODNet</div>
                 <div class="protocol-panel">
                     <div class="panel-field">
-                        <span class="field-label">ROLE</span>
-                        <span class="field-value">Algorithm Optimization + Baseline Verification</span>
+                        <span class="field-label">Problem</span>
+                        <span class="field-value">Rotated object detection in complex agricultural scenes required lower compute cost without losing recognition quality.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">STACK</span>
-                        <span class="field-value">Rotated Object Detection / Lightweight CV</span>
+                        <span class="field-label">Strategy</span>
+                        <span class="field-value">Optimized network architecture and benchmarked against strong baselines for efficiency-quality trade-off validation.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">IMPACT</span>
-                        <span class="field-value">Achieved 70% parameter & 50% FLOPs reduction</span>
+                        <span class="field-label">Outcome</span>
+                        <span class="field-value">Published a lightweight detection approach validated on real task settings.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">TYPE</span>
-                        <span class="field-value">Published Paper</span>
+                        <span class="field-label">Impact</span>
+                        <span class="field-value">Achieved about 70% parameter reduction and 50% FLOPs reduction while preserving practical detection capability.</span>
                     </div>
                 </div>
-                <a href="https://doi.org/10.1016/j.compag.2025.111160" target="_blank" class="project-link">READ PAPER ↗</a>
+                <a href="https://doi.org/10.1016/j.compag.2025.111160" target="_blank" rel="noopener noreferrer" class="project-link">READ PAPER ↗</a>
             </div>
         </div>
 
-        <div class="project-card reveal-up">
+        <div class="project-card reveal-up" data-tags="Research LLM PM">
             <div class="project-meta">Under Review (2026)</div>
             <div class="project-content">
                 <div class="project-title">Narrative Complexity Analysis</div>
                 <div class="protocol-panel">
                     <div class="panel-field">
-                        <span class="field-label">ROLE</span>
-                        <span class="field-value">Semantic Entropy Modeling + Statistical Evaluation</span>
+                        <span class="field-label">Problem</span>
+                        <span class="field-value">Narrative complexity in long-form Xianxia texts lacked quantitative indicators with interpretable semantics.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">STACK</span>
-                        <span class="field-value">NLP / Semantic Analysis</span>
+                        <span class="field-label">Strategy</span>
+                        <span class="field-value">Designed semantic entropy metrics and statistical testing procedures to model narrative structure evolution.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">IMPACT</span>
-                        <span class="field-value">Established computational indicators for Xianxia texts</span>
+                        <span class="field-label">Outcome</span>
+                        <span class="field-value">Built a computational framework linking language features with measurable complexity signals.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">TYPE</span>
-                        <span class="field-value">Research Article</span>
+                        <span class="field-label">Impact</span>
+                        <span class="field-value">Provided a transferable NLP evaluation path for literary analytics and cross-text comparison.</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CATEGORY 3: SOFTWARE COPYRIGHTS -->
-    <section class="section-list">
-        <div class="list-header reveal-up">
-            Software Copyrights
-        </div>
+    <section class="section-list project-category">
+        <div class="list-header reveal-up">Software Copyrights</div>
 
-        <div class="project-card reveal-up">
+        <div class="project-card reveal-up" data-tags="PM CV">
             <div class="project-meta">2024SR0885232</div>
             <div class="project-content">
                 <div class="project-title">Cross-Dataset Identification</div>
                 <div class="protocol-panel">
                     <div class="panel-field">
-                        <span class="field-label">ROLE</span>
-                        <span class="field-value">Software Framework Architecture</span>
+                        <span class="field-label">Problem</span>
+                        <span class="field-value">Cross-source identity management suffered from fragmented tooling and inconsistent annotation standards.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">STACK</span>
-                        <span class="field-value">Python / PyQt5 / ReID Models</span>
+                        <span class="field-label">Strategy</span>
+                        <span class="field-value">Architected a unified software framework integrating data management, ReID modeling, and visual interface support.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">IMPACT</span>
-                        <span class="field-value">Unified data management and ID tracking</span>
+                        <span class="field-label">Outcome</span>
+                        <span class="field-value">Delivered a software product with complete workflow support and formal copyright registration.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">TYPE</span>
-                        <span class="field-value">Software Copyright</span>
+                        <span class="field-label">Impact</span>
+                        <span class="field-value">Improved consistency in identity tracking workflows and reduced manual switching cost across datasets.</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="project-card reveal-up" style="border-bottom: 2px solid var(--text-black);">
+        <div class="project-card reveal-up" data-tags="PM CV" style="border-bottom: 2px solid var(--text-black);">
             <div class="project-meta">2024SR0561234</div>
             <div class="project-content">
                 <div class="project-title">Top-View Detection Tool</div>
                 <div class="protocol-panel">
                     <div class="panel-field">
-                        <span class="field-label">ROLE</span>
-                        <span class="field-value">Annotation Tool Development</span>
+                        <span class="field-label">Problem</span>
+                        <span class="field-value">Top-view target annotation for rotated objects was slow, error-prone, and hard to standardize in production loops.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">STACK</span>
-                        <span class="field-value">Python / OpenCV</span>
+                        <span class="field-label">Strategy</span>
+                        <span class="field-value">Built a dedicated annotation tool with OpenCV-based interaction for faster rotated box labeling.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">IMPACT</span>
-                        <span class="field-value">Optimized workflow for rotated bounding boxes</span>
+                        <span class="field-label">Outcome</span>
+                        <span class="field-value">Released a focused utility with reusable annotation flow and formal software registration.</span>
                     </div>
                     <div class="panel-field">
-                        <span class="field-label">TYPE</span>
-                        <span class="field-value">Software Copyright</span>
+                        <span class="field-label">Impact</span>
+                        <span class="field-value">Optimized rotated-box data preparation throughput and improved labeling consistency for downstream training.</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER REMOVED FOR THIS PAGE -->
-
-    <!-- GSAP Animations -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
+
         gsap.utils.toArray('.reveal-up').forEach(element => {
             gsap.to(element, {
                 scrollTrigger: {
@@ -311,76 +317,34 @@
             });
         });
 
-        // --- Text Decode / Noise Effect ("Noise to Signal") ---
-        const decodeChars = "01X%$#@&*";
-        document.querySelectorAll('.glitch-text-init').forEach(el => {
-            const originalText = el.innerText;
-            let iterations = 0;
-            const maxIterations = 20;
-            
-            const interval = setInterval(() => {
-                el.innerText = originalText.split('').map((char, index) => {
-                    if(char === ' ') return ' ';
-                    if(index < iterations / maxIterations * originalText.length) {
-                        return originalText[index];
-                    }
-                    return decodeChars[Math.floor(Math.random() * decodeChars.length)];
-                }).join('');
-                
-                iterations++;
-                if(iterations > maxIterations) clearInterval(interval);
-            }, 50);
+        const chips = Array.from(document.querySelectorAll('.filter-chip'));
+        const cards = Array.from(document.querySelectorAll('.project-card[data-tags]'));
+        const sections = Array.from(document.querySelectorAll('.project-category'));
+
+        function applyFilter(filter) {
+            cards.forEach(card => {
+                const tags = (card.dataset.tags || "").split(/\s+/).filter(Boolean);
+                const visible = filter === "ALL" || tags.includes(filter);
+                card.classList.toggle('is-hidden', !visible);
+            });
+
+            sections.forEach(section => {
+                const hasVisible = section.querySelector('.project-card[data-tags]:not(.is-hidden)');
+                section.style.display = hasVisible ? '' : 'none';
+            });
+
+            chips.forEach(chip => {
+                chip.classList.toggle('is-active', chip.dataset.filter === filter);
+            });
+
+            ScrollTrigger.refresh();
+        }
+
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => applyFilter(chip.dataset.filter || "ALL"));
         });
 
-        // --- Scroll Curve Canvas (Research Trace Line) ---
-        const canvas = document.getElementById('scroll-curve');
-        const ctx = canvas.getContext('2d');
-        
-        function resizeCanvas() {
-            canvas.width = 40;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        let scrollProgress = 0;
-        let time = 0;
-
-        function drawCurve() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Calculate scroll progress (0 to 1)
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            scrollProgress = window.scrollY / maxScroll;
-            
-            ctx.beginPath();
-            ctx.moveTo(20, 0);
-            
-            // Draw the line down to the current scroll progress
-            const currentHeight = canvas.height * scrollProgress;
-            
-            for(let y = 0; y <= canvas.height; y += 5) {
-                // Add noise/wave only to the filled portion
-                let x = 20;
-                if (y <= currentHeight) {
-                    // Combine multiple sine waves for a "brainwave" or "loss curve" feel
-                    const wave1 = Math.sin(y * 0.05 + time) * 10;
-                    const wave2 = Math.sin(y * 0.1 - time * 2) * 5;
-                    x = 20 + wave1 + wave2;
-                    ctx.strokeStyle = "var(--text-black)";
-                    ctx.lineWidth = 2;
-                } else {
-                    ctx.strokeStyle = "rgba(0,0,0,0.1)";
-                    ctx.lineWidth = 1;
-                }
-                ctx.lineTo(x, y);
-            }
-            ctx.stroke();
-            
-            time += 0.05;
-            requestAnimationFrame(drawCurve);
-        }
-        drawCurve();
+        applyFilter("ALL");
     </script>
 </body>
 </html>
