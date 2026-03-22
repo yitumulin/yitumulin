@@ -237,27 +237,26 @@
         const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
         const isMobileExperience = isMobileLayout || isCoarsePointer;
 
-        const finalLogoScale = 0.046;
-        if (!isMobileExperience) {
-            gsap.to(logo, {
-                top: () => {
-                    const navRect = topbarEl.getBoundingClientRect();
-                    const scaledLogoHeight = logo.offsetHeight * finalLogoScale;
-                    return `${navRect.top + (navRect.height - scaledLogoHeight) / 2}px`;
-                },
-                left: () => `${titleEl.getBoundingClientRect().right + 16}px`,
-                scale: finalLogoScale,
-                transformOrigin: "top left",
-                ease: "none",
-                scrollTrigger: {
-                    trigger: document.body,
-                    start: "top top",
-                    end: "+=420",
-                    scrub: 0.6,
-                    invalidateOnRefresh: true
-                }
-            });
-        }
+        // Keep logo motion on touch devices too; only WhoAmI bloom is mobile-disabled.
+        const finalLogoScale = isMobileExperience ? 0.082 : 0.046;
+        gsap.to(logo, {
+            top: () => {
+                const navRect = topbarEl.getBoundingClientRect();
+                const scaledLogoHeight = logo.offsetHeight * finalLogoScale;
+                return `${navRect.top + (navRect.height - scaledLogoHeight) / 2}px`;
+            },
+            left: () => `${titleEl.getBoundingClientRect().right + 16}px`,
+            scale: finalLogoScale,
+            transformOrigin: "top left",
+            ease: "none",
+            scrollTrigger: {
+                trigger: document.body,
+                start: "top top",
+                end: "+=420",
+                scrub: 0.6,
+                invalidateOnRefresh: true
+            }
+        });
 
         window.addEventListener('resize', () => {
             ScrollTrigger.refresh();
@@ -267,15 +266,13 @@
         });
 
         // W & S Initial Animation (Vertical Drop from top)
-        if (!isMobileExperience) {
-            gsap.from(".w-shape, .s-shape", {
-                y: -100, // Come from top
-                opacity: 0,
-                duration: 2.9,
-                ease: "power4.out",
-                stagger: 0.12
-            });
-        }
+        gsap.from(".w-shape, .s-shape", {
+            y: -100, // Come from top
+            opacity: 0,
+            duration: 2.9,
+            ease: "power4.out",
+            stagger: 0.12
+        });
         
         // Flash and jitter effect every 3 seconds
         function triggerLogoPulse() {
@@ -286,9 +283,7 @@
                 logo.classList.remove('flash-active');
             }, 500);
         }
-        if (!isMobileExperience) {
-            setInterval(triggerLogoPulse, 3000);
-        }
+        setInterval(triggerLogoPulse, 3000);
 
         // Marquee Animations (Seamless Infinite Loop)
         // By animating x from 0 to -50% and repeating infinitely with no delay/gap
@@ -319,17 +314,11 @@
             }); 
         }
 
-        // Apply marquee animations (disable on mobile for smoother touch scrolling)
-        if (!isMobileExperience) {
-             setupMarquee(".marquee-row-1", 103);
-             setupMarquee(".marquee-row-2", 111, true);
-             setupMarquee(".marquee-row-3", 94);
-             setupMarquee(".marquee-row-4", 123, true);
-        } else {
-            document.querySelectorAll('.marquee-row').forEach((row) => {
-                row.style.willChange = "auto";
-            });
-        }
+        // Keep marquee motion enabled on all devices.
+        setupMarquee(".marquee-row-1", 103);
+        setupMarquee(".marquee-row-2", 111, true);
+        setupMarquee(".marquee-row-3", 94);
+        setupMarquee(".marquee-row-4", 123, true);
  
         // Fast smooth scroll for in-page anchors
         function fastScrollToElement(target, duration = 520, offsetPx = null) {

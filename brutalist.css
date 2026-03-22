@@ -816,17 +816,28 @@ body.project-page .filter-chip.is-active {
 }
 
 .project-mini-logo {
-    position: fixed;
-    top: 95px;
-    left: 4vw;
-    width: 98px;
-    height: 56px;
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 56px;
+    height: 32px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 10px;
-    z-index: 999;
+    gap: 6px;
+    z-index: 1;
     pointer-events: none;
+    flex: 0 0 auto;
+}
+
+body.project-page .topbar-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-link-douyin {
+    margin-left: 0.55rem;
 }
 
 .project-mini-logo .w-group {
@@ -936,7 +947,14 @@ body.project-page .filter-chip.is-active {
         padding: calc(var(--nav-height) + 6px) 12px 12px;
     }
 
-    .hero-deco { display: none; }
+    .hero-deco {
+        top: calc(var(--nav-height) + 10px);
+        left: 12px;
+        width: clamp(92px, 31vw, 146px);
+        height: clamp(56px, 12vh, 92px);
+        gap: 10px;
+        right: auto;
+    }
 
     .hero-title-container {
         text-align: left;
