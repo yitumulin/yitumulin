@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, shrink-to-fit=no">
     <title>All Projects | yitumulin</title>
     <link rel="stylesheet" href="brutalist.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -303,19 +303,27 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        gsap.utils.toArray('.reveal-up').forEach(element => {
-            gsap.to(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
-                },
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                ease: "power3.out"
+        const isMobileProjectLayout = window.matchMedia('(max-width: 900px)').matches || window.matchMedia('(pointer: coarse)').matches;
+        if (isMobileProjectLayout) {
+            document.querySelectorAll('.reveal-up').forEach((element) => {
+                element.style.opacity = "1";
+                element.style.transform = "none";
             });
-        });
+        } else {
+            gsap.utils.toArray('.reveal-up').forEach(element => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+        }
 
         const chips = Array.from(document.querySelectorAll('.filter-chip'));
         const cards = Array.from(document.querySelectorAll('.project-card[data-tags]'));

@@ -893,51 +893,71 @@ body.project-page .filter-chip.is-active {
 
 /* --- RESPONSIVE --- */
 @media (max-width: 900px) {
-    :root { --nav-height: 62px; }
+    :root { --nav-height: 58px; }
 
     .topbar {
         height: var(--nav-height);
-        padding: 0 16px;
+        padding: 0 10px;
         color: #ffffff;
+        justify-content: flex-start;
+        gap: 10px;
+        overflow: hidden;
     }
 
     .topbar-left, .topbar-right {
-        font-size: 0.76rem;
-        letter-spacing: 0.02em;
+        font-size: 0.66rem;
+        letter-spacing: 0.01em;
     }
 
     .topbar-right { display: none; }
 
-    .topbar-center {
-        gap: 8px;
-        font-size: 0.78rem;
+    .topbar-left {
+        max-width: 38vw;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 0 0 auto;
     }
+
+    .topbar-center {
+        margin-left: auto;
+        gap: 7px;
+        font-size: 0.7rem;
+        min-width: 0;
+        white-space: nowrap;
+        transform: translateX(-2px);
+    }
+
+    .topbar-center .slash { display: none; }
+    .topbar-center .nav-link { letter-spacing: 0.01em; }
 
     .slash { opacity: 0.35; }
 
     .hero {
         min-height: 100svh;
-        padding: calc(var(--nav-height) + 10px) 16px 8vh;
+        justify-content: flex-start;
+        padding: calc(var(--nav-height) + 8px) 12px 5vh;
     }
 
     .hero-deco { display: none; }
 
     .hero-title-container {
         text-align: left;
-        margin-bottom: 8vh;
+        margin-top: 8vh;
+        margin-bottom: 4vh;
     }
 
     .hero-proof {
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: 0.08em;
-        margin-bottom: 12px;
-        line-height: 1.45;
-        max-width: 95%;
+        margin-bottom: 10px;
+        line-height: 1.4;
+        max-width: 100%;
         white-space: normal;
     }
 
     .hero-title {
-        font-size: 18vw;
+        font-size: 17vw;
         line-height: 0.88;
     }
 
@@ -1139,7 +1159,7 @@ body.project-page .filter-chip.is-active {
     }
 
     .project-page .section-intro {
-        padding-top: 14vh !important;
+        padding-top: calc(var(--nav-height) + 22px) !important;
         min-height: auto !important;
         gap: 16px;
     }
