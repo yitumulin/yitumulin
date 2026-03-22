@@ -99,11 +99,11 @@ a {
 /* --- WS LOGO FLASH EFFECT --- */
 .hero-deco {
     position: fixed; /* Changed to fixed so it stays on screen when scrolled */
-    top: 8vh;
+    top: 6vh;
     left: 4vw;
     right: auto;
-    width: 45vw;
-    height: 34vh;
+    width: 36vw;
+    height: 28vh;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
