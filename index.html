@@ -92,11 +92,10 @@
     </div>
 
     <!-- SECTION 2: WHO I AM -->
-    <section id="whoami" class="section-intro whoami-section" style="padding-top: 10vh; padding-bottom: 10vh; border-top: none;">
+    <section id="whoami" class="section-intro whoami-section" style="padding-top: 6vh; padding-bottom: 10vh; border-top: none;">
         <div class="whoami-shell">
             <div class="whoami-merged reveal-up">
                 <div class="whoami-kicker">WHOAMI</div>
-                <h2 class="whoami-name">I Am Yitumulin.</h2>
                 <p class="whoami-summary">
                     I study Telecommunication Engineering and Management at Beijing University of Posts and Telecommunications. I focus on LLM application engineering, AI product development, and computer vision, and I care about turning ideas into measurable shipped outcomes.
                 </p>
@@ -108,14 +107,12 @@
                 </div>
             </div>
 
-            <div class="whoami-visual reveal-up" aria-hidden="true">
-                <div class="whoami-orb">
-                    <div class="whoami-orb-ring ring-a"></div>
-                    <div class="whoami-orb-ring ring-b"></div>
-                    <div class="whoami-orb-ring ring-c"></div>
-                    <div class="whoami-orb-core"></div>
+            <div class="whoami-visual whoami-wordmark-stage reveal-up" aria-hidden="true">
+                <div class="whoami-wordmark">
+                    <span>I</span>
+                    <span>Am</span>
+                    <span>Yitumulin</span>
                 </div>
-                <div class="whoami-visual-caption">Emotion -> System -> Delivery</div>
             </div>
 
             <div class="whoami-bloom" aria-hidden="true"></div>
@@ -363,30 +360,32 @@
             });
         });
 
-        // Whoami visual growth and red-to-white transition cue
+        // Whoami wordmark growth and red-to-white transition cue
         const whoamiSection = document.querySelector('.whoami-section');
-        const whoamiOrb = document.querySelector('.whoami-orb');
+        const whoamiWordmark = document.querySelector('.whoami-wordmark');
         const whoamiBloom = document.querySelector('.whoami-bloom');
-        if (whoamiSection && whoamiOrb && whoamiBloom) {
-            gsap.to(whoamiOrb, {
-                scale: 1.35,
-                rotation: 18,
-                ease: "none",
+        if (whoamiSection && whoamiWordmark && whoamiBloom) {
+            gsap.to(whoamiWordmark, {
+                scale: 11.5,
+                x: 120,
+                y: -40,
+                opacity: 0.98,
+                ease: "power2.out",
                 scrollTrigger: {
                     trigger: whoamiSection,
-                    start: "top 70%",
+                    start: "top 62%",
                     end: "bottom top",
-                    scrub: 0.65
+                    scrub: 0.85
                 }
             });
 
             gsap.to(whoamiBloom, {
-                scale: 13,
+                scale: 18,
                 opacity: 0.95,
                 ease: "power1.out",
                 scrollTrigger: {
                     trigger: whoamiSection,
-                    start: "top 55%",
+                    start: "top 58%",
                     end: "bottom top",
                     scrub: 0.8
                 }

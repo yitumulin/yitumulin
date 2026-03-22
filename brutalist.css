@@ -472,6 +472,22 @@ a {
     color: var(--bg-color);
 }
 
+body.project-page .filter-chip {
+    background: #f4f4f4;
+    color: #161616;
+    border-color: #5a5a5a;
+}
+
+body.project-page .filter-chip:hover {
+    background: #e9e9e9;
+}
+
+body.project-page .filter-chip.is-active {
+    background: #d6d6d6;
+    color: #101010;
+    border-color: #4a4a4a;
+}
+
 .project-card.is-hidden {
     display: none;
 }
@@ -487,14 +503,14 @@ a {
     display: grid;
     grid-template-columns: minmax(0, 62%) minmax(0, 38%);
     gap: 3vw;
-    align-items: stretch;
+    align-items: start;
 }
 
 .whoami-merged {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 2.2vh;
     position: relative;
     z-index: 4;
 }
@@ -505,14 +521,6 @@ a {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     opacity: 0.7;
-}
-
-.whoami-name {
-    font-family: var(--font-display);
-    font-size: clamp(38px, 5vw, 92px);
-    font-weight: 700;
-    line-height: 1.02;
-    text-transform: capitalize;
 }
 
 .whoami-summary {
@@ -549,9 +557,33 @@ a {
     z-index: 3;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-start;
     min-height: 420px;
+}
+
+.whoami-wordmark-stage {
+    padding-top: 0.5rem;
+}
+
+.whoami-wordmark {
+    font-family: var(--font-display);
+    font-size: clamp(72px, 8.2vw, 170px);
+    font-weight: 800;
+    line-height: 0.86;
+    text-transform: uppercase;
+    text-align: right;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+    transform-origin: right center;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 0 18px rgba(255,255,255,0.3));
+    position: relative;
+    z-index: 4;
+}
+
+.whoami-wordmark span {
+    display: block;
 }
 
 .whoami-orb {
@@ -593,17 +625,17 @@ a {
 
 .whoami-bloom {
     position: absolute;
-    right: 8%;
-    top: 54%;
-    width: 230px;
-    height: 230px;
+    right: 0;
+    top: 36%;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     background: #ffffff;
-    transform: translate(50%, -50%) scale(0.2);
+    transform: translate(50%, -50%) scale(0.12);
     transform-origin: center center;
     opacity: 0;
     pointer-events: none;
-    z-index: 3;
+    z-index: 2;
     will-change: transform, opacity;
 }
 
@@ -811,6 +843,7 @@ a {
     .whoami-summary { max-width: 100%; }
     .whoami-shell { grid-template-columns: 1fr; }
     .whoami-visual { min-height: 280px; }
+    .whoami-wordmark { text-align: left; transform-origin: left center; }
     .whoami-bloom { right: 50%; top: 78%; }
     .project-mini-logo { display: none; }
     .footer-signature-row { flex-direction: column; gap: 0.5rem; }
